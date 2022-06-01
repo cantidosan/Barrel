@@ -14,6 +14,10 @@ A simple web based platform facilitating international P2P parcel delivery.
 
 
 ## General info
+<p> Using a modern tech stack the platform will serve the needs  and niche of international parcel delivery
+by utilizing and monetizing  the  sunk cost already associated with purchasing a plane ticket.The 
+platform provides a connection between the prospective sender and traveller. A unique way to transport items without incuring
+transportation costs or physical possession of the parcel while maintaining transportation integrity through live updates</p>
 
 ## Documentation
   >> #### Sequence Diagram
