@@ -17,9 +17,11 @@ A simple web based platform facilitating international P2P parcel delivery.
 
 ## Documentation
   >> #### Sequence Diagram
+  ![SEQ](https://github.com/cantidosan/Barrel/blob/main/DOCS%20%26%20UMLS/SEQ_COURIER.jpg)
   >> #### Activity Diagram
+  ![Activity](https://github.com/cantidosan/Barrel/blob/main/DOCS%20%26%20UMLS/ACTIVITY_COURIER.jpg)
   >> #### Use Case Diagram
-
+  ![Use Case](https://github.com/cantidosan/Barrel/blob/main/DOCS%20%26%20UMLS/USE%20CASE%20DIAGRAM.png)
 
 ## Figma Mockup
 
