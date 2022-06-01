@@ -1,5 +1,5 @@
 # Barrel
-A web based platform facilitating international P2P parcel delivery.
+A simple web based platform facilitating international P2P parcel delivery.
 
 ## Table of contents
 
