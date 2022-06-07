@@ -1,0 +1,57 @@
+version: '2.4'
+
+services:
+
+  backend:
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    ports:
+      - '3001:3001'
+
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_PORT=5432
+      - DATABASE=barrel
+
+      - HOST=localhost
+      - POSTGRES_HOST=db
+      - CHOKIDAR_USEPOLLING=true
+
+    volumes:
+      - ./backend:/usr/src/app:cached
+      - backend_node_modules:/usr/src/app/node_modules
+
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - 8080:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - PORT=5432
+      - DATABASE=venue
+      - HOST=localhost
+    volumes:
+      - db-data:/var/lib/postgresql/data:delegated
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+    volumes:
+      - frontend_node_modules:/usr/src/app/node_modules
+
+volumes:
+  db-data:
+  backend_node_modules:
+  frontend_node_modules:
