@@ -2,14 +2,14 @@
 
 # dependencies
 node_modules
-/.pnp
+.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage
 
 # production
-/build
+build
 
 # misc
 .DS_Store
@@ -30,4 +30,3 @@ stream
 UMLS
 stream overlay.zip
 LOGO
-

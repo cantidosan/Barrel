@@ -1,0 +1,125 @@
+<DISPLAY PARCEL PICS  DETAILS COMPONENT>
+ Item_Name:string,
+ Item_Weight: int, 
+ Item_Space: int, 
+ item_picture:url
+<DISPLAY PARCEL PICS DETAILS COMPONENT/>
+
+<DISPLAY PARCEL PICS COMPONENT>
+ item_picture :url
+<DISPLAY PARCEL PICS COMPONENT/>
+
+<DISPLAY SENDER DETAILS COMPONENT>
+ sender_name : string
+<DISPLAY SENDER DETAILS COMPONENT/>
+
+<DISPLAY ROUTE DETAILS COMPONENT>
+  travel_date: date,
+  departure_country: string,
+  arrival_country:string,
+  departure_airport: string, 
+  arrival_airport:string,
+  luggage_space_capacity: int(required),
+  luggage_weight_capacity : int(required),
+  luggage_space_used: int,
+  luggage_weight_used: int
+ 
+<DISPLAY ROUTE DETAILS COMPONENT/>
+
+<DISPLAY BID DETAILS COMPONENT>
+  total_bid_weight:int ,
+  total_bid_space: int
+<DISPLAY BID DETAILS COMPONENT/>
+
+<Display Delivery Summary Component>
+ delivery_count: int ,
+ delivery_payout_total : int
+<Display Delivery Summary Component/>
+
+<DELIVERY DETAILS PRODUCT CARD COMPONENT>
+ item_picture: url, 
+ delivery_status: string, 
+ delivery_payout:int
+<DELIVERY DETAILS PRODUCT CARD COMPONENT/>
+
+
+<LIST COURIER ROUTE CARDS COMPONENT>
+ <DELIVERY DETAIL PRODUCT CARD COMPONENT>
+	 departure_airport: string , 
+	 arrival_airport: string,
+	 delivery_payout:int,
+ <DELIVERY DETAIL PRODUCT CARD COMPONENT>
+<LIST COURIER ROUTE CARDS COMPONENT/>
+
+<DISPLAY EXCHANGE DETAILS COMPONENT>
+	departure_airport:string,
+	arrival_airport:string,
+	exchange location: string
+<DISPLAY EXCHANGE DETAILS COMPONENT/>
+
+
+<LIST DELIVERY ROUTE CARD COMPONENTS>
+
+	<DELIVERY ROUTE PRODUCT CARD COMPONENT>
+		departure_airport:string,
+		arrival_airport:string,
+		item_picture:url
+	<DELIVERY ROUTE PRODUCT CARD COMPONENT/>
+	
+<LIST DELIVERY ROUTE CARD COMPONENTS>
+
+
+
+<List DISPLAY COURIER ROUTE CARDS COMPONENT>
+
+	<DISPLAY COURIER ROUTE CARD>
+
+		departure_country:string,
+		arrival_country:string,
+		total_bid_payout:int,
+		remaining_luggage_space : int,
+		remaining_luggage_weight: int
+
+	<DISPLAY COURIER ROUTE CARD/>
+	
+<List DISPLAY COURIER ROUTE CARDS COMPONENT/>
+
+
+<List DISPLAY PENDING BIDS CARDS COMPONENT>
+
+	<DISPLAY PENDING BIDS COMPONENT>
+		departure_country: string,
+		arrival_country: string,
+		item_picture:url,
+	<DISPLAY PENDING BIDS COMPONENT>
+	
+<List DISPLAY PENDING BIDS CARDS COMPONENT>
+
+
+<DISPLAY PARCEL DELIVERY DETAILS COMPONENT>
+
+	Item_Name:string,
+	delivery_status: enum,
+	departure_airport:string,
+	arrival_airport:string,
+	QR CODE: QR,
+
+<DISPLAY PARCEL DELIVERY DETAILS COMPONENT/>
+
+
+<LIST GENERAL ROUTE CARD COMPONENTS>
+
+	<DISPLAY GENERAL ROUTE CARD COMPONENT>
+
+		departure_country: string,
+		arrival_country: string,
+		remaining_luggage_space:int,
+		remaining_luggage_weight: int,
+		travel_date:date,
+		departure_airport:string,
+		arrival_airport:string
+		route_status:enum
+		
+	<DISPLAY GENERAL ROUTE CARD COMPONENT/>
+	
+<LIST GENERAL ROUTE CARD COMPONENTS/>
