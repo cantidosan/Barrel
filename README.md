@@ -1,5 +1,7 @@
-# Barrel
+<img src="https://github.com/cantidosan/Barrel/blob/main/DOCS%20%26%20UMLS/logo%20(2).png" width="400">
 A simple web based platform facilitating international P2P parcel delivery.
+
+
 
 ## Table of contents
 
