@@ -7,11 +7,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* <img src={ } className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+        <p className="text-2xl font-bold underline font-roboto">
+          Edit <code >src/App.tsx</code> and save to reload.
         </p>
         <a
-          className="App-link"
+          className="App-link font-hansief"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"

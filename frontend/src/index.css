@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: "Hansief";
+  src: url("../public/fonts/Hansief.otf");
+}
+
 html {
   font-family: sans-serif
 }
