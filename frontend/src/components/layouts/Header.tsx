@@ -1,5 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 
+//TODO  STYLE THE HEADER
 
 const Header: FC<any> = (): ReactElement => {
 
