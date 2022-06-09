@@ -1,13 +1,16 @@
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{html,js,tsx,ts,jsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
         hansief: ["Hansief", "sans-serif"],
-        roboto: ["Roboto", "sans-serif",]
+
+      },
+      colors: {
+        'barrel-green': '#0E3A43'
+
       }
     },
   },
