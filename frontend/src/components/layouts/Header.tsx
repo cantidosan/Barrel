@@ -5,7 +5,7 @@ import headerLogo from '../../assets/images/headerLogo.png'
 
 //TODO FIEN TUNE THE HEADER STYLING
 //TODO ACCURATLEY FILL IN USER PROFILE SPOT THEN REFACTOR FOR REUSABILITY
-
+//TODO ADD SEARCH ICON TO HEADER
 
 const Header: FC<any> = (): ReactElement => {
     ///dimensions are h=110px w=vw
