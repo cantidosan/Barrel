@@ -1,7 +1,7 @@
 
 import React, { FC, ReactNode } from 'react'
-import Footer from './Footer'
-import Header from './Header'
+import Footer from './Footer/Footer'
+import Header from './Header/Header'
 
 
 interface PageProps {
