@@ -1,5 +1,5 @@
 import React, { ReactElement, FC } from 'react'
-import headerLogo from '../../assets/images/headerLogo.png'
+import headerLogo from '../../../assets/images/headerLogo.png'
 
 
 
