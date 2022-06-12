@@ -28,10 +28,12 @@ const Header: FC<any> = (): ReactElement => {
                         data-dropdown-toggle="dropdown"
                     >
                         <span className="sr-only">Open user menu</span>
-                        <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
+                        <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg"
+                            alt="user photo" />
                     </button>
 
-                    <div className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
+                    <div className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100
+                        shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
 
                         <div className="py-3 px-4">
                             <span className="block text-sm text-gray-900 dark:text-white">Jane Doe</span>
