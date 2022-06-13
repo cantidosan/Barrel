@@ -2,22 +2,25 @@ import React, { FC, ReactElement } from 'react'
 import DisplayRouteDetailsCardLg from '../components/DisplayRouteDetailsCardLg'
 import DisplayParcelPictures from '../components/DisplayParcelPictures'
 import HandleBid from '../components/HandleBid'
+import PageLayout from '../components/layouts/PageLayout'
 
 const RouteDetailsPage: FC = () => {
     return (
-        <div className=' '>
-            <div className='flex justify-center flex-col  bg-yellow-300    '>
-                <div className=' bg-red-400 '>
-                    <DisplayRouteDetailsCardLg />
-                </div>
-                <div className=' bg-blue-300'>
-                    <DisplayParcelPictures />
-                </div>
-                <div className='bg-green-400'>
-                    <HandleBid />
+        <PageLayout>
+            <div className=''>
+                <div className='flex  flex-col  bg-barrel-green items-center  '>
+                    <div className='border-2 m-12'>
+                        <DisplayRouteDetailsCardLg />
+                    </div>
+                    <div className='w-88 bg-blue-300 flex'>
+                        <DisplayParcelPictures />
+                    </div>
+                    <div className='bg-green-400 m-12'>
+                        <HandleBid />
+                    </div>
                 </div>
             </div>
-        </div>
+        </PageLayout>
     )
 }
 
