@@ -12,7 +12,7 @@ const RouteDetailsPage: FC = () => {
                     <div className='border-2 m-12'>
                         <DisplayRouteDetailsCardLg />
                     </div>
-                    <div className='w-88 bg-blue-300 flex'>
+                    <div className='w-88  flex'>
                         <DisplayParcelPictures />
                     </div>
                     <div className='bg-green-400 m-12'>

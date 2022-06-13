@@ -11,12 +11,12 @@ const DisplayParcelPictures: FC = (props) => {
 
 
     return (
-        <div className='overflow-hidden container bg-white'>
-            <div className='grid grid-cols-4 grid-rows-1 m-2 gap-2'>
+        <div className='box-content h-18 w-46 p-4 border-4  '>
+            <div className='flex flex-column gap-4'>
 
                 <a href="#" className="  flex flex-col 
                     items-center rounded-lg  border shadow-md 
-                    hover:bg-gray-100 dark:border-gray-700  
+                    hover:bg-white-100 dark:border-gray-700  
                     dark:bg-gray-800 dark:hover:bg-gray-700">
 
                     <img className="object-cover w-full  rounded-t-lg 
