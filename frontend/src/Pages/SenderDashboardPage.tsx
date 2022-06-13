@@ -11,9 +11,9 @@ const SenderDashboardPage: FC = () => {
 
     return (
         <PageLayout>
-            <div className=''>
+            <div className='bg-barrel-green'>
                 <div className=''>
-                    <div className='container px-5 py-2 mx-auto'>
+                    <div className='flex justify-center'>
                         <ParcelDeliveryDetails />
                     </div>
                 </div>

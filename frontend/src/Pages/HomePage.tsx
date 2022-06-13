@@ -5,13 +5,14 @@ import americanflag from '../assets/images/americanflag.png'
 import RouteDetailsCardSm from '../components/RouteDetailsCardSm'
 import PageLayout from '../components/layouts/PageLayout'
 
+//TODO REFACTOR RANDOM DIVS TO BE MORE SPEFICI SEMANTIC HTML
 const HomePage: FC = () => {
 
     const url = [prflag, americanflag]
 
     return (
         <PageLayout>
-            <div className='bg-barrel-green'>
+            <main className='bg-barrel-green'>
                 <div className='container mx-auto pt-20 px-16 align-items-center '>
                     <div className=' grid grid-cols-3 bg-barrel-green gap-4  '>
 
@@ -27,7 +28,7 @@ const HomePage: FC = () => {
 
                     </div>
                 </div >
-            </div >
+            </main >
         </PageLayout>
     )
 }

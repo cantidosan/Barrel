@@ -12,14 +12,15 @@ const ParcelDeliveryDetails: FC = () => {
         <div className='flex flex-cols items-center'>
 
 
+            <figure className='flex ' >
+                <img className=" 
+                    block object-fit 
+                    object-center  rounded-lg"
+                    src={url[1]} alt="" width="313"
+                />
+                <ParcelDeliveryInfo />
+            </figure>
 
-            <img className=" 
-                   block object-cover 
-                   object-center w-full 
-                   h-full rounded-lg"
-                src={url[1]} alt=""
-            />
-            <ParcelDeliveryInfo />
         </div >
     )
 }
