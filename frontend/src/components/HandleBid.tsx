@@ -4,7 +4,7 @@ import DisplayBidDetails from './DisplayBidDetails';
 
 const HandleBid: FC = () => {
     return (
-        <div>
+        <div className='bg-barrel-green'>
             <DisplayBidDetails />
         </div>
     )
