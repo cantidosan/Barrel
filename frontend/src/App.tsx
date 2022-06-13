@@ -1,5 +1,5 @@
 import React from 'react';
-
+import SenderDashboardPage from './Pages/SenderDashboardPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from './Pages/HomePage';
@@ -17,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/routes/:route_id" element={<RouteDetailsPage />} />
+        <Route path="/dashboard/sender/user_id" element={<SenderDashboardPage />} />
       </Routes>
     </BrowserRouter>
   );
