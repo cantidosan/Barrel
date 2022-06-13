@@ -15,7 +15,7 @@ const RouteDetailsPage: FC = () => {
                     <div className='w-88  flex'>
                         <DisplayParcelPictures />
                     </div>
-                    <div className='bg-green-400 m-12'>
+                    <div className='w- bg-green-400 m-12 w-22'>
                         <HandleBid />
                     </div>
                 </div>
