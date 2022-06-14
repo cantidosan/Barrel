@@ -3,6 +3,9 @@ import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import PageLayout from '../components/layouts/PageLayout'
 import ParcelDeliveryDetails from '../components/ParcelDeliveryDetails'
+import DisplayParcelPictures from '../components/DisplayParcelPictures'
+import DisplayDeliveryUpdates from '../components/DisplayDeliveryUpdates'
+
 
 const SenderDashboardPage: FC = () => {
 
@@ -12,11 +15,20 @@ const SenderDashboardPage: FC = () => {
     return (
         <PageLayout>
             <div className='bg-barrel-green'>
-                <div className=''>
-                    <div className='flex justify-center'>
+                <main className=''>
+                    <section className='flex justify-center border-2'>
                         <ParcelDeliveryDetails />
-                    </div>
-                </div>
+                    </section>
+                    <section className='flex justify-center  mt-8'>
+                        <DisplayParcelPictures />
+                    </section>
+                    <section className='flex flex-cols  justify-center  mt-8'>
+
+                        <DisplayDeliveryUpdates />
+                        <DisplayParcelPictures />
+
+                    </section>
+                </main>
             </div>
         </PageLayout>
     )
