@@ -16,17 +16,19 @@ const SenderDashboardPage: FC = () => {
         <PageLayout>
             <div className='bg-barrel-green'>
                 <main className=''>
-                    <section className='flex justify-center border-2'>
+                    <section className='flex justify-center '>
                         <ParcelDeliveryDetails />
                     </section>
                     <section className='flex justify-center  mt-8'>
                         <DisplayParcelPictures />
                     </section>
-                    <section className='flex flex-cols  justify-center  mt-8'>
+                    <section className='flex flex-cols gap-4 justify-center  mt-8'>
 
                         <DisplayDeliveryUpdates />
-                        <DisplayParcelPictures />
-
+                        <div className='opacity-70 hover:opacity-100  '>
+                            <span className='font-bold text-white opacity-100'>RECENT</span>
+                            <DisplayParcelPictures />
+                        </div>
                     </section>
                 </main>
             </div>

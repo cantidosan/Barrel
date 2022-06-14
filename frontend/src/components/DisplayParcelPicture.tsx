@@ -11,9 +11,7 @@ const DisplayParcelPicture: FC = () => {
     return (
         <div>
             <a href="#" className="  flex flex-col 
-                items-center rounded-lg  border shadow-md 
-                hover:bg-white-100 dark:border-gray-700  
-                dark:bg-gray-800 dark:hover:bg-gray-700">
+                items-center rounded-lg  border bg-gray-300">
 
                 <img className="object-cover w-full  rounded-t-lg 
                     w-14 md:rounded-none md:rounded-l-lg"

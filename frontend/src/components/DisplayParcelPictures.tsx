@@ -10,7 +10,7 @@ const DisplayParcelPictures: FC = (props) => {
 
 
     return (
-        <div className='box-content h-18 w-46 p-4 border-4  '>
+        <div className='box-content p-4 bg-white rounded-lg  '>
             <div className='flex flex-column gap-4'>
 
                 <DisplayParcelPicture />
