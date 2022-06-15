@@ -9,6 +9,8 @@ import RouteDetailsCardSmCourrierView from '../components/RouteDetailsCardSmCour
 import DisplayParcelPicture from '../components/DisplayParcelPicture'
 import DisplayPendingBidCardSm from '../components/DisplayPendingBidCardSm'
 import DeliveryDetailsCardSmCourrierView from '../components/DeliveryDetailsCardSmCourrierView'
+import DisplayPastDeliveryCard from '../components/DisplayPastDeliveryCard'
+
 
 ///TODO COMPLETE STYLING THE TOGGLE BUTTON MISSING SVG BARREL ICON AND PLACEHOLDER LABEL
 const CourierDashboardPage: FC = () => {
@@ -73,7 +75,8 @@ const CourierDashboardPage: FC = () => {
 
 
                 </section>
-                <section className='flex justify-center mt-10 gap-4 '
+                <section className='flex justify-center
+                     mt-10 gap-4 '
                 >
                     {/* <RouteDetailsCardSmCourrierView />
                     <RouteDetailsCardSmCourrierView /> */}
@@ -83,19 +86,33 @@ const CourierDashboardPage: FC = () => {
 
                 </section>
 
-                <h2 className='text-white underline
+                {/* <h2 className='text-white underline
                      underline-offset-3 font-hansief 
                      text-2xl font-bold text-center 
                      bg-barrel-green pt-10 tracking-wide'
                 >
                     PENDING BIDS
+                </h2> */}
+                <h2 className='text-white underline
+                     underline-offset-3 font-hansief 
+                     text-2xl font-bold text-center 
+                     bg-barrel-green pt-10 tracking-wide'
+                >
+                    BID HISToRY
                 </h2>
                 <section className=' flex  justify-center 
                          gap-2  mt-10   '>
+
+
                     {/* <DisplayPendingBidCardSm />
                     <DisplayPendingBidCardSm />
                     <DisplayPendingBidCardSm />
                     <DisplayPendingBidCardSm /> */}
+
+
+                    <DisplayPastDeliveryCard />
+                    <DisplayPastDeliveryCard />
+                    <DisplayPastDeliveryCard />
 
 
                 </section>
