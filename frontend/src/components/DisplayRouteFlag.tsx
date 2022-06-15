@@ -18,7 +18,7 @@ const DisplayRouteFlag: FC<UrlProp> = (props) => {
                 md:max-w-xl hover:bg-gray-100 dark:border-gray-700  
                 dark:bg-gray-800 dark:hover:bg-gray-700">
 
-                <img className="object-cover w-full h-96 rounded-t-lg 
+                <img className=" rounded-t-lg 
                     md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src={props.url} alt=""
                 />
 
