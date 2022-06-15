@@ -8,13 +8,16 @@ const DisplayPendingBidCardSm: FC = () => {
 
     const url = [prflag, americanflag]
     return (
-        <div className='flex'>
-            <figure className='border-2 '>
+        <div className='flex '>
+            <figure className='flex flex-col w-14 h-16  '>
+
                 <DisplayRouteFlag url={url[0]} />
+
                 <DisplayRouteFlag url={url[1]} />
 
+
             </figure>
-            <div className='border-2'>
+            <div className='  '>
                 <DisplayParcelPicture />
             </div>
         </div>

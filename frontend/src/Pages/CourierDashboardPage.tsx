@@ -8,7 +8,7 @@ import DisplayRouteInfoCard from '../components/DisplayRouteInfoCard'
 import RouteDetailsCardSmCourrierView from '../components/RouteDetailsCardSmCourrierView'
 import DisplayParcelPicture from '../components/DisplayParcelPicture'
 import DisplayPendingBidCardSm from '../components/DisplayPendingBidCardSm'
-
+import DeliveryDetailsCardSmCourrierView from '../components/DeliveryDetailsCardSmCourrierView'
 
 ///TODO COMPLETE STYLING THE TOGGLE BUTTON MISSING SVG BARREL ICON AND PLACEHOLDER LABEL
 const CourierDashboardPage: FC = () => {
@@ -16,7 +16,7 @@ const CourierDashboardPage: FC = () => {
     const url = [prflag, americanflag]
     return (
         <PageLayout>
-            <main className='bg-barrel-green flex flex-col '>
+            <main className='bg-barrel-green flex  flex-col '>
 
                 <p className='text-white text-2xl 
                     font-hansief font-bold 
@@ -73,11 +73,13 @@ const CourierDashboardPage: FC = () => {
 
 
                 </section>
-                <section className='flex justify-center 
-                      mt-10 gap-4 '
+                <section className='flex justify-center mt-10 gap-4 '
                 >
-                    <RouteDetailsCardSmCourrierView />
-                    <RouteDetailsCardSmCourrierView />
+                    {/* <RouteDetailsCardSmCourrierView />
+                    <RouteDetailsCardSmCourrierView /> */}
+                    <DeliveryDetailsCardSmCourrierView />
+                    <DeliveryDetailsCardSmCourrierView />
+
 
                 </section>
 
@@ -88,12 +90,14 @@ const CourierDashboardPage: FC = () => {
                 >
                     PENDING BIDS
                 </h2>
-                <section className='bg-barrel-green flex justify-center 
-                      mt-10 gap-4 '>
+                <section className=' flex  justify-center 
+                         gap-2  mt-10   '>
+                    {/* <DisplayPendingBidCardSm />
                     <DisplayPendingBidCardSm />
                     <DisplayPendingBidCardSm />
-                    <DisplayPendingBidCardSm />
-                    <DisplayPendingBidCardSm />
+                    <DisplayPendingBidCardSm /> */}
+
+
                 </section>
             </main>
 

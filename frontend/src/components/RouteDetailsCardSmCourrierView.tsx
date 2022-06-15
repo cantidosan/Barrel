@@ -11,12 +11,12 @@ const RouteDetailsCardSmCourrierView: FC = () => {
 
     return (
         <div className='flex'>
-            <figure className='border-2 '>
+            <figure className='w-8  basis-1/2 border-2 '>
                 <DisplayRouteFlag url={url[0]} />
                 <DisplayRouteFlag url={url[1]} />
 
             </figure>
-            <div className='border-2'>
+            <div className=' basis-1/2 border-2'>
                 <DisplayRouteInfoCard />
             </div>
         </div>
