@@ -4,7 +4,7 @@ import DisplayParcelPicture from './DisplayParcelPicture'
 
 const DeliveryDetailsCardSmCourrierView: FC = () => {
     return (
-        <div>
+        <div className='flex'>
             <DisplayParcelPicture />
             <DeliveryDetailInfoCard />
         </div>

@@ -16,7 +16,7 @@ const DisplayPastDeliveryCard: FC = () => {
                 <DisplayRouteFlag url={url[1]} />
 
             </figure>
-            <div className='border-2'>
+            <div className='border-2' >
                 <DisplayParcelPicture />
             </div>
         </div>
