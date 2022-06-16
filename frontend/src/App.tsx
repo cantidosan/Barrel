@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ParcelDetailsPage from './Pages/ParcelDetailsPage';
 import HomePage from './Pages/HomePage';
 import RouteDetailsPage from './Pages/RouteDetailsPage';
-
+import CreateParcelPage from './Pages/CreateParcelPage'
 
 //TODO FINE TUNE THE FLAG DISPLAY STYLING
 //TODO STYLE THE ROUTE INFO CARD TO COMPLETION
@@ -23,6 +23,7 @@ function App() {
         <Route path="/dashboard/courier/user_id" element={<CourierDashboardPage />} />
         <Route path="/deliveries/delivery_id" element={<DeliveryDetailsPage />} />
         <Route path="/parcels/parcel_id" element={<ParcelDetailsPage />} />
+        <Route path="/parcels/new" element={<CreateParcelPage />} />
       </Routes>
     </BrowserRouter>
   );
