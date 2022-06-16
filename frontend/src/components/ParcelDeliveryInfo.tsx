@@ -10,20 +10,20 @@ const ParcelDeliveryInfo: FC = () => {
 
         <div className='mt-4 flex flex-col justify-center'>
             <div>
-                <span className='m-1 text-left font-weight-200'>Item Name:</span>
+                <span className='m-1 text-left font-weight-200 text-white opacity-60 font-roboto'>Item Name:</span>
                 <span className='text-left font-bold text-white'>Headphones</span><br />
             </div>
             <div className='mt-4'>
-                <span className='m-1 text-left font-weight-200'>Status:</span>
+                <span className='m-1 text-left font-weight-200 text-white opacity-60 font-roboto' >Status:</span>
                 <span className='text-left font-bold text-white'>  IN TRANSIT </span><br />
             </div>
             <div className='mt-4'>
-                <span className='m-1 text-left font-weight-200'>Route:</span>
-                <span className='text-left font-bold text-white'>   JFK SJU</span><br />
+                <span className='m-1 text-left font-weight-200 text-white opacity-60 font-roboto'>Route:</span>
+                <span className='text-left font-bold text-white'>   USA PUR</span><br />
             </div>
             <div>
-                <p className='m-1'>QR CODE</p>
-                <img className="float-right mb-3 w-24 h-24 rounded-full shadow-lg"
+                <p className='m-1 text-white opacity-60 font-roboto'>QR CODE</p>
+                <img className="float-right mb-3 w-24 h-24 rounded-full shadow-lg "
                     src={profilepic} alt="QR Code" />
             </div>
         </div>

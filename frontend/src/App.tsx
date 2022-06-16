@@ -3,7 +3,7 @@ import SenderDashboardPage from './Pages/SenderDashboardPage';
 import CourierDashboardPage from './Pages/CourierDashboardPage';
 import DeliveryDetailsPage from './Pages/DeliveryDetailsPage'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import ParcelDetailsPage from './Pages/ParcelDetailsPage';
 import HomePage from './Pages/HomePage';
 import RouteDetailsPage from './Pages/RouteDetailsPage';
 
@@ -22,6 +22,7 @@ function App() {
         <Route path="/dashboard/sender/user_id" element={<SenderDashboardPage />} />
         <Route path="/dashboard/courier/user_id" element={<CourierDashboardPage />} />
         <Route path="/deliveries/delivery_id" element={<DeliveryDetailsPage />} />
+        <Route path="/parcels/parcel_id" element={<ParcelDetailsPage />} />
       </Routes>
     </BrowserRouter>
   );
