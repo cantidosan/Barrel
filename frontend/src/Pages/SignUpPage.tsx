@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Formik, FormikHelpers, FormikProps, Form, Field, FieldProps } from 'formik';
 import PageLayout from '../components/layouts/PageLayout'
+import NavigationIcons from '../components/NavigationIcons';
 
 enum userType {
 
@@ -35,13 +36,6 @@ const SignUpPage: FC = () => {
 
     };
 
-    const isChecked = () => {
-
-        var x = document.getElementsByName("user")
-        console.log(x)
-        return x
-
-    }
 
     return (
         <PageLayout>
@@ -68,7 +62,15 @@ const SignUpPage: FC = () => {
                     >
                         New Profile
                     </h2>
-                    <div className="grid gap-6 mb-3  pt-20 justify-center bg-barrel-green ">
+                    <section className=' flex justify-center bg-barrel-green pt-5  '>
+                        <div className='w-52 '>
+                            <NavigationIcons />
+                        </div>
+                    </section>
+
+
+
+                    <div className="grid gap-6 mb-3 pt-10 justify-center bg-barrel-green ">
 
                         <div className="font-roboto">
                             <label htmlFor="username" className='block mb-2 text-sm font-medium 
@@ -78,7 +80,7 @@ const SignUpPage: FC = () => {
                             </label>
                             <Field id="username"
                                 name="username"
-                                placeholder="username"
+
                                 className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -94,7 +96,7 @@ const SignUpPage: FC = () => {
 
                             <Field id="cellular"
                                 name="cellular"
-                                placeholder="cellular"
+                                placeholder="888-888-8888"
                                 className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
@@ -108,7 +110,7 @@ const SignUpPage: FC = () => {
                             <Field className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                                    dark:focus:ring-blue-500 dark:focus:border-blue-500" id="email" name="email" placeholder="email" />
+                                    dark:focus:ring-blue-500 dark:focus:border-blue-500" id="email" name="email" placeholder="email@email.com" />
                         </div>
                         <div>
 
@@ -119,7 +121,7 @@ const SignUpPage: FC = () => {
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                                     dark:focus:ring-blue-500 dark:focus:border-blue-500" id="firstName" name="firstName"
-                                placeholder="First Name" />
+                                placeholder="John " />
                         </div>
                         <div>
                             <label className='block mb-2 text-sm font-medium 
@@ -128,7 +130,7 @@ const SignUpPage: FC = () => {
                             <Field className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                                    dark:focus:ring-blue-500 dark:focus:border-blue-500" id="lastName" name="lastName" placeholder="First Name" />
+                                    dark:focus:ring-blue-500 dark:focus:border-blue-500" id="lastName" name="lastName" placeholder="Doe" />
                         </div>
 
                         <div>
@@ -138,7 +140,7 @@ const SignUpPage: FC = () => {
                             <Field className="block p-2 w-full text-gray-900 bg-gray-50 
                                     rounded-lg border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
-                                    dark:focus:ring-blue-500 dark:focus:border-blue-500" id="password" name="password" type="password" placeholder="password" />
+                                    dark:focus:ring-blue-500 dark:focus:border-blue-500" id="password" name="password" type="password" placeholder="" />
                         </div>
                         <div className='flex justify-center'>
 
