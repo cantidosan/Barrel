@@ -1,57 +1,29 @@
 import React, { FC } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons'
-import Airports from '../assets/AirportList/Airports.json'
-
-import "react-datepicker/dist/react-datepicker.css";
-import "react-widgets/styles.css";
-
-import InputRouteInfo from '../components/InputRouteInfo'
-import InputExchangeDetails from '../components/InputExchangeDetails'
-import InputLuggageDetails from '../components/InputLuggageDetails'
-
-///###TODO ADD THE AIRPORT NAME AS PART OF THE DROPDOWN DISPLAY
-///###TODO We have the option of flight timetable look up API use however
-/// it does have a price limit
-
-const CreateRoutePage: FC = () => {
+import UpdateLocation from '../components/UpdateLocation'
+import UpdateLuggageAttributes from '../components/UpdateLuggageAttributes'
+import UpdatePolicy from '../components/UpdatePolicy'
 
 
-
-    const ApCodes: any = []
-
-    Airports.forEach(codePush)
-
-    function codePush(item: any, index: any, arr: any) {
-
-        ApCodes.push(item.code)
-
-    }
-
-    console.log(ApCodes[1])
+const UpdateRouteInfoPage: FC = () => {
     return (
-
         <PageLayout>
-
-            <h2 className=" pt-3 flex justify-center 
-                bg-barrel-green underline
-                text-white font-hansief text-center"
-            >CREATE ROUTE </h2>
-
+            <h2 className='pt-3 flex justify-center bg-barrel-green underline
+                        text-white font-hansief'>Exchange Location</h2>
             <section className='flex justify-center bg-barrel-green pt-5  '>
+
                 <div className='w-52'>
                     <NavigationIcons />
                 </div>
             </section>
-
-            <InputRouteInfo />
-            <InputExchangeDetails />
-            <InputLuggageDetails />
-
+            {/* <UpdateLocation /> */}
+            {/* <UpdatePolicy /> */}
+            <UpdateLuggageAttributes />
             {
 
 
-                <div className='flex justify-center w-58 bg-barrel-green pt-5'>
+                <div className='flex justify-center bg-barrel-green pt-5'>
                     <button className='m-2 focus:outline-none text-white bg-purple-700 
                         hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg 
                         text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900'
@@ -71,10 +43,8 @@ const CreateRoutePage: FC = () => {
 
 
 
-
-
         </PageLayout >
     )
 }
 
-export default CreateRoutePage
+export default UpdateRouteInfoPage

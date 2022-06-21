@@ -5,17 +5,16 @@ import InputExchangeDetails from '../components/InputExchangeDetails'
 import InputLuggageDetails from '../components/InputLuggageDetails'
 import NavigationIcons from '../components/NavigationIcons'
 
+///###TODO complete this page
 const CreateParcelPage: FC = () => {
 
     return (
         <PageLayout>
             <div>
 
-                <h2 className=' flex justify-center'>ROUTE INFO</h2>
+                <h2 className='bg-barrel-green flex justify-center'>ROUTE INFO</h2>
                 <NavigationIcons />
-                <InputRouteInfo />
-                <InputExchangeDetails />
-                <InputLuggageDetails />
+
 
 
             </div>
