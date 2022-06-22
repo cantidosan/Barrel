@@ -59,7 +59,7 @@ const CreateRoutePage: FC = () => {
         dispatch({ type: 'pageCount', payload: pgContext });
 
     }
-    console.log('PageCount', pgContext)
+
     return (
 
         <PageLayout>

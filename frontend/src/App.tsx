@@ -22,7 +22,8 @@ function App() {
 
   const initialState = {
     pageCount: 0,
-    metricToggle: 'IMP'
+    metricToggle: 'IMP',
+    courierToggle: 'Route'
 
   };
 
@@ -38,6 +39,12 @@ function App() {
         return {
           ...state,
           metricToggle: action.payload,
+
+        }
+      case 'courierToggle':
+        return {
+          ...state,
+          courierToggle: action.payload,
 
         }
 

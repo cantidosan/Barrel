@@ -12,7 +12,7 @@ const HomePage: FC = () => {
 
     return (
         <PageLayout>
-            <main className='bg-barrel-green'>
+            <section className='bg-barrel-green'>
                 <div className='container mx-auto pt-20 px-16 align-items-center '>
                     <div className=' grid grid-cols-3 bg-barrel-green gap-4  '>
 
@@ -28,7 +28,7 @@ const HomePage: FC = () => {
 
                     </div>
                 </div >
-            </main >
+            </section >
         </PageLayout>
     )
 }
