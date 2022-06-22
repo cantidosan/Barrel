@@ -5,13 +5,17 @@ import Airports from '../assets/AirportList/Airports.json'
 
 
 const InputRouteInfo: FC = () => {
+
     const [startDate, setStartDate] = useState(new Date());
+
+
+
     const ApCodes: any = []
 
     Airports.forEach(codePush)
 
     function codePush(item: any, index: any, arr: any) {
-
+        ///extract airport codes from airport object array
         ApCodes.push(item.code)
 
     }
