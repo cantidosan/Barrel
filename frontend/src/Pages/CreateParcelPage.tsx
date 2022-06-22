@@ -3,7 +3,7 @@ import PageLayout from '../components/layouts/PageLayout'
 import InputRouteInfo from '../components/InputRouteInfo'
 import InputExchangeDetails from '../components/InputExchangeDetails'
 import InputLuggageDetails from '../components/InputLuggageDetails'
-import NavigationIcons from '../components/NavigationIcons'
+import NavigationIcons from '../components/NavigationIcons/NavigationIcons'
 
 ///###TODO complete this page
 const CreateParcelPage: FC = () => {

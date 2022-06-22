@@ -22,6 +22,7 @@ function App() {
 
   const initialState = {
     pageCount: 0,
+    metricToggle: 'IMP'
 
   };
 
@@ -31,6 +32,12 @@ function App() {
         return {
           ...state,
           pageCount: action.payload,
+
+        }
+      case 'metricToggle':
+        return {
+          ...state,
+          metricToggle: action.payload,
 
         }
 

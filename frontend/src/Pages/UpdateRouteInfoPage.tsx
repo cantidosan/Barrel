@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
-import NavigationIcons from '../components/NavigationIcons'
+import NavigationIcons from '../components/NavigationIcons/NavigationIcons'
 import UpdateLocation from '../components/UpdateLocation'
 import UpdateLuggageAttributes from '../components/UpdateLuggageAttributes'
 import UpdatePolicy from '../components/UpdatePolicy'

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 const InputExchangeDetails: FC = () => {
     return (
-        <div className="grid gap-6 pt-10 justify-center bg-barrel-green font-bold text-white ">EXCHANGE POLICY
+        <div className="grid gap-6 pt-10 justify-center bg-barrel-green font-bold text-white ">
             <div>
                 <label htmlFor="small-input" className="block mb-2 text-sm font-bold text-gray-900 dark:text-gray-300">Location</label>
                 <input type="text" id="small-input" className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 

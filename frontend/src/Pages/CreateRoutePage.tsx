@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
-import NavigationIcons from '../components/NavigationIcons'
+import NavigationIcons from '../components/NavigationIcons/NavigationIcons'
 import Airports from '../assets/AirportList/Airports.json'
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,6 +10,7 @@ import InputRouteInfo from '../components/InputRouteInfo'
 import InputExchangeDetails from '../components/InputExchangeDetails'
 import InputLuggageDetails from '../components/InputLuggageDetails'
 import { useStateValue } from '../state/';
+import CreateRouteSubheader from '../components/layouts/subheaders/CreateRouteSubheader';
 
 
 ///###TODO ADD THE AIRPORT NAME AS PART OF THE DROPDOWN DISPLAY
@@ -20,7 +21,7 @@ const CreateRoutePage: FC = () => {
 
 
     const [{ pageCount }, dispatch] = useStateValue();
-    let pgContext = 0
+    let pgContext = pageCount
     const ApCodes: any = []
 
     Airports.forEach(codePush)
@@ -35,7 +36,7 @@ const CreateRoutePage: FC = () => {
     const nextPage = () => {
 
         pgContext++
-        console.log('PageCount+', pgContext)
+        // console.log('PageCount+', pgContext)
 
         if (pgContext > 2) {
             pgContext = 0
@@ -45,6 +46,7 @@ const CreateRoutePage: FC = () => {
 
     }
     const prevPage = () => {
+
         pgContext--
         if (pgContext <= 0) {
 
@@ -52,19 +54,17 @@ const CreateRoutePage: FC = () => {
 
         }
 
-        console.log('PageCountD', pgContext)
+        // console.log('PageCountD', pgContext)
 
         dispatch({ type: 'pageCount', payload: pgContext });
 
     }
+    console.log('PageCount', pgContext)
     return (
 
         <PageLayout>
 
-            <h2 className=" pt-3 flex justify-center 
-                bg-barrel-green underline
-                text-white font-hansief text-center"
-            >CREATE ROUTE </h2>
+            <CreateRouteSubheader />
 
             <section className='flex justify-center 
                 bg-barrel-green pt-5  '>
@@ -72,6 +72,13 @@ const CreateRoutePage: FC = () => {
                     <NavigationIcons />
                 </div>
             </section>
+
+            {
+
+                pageCount === 0 ? <InputRouteInfo /> : pageCount === 1 ? <InputExchangeDetails /> : <InputLuggageDetails />
+
+
+            }
 
 
 
