@@ -75,7 +75,9 @@ const CreateRoutePage: FC = () => {
 
             {
 
-                pageCount === 0 ? <InputRouteInfo /> : pageCount === 1 ? <InputExchangeDetails /> : <InputLuggageDetails />
+                pageCount === 0 ? <InputRouteInfo /> :
+                    pageCount === 1 ? <InputExchangeDetails /> :
+                        <InputLuggageDetails />
 
 
             }
