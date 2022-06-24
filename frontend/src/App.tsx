@@ -12,6 +12,7 @@ import UpdateUserProfilePage from './Pages/UpdateUserProfilePage';
 import CreateRoutePage from './Pages/CreateRoutePage';
 import UpdateRouteInfoPage from './Pages/UpdateRouteInfoPage';
 import { StateProvider } from './state/index'
+import UpdateParcelInfoPage from './Pages/UpdateParcelInfoPage';
 
 //TODO FINE TUNE THE FLAG DISPLAY STYLING
 //TODO STYLE THE ROUTE INFO CARD TO COMPLETION
@@ -64,11 +65,13 @@ function App() {
           <Route path="/dashboard/courier/:user_id" element={<CourierDashboardPage />} />
           <Route path="/deliveries/:delivery_id" element={<DeliveryDetailsPage />} />
           <Route path="/parcels/:parcel_id" element={<ParcelDetailsPage />} />
+          <Route path="/parcels/:parcel_id/update" element={<UpdateParcelInfoPage />} />
           <Route path="/parcels/new" element={<CreateParcelPage />} />
           <Route path="/users/register" element={<SignUpPage />} />
           <Route path="/users/:user_id/update" element={<UpdateUserProfilePage />} />
           <Route path="/routes/new" element={<CreateRoutePage />} />
           <Route path="/routes/:route_id/update" element={<UpdateRouteInfoPage />} />
+
         </Routes>
       </BrowserRouter>
     </StateProvider>

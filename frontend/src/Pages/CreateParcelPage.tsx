@@ -59,7 +59,9 @@ const CreateParcelPage: FC = () => {
             <section className='flex  justify-center pt-6 bg-barrel-green'>
                 {pageCount === 0 ? <UploadImage /> : pageCount === 1 ? <InputParcelInfo /> : <InputParcelDetails />}
 
-            </section><div className='flex justify-center w-58 bg-barrel-green pt-5'>
+            </section>
+
+            <div className='flex justify-center w-58 bg-barrel-green pt-5'>
 
                 <button className='m-2 focus:outline-none text-white bg-purple-700 
                         hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium 

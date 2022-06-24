@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 function InputParcelInfo() {
     return (
-        <div className="grid gap-6 mb-3 pt-10 justify-center bg-barrel-green ">
+        <div className="grid gap-6  pt-10 justify-center bg-barrel-green ">
 
             <div className="font-roboto">
                 <label htmlFor="username" className='block mb-2 text-sm font-medium 
