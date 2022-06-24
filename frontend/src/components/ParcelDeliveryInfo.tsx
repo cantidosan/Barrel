@@ -4,6 +4,9 @@ import profilepic from '../assets/images/profilepic.jpg'
 ///TODO THIS COMPONENT WILL NEED CONDITIONAL RENDERING
 /// BASED ON COURIER OR SENDER VIEW TO HIDE QR CODE FOR e.g
 
+//this component will accept the parcelId prop and perform its own fetch
+//from the delivery table
+
 const ParcelDeliveryInfo: FC = () => {
 
     return (

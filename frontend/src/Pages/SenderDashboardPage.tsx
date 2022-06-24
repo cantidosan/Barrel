@@ -27,6 +27,8 @@ const SenderDashboardPage: FC = () => {
                         <DisplayDeliveryUpdates />
                         <div className='opacity-70 hover:opacity-100  '>
                             <span className='font-bold text-white opacity-100'>RECENT</span>
+                            {/* We need to pass a prop to this containing
+                            shortcuts to recently created parcels */}
                             <DisplayParcelPictures />
                         </div>
                     </section>

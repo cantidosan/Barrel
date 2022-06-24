@@ -24,7 +24,8 @@ function App() {
   const initialState = {
     pageCount: 0,
     metricToggle: 'IMP',
-    courierToggle: 'Route'
+    courierToggle: 'Route',
+    parcelID: ''
 
   };
 
@@ -46,6 +47,12 @@ function App() {
         return {
           ...state,
           courierToggle: action.payload,
+
+        }
+      case 'parcelId':
+        return {
+          ...state,
+          parcelId: action.payload,
 
         }
 
