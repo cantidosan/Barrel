@@ -5,6 +5,7 @@ import PageLayout from '../components/layouts/PageLayout'
 import ParcelDeliveryDetails from '../components/ParcelDeliveryDetails'
 import DisplayParcelPictures from '../components/DisplayParcelPictures'
 import DisplayDeliveryUpdates from '../components/DisplayDeliveryUpdates'
+import DisplayRecentParcelPics from '../components/DisplayRecentParcelPics'
 
 
 const SenderDashboardPage: FC = () => {
@@ -29,7 +30,7 @@ const SenderDashboardPage: FC = () => {
                             <span className='font-bold text-white opacity-100'>RECENT</span>
                             {/* We need to pass a prop to this containing
                             shortcuts to recently created parcels */}
-                            <DisplayParcelPictures />
+                            <DisplayRecentParcelPics />
                         </div>
                     </section>
                 </main>
