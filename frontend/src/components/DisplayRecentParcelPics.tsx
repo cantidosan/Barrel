@@ -8,14 +8,15 @@ import DisplayParcelPicture from './DisplayParcelPicture'
 
 const DisplayRecentParcelPics = () => {
     return (
-        <div className='box-content overflow-hidden w-58 
-            p-4 bg-barrel-green rounded-lg'>
-            <div className='flex flex-column gap-4 overflow-hidden'>
+        <div className='max-w-54 p-4 bg-barrel-green rounded-lg'>
+            <div className=' flex flex-column gap-4 pb-2 overflow-x-scroll overflow-hidden'>
 
                 <DisplayParcelPicture />
                 <DisplayParcelPicture />
                 <DisplayParcelPicture />
                 <DisplayParcelPicture />
+
+
 
 
             </div>

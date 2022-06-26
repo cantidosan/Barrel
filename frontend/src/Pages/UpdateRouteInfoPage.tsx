@@ -7,6 +7,8 @@ import UpdatePolicy from '../components/UpdatePolicy'
 import { useStateValue } from '../state/';
 import CreateRouteSubheader from '../components/layouts/subheaders/CreateRouteSubheader';
 import UpdateRouteSubheader from '../components/layouts/subheaders/UpdateRouteSubheader'
+import NextPageNavButton from '../buttons/NextPageNavButton'
+import PrevPageNavButton from '../buttons/PrevPageNavButton'
 
 
 const UpdateRouteInfoPage: FC = () => {
@@ -62,22 +64,8 @@ const UpdateRouteInfoPage: FC = () => {
 
 
                 <div className='flex justify-center bg-barrel-green pt-5'>
-                    <button className='m-2 focus:outline-none text-white bg-purple-700 
-                        hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg 
-                        text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900'
-                        type="submit"
-                        onClick={nextPage}
-                    >
-                        NEXT
-                    </button>
-                    <button className='m-2 focus:outline-none text-white bg-purple-700 
-                        hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium 
-                        rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 
-                        dark:focus:ring-purple-900"' type="submit"
-                        onClick={prevPage}
-                    >
-                        CANCEL
-                    </button>
+                    <PrevPageNavButton />
+                    <NextPageNavButton />
                 </div>
             }
 
