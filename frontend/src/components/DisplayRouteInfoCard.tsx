@@ -8,7 +8,7 @@ const DisplayRouteInfoCard: FC = (props) => {
     return (
         <section className=' flex flex-col p-1 '>
             {
-                <>
+                <div>
                     <div className=''>
                         <span className='text-white text-xs md:text-lg md:text-2xl  font-thin opacity-80 font-roboto  '>DEPT  :</span>
                         <span className=' font-bold   text-xs md:text-lg md:text-2xl text-white'> JFK </span><br />
@@ -24,12 +24,12 @@ const DisplayRouteInfoCard: FC = (props) => {
                             <span className='text-white text-xs md:text-lg md:text-2xl font-thin opacity-80 font-roboto'>WEIGHT:</span>
                             <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>13 </span><br />
                         </div>
-                        <div className=''>
+                        <div className='md:pt-4'>
                             <span className='text-white text-xs md:text-lg md:text-2xl font-thin opacity-80 font-roboto'>SPACE:</span>
-                            <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>15 Sqft   </span><br />
+                            <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>15 </span><br />
                         </div>
                     </div>
-                </>
+                </div>
             }
 
             {/* THIS WILL BE a CONDITIONAL RENDER
