@@ -17,15 +17,15 @@ const DeliveryDetailsPage: FC = () => {
         <PageLayout>
             <div className='bg-barrel-green'>
                 <main className=''>
-                    <section className='flex justify-center px-1'>
+                    <section className='flex justify-center pr-2'>
                         <ParcelDeliveryDetails />
                     </section>
                     <section className='flex justify-center mt-8  bg-barrel-green '>
-                        <div className='grid grid-cols-2 flex-col border-2 gap-20'>
+                        <div className='grid grid-cols-2 flex-col border-2 gap-14'>
 
 
                             <div className='flex border-2 bg-barrel-green px-1'>
-                                <div className=' pt-5 w-full ' id="flags">
+                                <div className=' pt-2 w-full ' id="flags">
                                     <DisplayRouteFlag url={url[1]} />
                                     <DisplayRouteFlag url={url[0]} />
                                 </div>
@@ -45,9 +45,9 @@ const DeliveryDetailsPage: FC = () => {
 
                             </div>
 
-                            <div className='border-2' id="porttext">
+                            <div className='border-2 text-center' id="porttext">
                                 <span className='m-1 text-left text-white opacity-60
-                                    font-bold font-roboto
+                                    font-thin font-roboto p
                                     text-md'>PORTS
                                 </span><br />
                                 <span className='text-right 
@@ -55,12 +55,12 @@ const DeliveryDetailsPage: FC = () => {
                                 >
                                     JFK -IATA
                                 </span><br />
-                                <span className='m-1 text-left font-bold font-roboto
+                                <span className='m-1 text-left font-thin font-roboto
                                     text-white opacity-60
                                     text-sm'>EXCHANGE LOCATION
                                 </span><br />
                                 <span className='text-right 
-                                    font-bold text-white mr-1 text-lime-500'
+                                    font-bold text-white mr-1 text-white'
                                 >
                                     IATA arrivals
                                 </span>
@@ -70,8 +70,8 @@ const DeliveryDetailsPage: FC = () => {
 
                         </div>
                     </section>
-                    <section className='flex flex-cols gap-4 
-                        justify-center mt-8'>
+                    <section className='flex flex-col pt-8  px-4 md:flex-row  gap-4 
+                        justify-center mt-8 '>
 
                         <DisplayDeliveryUpdates />
                         <CreateDeliveryUpdates />
