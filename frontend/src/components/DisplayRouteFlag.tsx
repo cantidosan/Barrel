@@ -16,7 +16,7 @@ const DisplayRouteFlag: FC<UrlProp> = (props) => {
             <a href="#" className=" overflow-hidden flex 
                 flex-col items-center rounded-lg  border 
                 shadow-md md:flex-row
-                md:max-w-xl hover:bg-gray-100 
+                 hover:bg-gray-100 
                 dark:border-gray-700  
                 dark:bg-gray-800 dark:hover:bg-gray-700">
 

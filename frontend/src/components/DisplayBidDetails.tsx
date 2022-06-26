@@ -6,7 +6,7 @@ import MakeBid from './MakeBid'
 const DisplayBidDetails: FC = () => {
     return (
         <div className='flex flex-row  '>
-            {false ? <MakeBid /> : <DecideBid />}
+            {true ? <MakeBid /> : <DecideBid />}
             <BidDetails />
         </div>
     )

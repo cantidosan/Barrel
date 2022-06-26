@@ -45,7 +45,7 @@ const CourierDashboardPage: FC = () => {
                     pt-10 bg-barrel-green'
                     id="dashboardToggle">
 
-                    <div className='flex justify-between'>
+                    <div className='flex justify-between '>
 
                         {courierToggle === 'Route' ? <ScanButton /> : ''}
 
@@ -58,12 +58,20 @@ const CourierDashboardPage: FC = () => {
 
 
                 </section>
-                <section className='flex justify-center
-                     mt-10 gap-4 '
+                <section className='flex justify-center mt-10 gap-4 '
                 >
-                    {dashboardView === 'Route' ? <> <RouteDetailsCardSmCourrierView /> <RouteDetailsCardSmCourrierView /> </> :
+                    {dashboardView === 'Route' ?
+                        <div className='flex flex-col md:flex-row gap-4  '>
+                            <RouteDetailsCardSmCourrierView />
+                            <RouteDetailsCardSmCourrierView />
 
-                        <><DeliveryDetailsCardSmCourrierView /><DeliveryDetailsCardSmCourrierView /></>
+
+                        </div> :
+
+                        <div className='flex flex-col md:flex-row gap-4 '>
+                            <DeliveryDetailsCardSmCourrierView />
+                            <DeliveryDetailsCardSmCourrierView />
+                        </div>
 
 
                     }
@@ -73,25 +81,25 @@ const CourierDashboardPage: FC = () => {
 
                 <BidStatusSubheader />
 
-                <section className=' flex  justify-center 
-                         gap-2  mt-10   '>
+                <section className=' flex justify-center
+                            gap-2 mt-10   '>
 
 
                     {
                         dashboardView === 'Route' ?
-                            <>
+                            <div className='flex flex-col md:flex-row gap-4 '>
                                 <DisplayPendingBidCardSm />
                                 <DisplayPendingBidCardSm />
                                 <DisplayPendingBidCardSm />
 
-                            </> :
+                            </div> :
 
 
-                            <>
+                            <div className='flex flex-col md:flex-row gap-4 '>
                                 <DisplayPastDeliveryCard />
                                 <DisplayPastDeliveryCard />
                                 <DisplayPastDeliveryCard />
-                            </>
+                            </div>
                     }
 
 

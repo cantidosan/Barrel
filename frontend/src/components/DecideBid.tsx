@@ -3,10 +3,11 @@ import React, { FC } from 'react'
 const DecideBid: FC = () => {
     return (
         <div className='container  border-2'>
-            <div className='flex border-2  justify-center text-white'>
+            <div className='flex border-2 pt-4 text-3xl font-bold 
+                justify-center text-white'>
                 $80.00
             </div>
-            <div className='flex flex-column mt-2 gap-3 justify-center'>
+            <div className='flex flex-column mt-2 gap-3 pt-3 mx-2 justify-center'>
                 <div className='border-2 justify-center'>
                     <button className="text-white-500 bg-gradient-to-r 
                      from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br
