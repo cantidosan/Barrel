@@ -12,8 +12,8 @@ const DisplayRouteDetailsCardLg: FC = () => {
 
 
     return (
-        <div className=' flex flex-row basis-1/2 gap-2 '>
-            <div className='flex flex-col basis-1/2 border-2'>
+        <div className=' flex flex-row basis-1/2  '>
+            <div className='flex flex-col basis-1/2 '>
                 <DisplayRouteFlag url={url[0]} />
                 <DisplayRouteFlag url={url[1]} />
             </div>

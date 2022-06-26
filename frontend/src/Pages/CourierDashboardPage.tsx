@@ -83,7 +83,7 @@ const CourierDashboardPage: FC = () => {
                                 <DisplayPendingBidCardSm />
                                 <DisplayPendingBidCardSm />
                                 <DisplayPendingBidCardSm />
-                                <DisplayPendingBidCardSm />
+
                             </> :
 
 

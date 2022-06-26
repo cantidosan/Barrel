@@ -18,13 +18,13 @@ const HomePage: FC = () => {
 
                         <RouteDetailsCardSm />
                         <RouteDetailsCardSm />
+                        {/* <RouteDetailsCardSm />
                         <RouteDetailsCardSm />
                         <RouteDetailsCardSm />
                         <RouteDetailsCardSm />
                         <RouteDetailsCardSm />
                         <RouteDetailsCardSm />
-                        <RouteDetailsCardSm />
-                        <RouteDetailsCardSm />
+                        <RouteDetailsCardSm /> */}
 
                     </div>
                 </div >

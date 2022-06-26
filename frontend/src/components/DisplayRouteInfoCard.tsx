@@ -4,29 +4,31 @@ import DisplayLuggageAttributes from './DisplayLuggageAttributes';
 const DisplayRouteInfoCard: FC = (props) => {
 
     return (
-        <main className='mt-2 flex flex-col'>
-            <div>
-                <span className='m-1 text-left font-weight-200'>DEPT  DEST:</span>
-                <span className='text-left font-bold text-white'>JFK SJU</span><br />
+        <section className=' flex flex-col p-3 '>
+            <div className=''>
+                <span className='text-white text-md font-thin opacity-80 font-roboto '>DEPT  :</span>
+                <span className=' font-bold text-white'> JFK </span><br />
+                <span className='text-white text-md font-thin opacity-80 font-roboto  '>ARR:</span>
+                <span className=' font-bold  text-md text-white'> MIA </span><br />
             </div>
-            <div className='mt-2'>
-                <span className='m-1 text-left font-weight-200'>DATE:</span>
-                <span className='text-left font-bold text-white'>   06/05/2022</span><br />
+            <div className=''>
+                <span className='pl-7 underline text-white  opacity-80 font-roboto '>DATE:</span>
+                <span className=' font-bold text-white'>    06/05/2022</span>
             </div>
             <div>
-                <div className='mt-1'>
-                    <span className='m-1 text-left font-weight-200'>WEIGHT:</span>
-                    <span className='text-left font-bold text-white'>   13</span><br />
+                <div className=''>
+                    <span className='text-white font-thin opacity-80 font-roboto'>WEIGHT:</span>
+                    <span className=' font-bold text-white'>13 lbs</span><br />
                 </div>
-                <div className='mt-1'>
-                    <span className='m-1 text-left font-weight-200'>SPACE</span>
-                    <span className='text-left font-bold text-white'>15   </span><br />
+                <div className=''>
+                    <span className='text-white font-thin opacity-80 font-roboto'>SPACE:</span>
+                    <span className=' font-bold text-white'>15 Sqft   </span><br />
                 </div>
             </div>
 
             {/* THIS WILL BE a CONDITIONAL RENDER
                 <DisplayLuggageAttributes /> */}
-        </main>
+        </section>
 
     )
 }

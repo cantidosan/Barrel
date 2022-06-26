@@ -67,7 +67,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/routes/:route_id" element={<RouteDetailsPage />} />
+
           <Route path="/dashboard/sender/:user_id" element={<SenderDashboardPage />} />
           <Route path="/dashboard/courier/:user_id" element={<CourierDashboardPage />} />
           <Route path="/deliveries/:delivery_id" element={<DeliveryDetailsPage />} />
@@ -77,6 +77,7 @@ function App() {
           <Route path="/users/register" element={<SignUpPage />} />
           <Route path="/users/:user_id/update" element={<UpdateUserProfilePage />} />
           <Route path="/routes/new" element={<CreateRoutePage />} />
+          <Route path="/routes/:route_id" element={<RouteDetailsPage />} />
           <Route path="/routes/:route_id/update" element={<UpdateRouteInfoPage />} />
 
         </Routes>

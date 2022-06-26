@@ -27,7 +27,7 @@ const DeliveryDetailsPage: FC = () => {
                                     <DisplayRouteFlag url={url[1]} />
                                     <DisplayRouteFlag url={url[0]} />
                                 </div>
-                                <div className=' ml-3' id="payouttext">
+                                <div className='ml-3' id="payouttext">
                                     <span className='m-1 text-left font-bold font-roboto text-white opacity-60
                                     text-md'>PAYOUT
                                     </span><br />

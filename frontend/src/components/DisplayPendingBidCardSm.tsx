@@ -17,7 +17,7 @@ const DisplayPendingBidCardSm: FC = () => {
 
 
             </figure>
-            <div className='  '>
+            <div className=''>
                 <DisplayParcelPicture />
             </div>
         </div>
