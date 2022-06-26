@@ -27,7 +27,7 @@ const DisplayParcelPicture: FC = () => {
     return (
         <div>
             <a href="#" className=" flex flex-col 
-                items-center rounded-lg
+                items-center rounded-lg overflow-hidden
                 border bg-gray-300"
                 onClick={handleSelect}
             >
