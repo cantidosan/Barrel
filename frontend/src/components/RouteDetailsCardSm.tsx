@@ -14,17 +14,17 @@ const RouteDetailsCardSm: FC = (props) => {
     return (
 
         <>
-            <div className='m-4  h-32 w-23 justify-center 
-                            bg-barrel-green-300 flex gap-2'>
-                <div className='flex flex-col basis-1/2 border-2
-                            border-black '>
+            <div className='justify-center 
+                            bg-barrel-green flex gap-1'>
+                <div className='flex flex-col basis-1/2 border-2 
+                             '>
 
                     <DisplayRouteFlag url={url[0]} />
                     <DisplayRouteFlag url={url[1]} />
 
                 </div>
 
-                <div className='basis-1/2 border-2 bg-barrel-green border-black '>
+                <div className='basis-1/2 border-2 pt-4   '>
 
                     <DisplayRouteInfoCard />
 
