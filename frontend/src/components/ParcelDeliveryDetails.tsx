@@ -21,7 +21,7 @@ const ParcelDeliveryDetails: FC = () => {
                 <img className=" 
                     block object-fit 
                     object-center  rounded-lg"
-                    src={url[1]} alt="" width="313"
+                    src={url[1]} alt="" width="168"
                 />
                 <ParcelDeliveryInfo />
             </figure>

@@ -17,19 +17,24 @@ const DeliveryDetailsPage: FC = () => {
         <PageLayout>
             <div className='bg-barrel-green'>
                 <main className=''>
-                    <section className='flex justify-center'>
+                    <section className='flex justify-center px-1'>
                         <ParcelDeliveryDetails />
                     </section>
                     <section className='flex justify-center mt-8  bg-barrel-green '>
                         <div className='grid grid-cols-2 flex-col border-2 gap-20'>
-                            <div className='flex border-2 bg-barrel-green'>
-                                <div className=' justify-center w-14' id="flags">
+
+
+                            <div className='flex border-2 bg-barrel-green px-1'>
+                                <div className=' pt-5 w-full ' id="flags">
                                     <DisplayRouteFlag url={url[1]} />
                                     <DisplayRouteFlag url={url[0]} />
                                 </div>
-                                <div className='ml-3' id="payouttext">
-                                    <span className='m-1 text-left font-bold font-roboto text-white opacity-60
-                                    text-md'>PAYOUT
+                                <div className='ml-3 pt-9' id="payouttext">
+                                    <span className='m-1 text-left font-bold font-hansief
+                                        text-white opacity-60
+                                        text-md'
+                                    >
+                                        PAYOUT
                                     </span><br />
                                     <span className='text-right text-lg
                                     font-bold text-white mr-1 text-lime-500'
@@ -41,7 +46,8 @@ const DeliveryDetailsPage: FC = () => {
                             </div>
 
                             <div className='border-2' id="porttext">
-                                <span className='m-1 text-left text-white opacity-60 font-bold font-roboto
+                                <span className='m-1 text-left text-white opacity-60
+                                    font-bold font-roboto
                                     text-md'>PORTS
                                 </span><br />
                                 <span className='text-right 
@@ -49,7 +55,8 @@ const DeliveryDetailsPage: FC = () => {
                                 >
                                     JFK -IATA
                                 </span><br />
-                                <span className='m-1 text-left font-bold font-roboto text-white opacity-60
+                                <span className='m-1 text-left font-bold font-roboto
+                                    text-white opacity-60
                                     text-sm'>EXCHANGE LOCATION
                                 </span><br />
                                 <span className='text-right 
