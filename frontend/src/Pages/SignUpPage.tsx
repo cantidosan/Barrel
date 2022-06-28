@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Formik, FormikHelpers, FormikProps, Form, Field, FieldProps } from 'formik';
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons';
-import { signUpUser } from '../utils/SignUpUser';
+import { signUpUser } from '../auth/SignUpUser';
 
 
 

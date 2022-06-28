@@ -1,6 +1,6 @@
 import React, { ReactElement, FC } from 'react'
 import headerLogo from '../../../assets/images/headerLogo.png'
-
+import { signInWithGoogle } from '../../../auth/SignInUser'
 
 
 //TODO FIEN TUNE THE HEADER STYLING
@@ -12,6 +12,11 @@ const Header: FC<any> = (): ReactElement => {
     /// icon left aligned
     /// create a navBarSearch component to be centered
     /// CTA text and user profile icon.
+
+
+
+
+
     return (
 
         <nav className="bg-white border-b-2 border-gray-500 px-2 sm:px-4 py-2.5 rounded dark:bg-barrel-green"  >
@@ -22,7 +27,7 @@ const Header: FC<any> = (): ReactElement => {
                         alt="Barrel Logo" />
                 </a>
                 <div className="flex items-center md:order-2">
-                    <span className=' mr-10 font-hansief text-gray-100'>BECOME A CoURIER</span>
+                    <button className=' mr-10 font-hansief text-gray-100'>BECOME A CoURIER</button >
                     <button type="button"
                         className="flex mr-3 text-sm bg-gray-800  
                         rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 
