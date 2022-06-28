@@ -6,7 +6,8 @@ import { signUpUser } from '../utils/SignUpUser';
 
 
 
-import { GoogleAuthProvider } from "firebase/auth";
+
+
 
 enum userType {
 
@@ -27,15 +28,13 @@ interface MyFormValues {
 
 const SignUpPage: FC = () => {
 
-    const provider = new GoogleAuthProvider();
-
-
 
     function handleSignup(email: string, password: string) {
 
         signUpUser(email, password)
 
     }
+
 
 
 
@@ -53,6 +52,7 @@ const SignUpPage: FC = () => {
 
 
     return (
+
         <PageLayout>
 
             <Formik

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { firebaseConfig } from "../FirebaseConfig";
 
 
@@ -9,6 +9,7 @@ import { firebaseConfig } from "../FirebaseConfig";
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
 
 
 export function signUpUser(email: any, password: any) {
@@ -24,6 +25,7 @@ export function signUpUser(email: any, password: any) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            return { errorCode, errorMessage }
 
         })
 }
