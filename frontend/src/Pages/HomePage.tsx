@@ -14,7 +14,7 @@ const HomePage: FC = () => {
         <PageLayout>
             <section className='bg-barrel-green'>
                 <div className='container mx-auto pt-20 px-16 align-items-center '>
-                    <div className=' grid gap-3 md:grid md:grid-cols-3   '>
+                    <div className=' grid gap-3 md:grid md:grid-cols-3'>
 
                         <RouteDetailsCardSm />
                         <RouteDetailsCardSm />

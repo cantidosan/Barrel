@@ -2,6 +2,11 @@ import React, { FC } from 'react'
 import { Formik, FormikHelpers, FormikProps, Form, Field, FieldProps } from 'formik';
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons';
+import { signUpUser } from '../utils/SignUpUser';
+
+
+
+import { GoogleAuthProvider } from "firebase/auth";
 
 enum userType {
 
@@ -18,11 +23,21 @@ interface MyFormValues {
     password: string;
     user: userType
 
-
 }
 
-
 const SignUpPage: FC = () => {
+
+    const provider = new GoogleAuthProvider();
+
+
+
+    function handleSignup(email: string, password: string) {
+
+        signUpUser(email, password)
+
+    }
+
+
 
     const initialValues: MyFormValues = {
 
@@ -47,15 +62,12 @@ const SignUpPage: FC = () => {
                 onSubmit={(values, actions) => {
 
                     console.log({ values, actions });
+                    handleSignup(values.email, values.password)
 
                     alert(JSON.stringify(values, null, 2));
 
-                    actions.setSubmitting(false);
-
                 }}
-
             >
-
                 <Form >
                     <h2 className=" pt-3 flex justify-center bg-barrel-green underline
                         text-white font-hansief"

@@ -12,6 +12,7 @@
     "@types/node": "^16.11.38",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "firebase": "^9.8.4",
     "flowbite-datepicker": "^1.2.1",
     "formik": "^2.2.9",
     "react": "^18.1.0",
