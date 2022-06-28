@@ -23,7 +23,7 @@ const SenderDashboardPage: FC = () => {
                     <section className='flex justify-center  mt-8'>
                         <DisplayParcelPictures />
                     </section>
-                    <section className='flex flex-cols gap-4 justify-center  mt-8'>
+                    <section className='flex flex-col px-3 md:flex-row  gap-4 justify-center  mt-8'>
 
                         <DisplayDeliveryUpdates />
                         <div className='opacity-70 hover:opacity-100  '>
