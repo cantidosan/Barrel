@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Combobox } from '@headlessui/react'
 import Airports from '../assets/AirportList/Airports.json'
+import { useStateValue } from '../state/index'
 
-function AirportSearch() {
+function AirportSearchDept() {
     const ApCodes: any = []
     const [selectedAirport, setSelectedAirport] = useState(ApCodes[2])
     const [query, setQuery] = useState('')
+    const [{ deptPort }, dispatch] = useStateValue();
+
+    useEffect(() => {
 
 
+        dispatch({ type: 'deptPort', payload: selectedAirport });
+        console.log('inside useefect')
+    }, [selectedAirport])
 
     Airports.forEach(codePush)
 
@@ -38,4 +45,4 @@ function AirportSearch() {
     )
 }
 
-export default AirportSearch
+export default AirportSearchDept

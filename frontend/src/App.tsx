@@ -25,7 +25,9 @@ function App() {
     pageCount: 0,
     metricToggle: 'IMP',
     courierToggle: 'Route',
-    parcelID: ''
+    parcelID: '',
+    deptPort: '',
+    arrivPort: '',
 
   };
 
@@ -53,6 +55,18 @@ function App() {
         return {
           ...state,
           parcelId: action.payload,
+
+        }
+      case 'deptPort':
+        return {
+          ...state,
+          deptPort: action.payload,
+
+        }
+      case 'arrivPort':
+        return {
+          ...state,
+          arrivPort: action.payload,
 
         }
 
