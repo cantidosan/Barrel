@@ -6,7 +6,7 @@ import React, { FC } from 'react'
 //fetch the delivery update from the deliveryupdates table
 const DisplayDeliveryUpdates: FC = () => {
     return (
-        <div className='overflow-hidden overflow-y-scroll h-18  '>
+        <div className='  '>
 
             <h2 className='inline text-left font-thin 
             text-white font-roboto mb-1 mr-2 text-lg font-hansief'
@@ -14,8 +14,10 @@ const DisplayDeliveryUpdates: FC = () => {
                 Delivery Updates
             </h2>
 
-            <p className=' font-light
-                 text-xs text-white font-roboto '>
+            <p className='font-light 
+                 text-xs text-white
+                 font-roboto  md:overflow-y-scroll md:overflow-x-scroll '
+            >
 
                 <time dateTime="06/03/2022" className='opacity-60'>
                     June 6th,2022<time dateTime='3:00'>

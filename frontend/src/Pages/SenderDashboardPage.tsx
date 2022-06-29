@@ -23,11 +23,18 @@ const SenderDashboardPage: FC = () => {
                     <section className='flex justify-center  mt-8'>
                         <DisplayParcelPictures />
                     </section>
-                    <section className='flex flex-col px-3 md:flex-row  gap-4 justify-center  mt-8'>
-
-                        <DisplayDeliveryUpdates />
+                    <section className='flex flex-col px-3 
+                        md:flex-row  gap-4 md:gap-4 justify-center
+                        mt-8'
+                    >
+                        <div className='md:w-32'>
+                            <DisplayDeliveryUpdates />
+                        </div>
                         <div className='opacity-70 hover:opacity-100  '>
-                            <span className='font-bold text-white opacity-100'>RECENT</span>
+                            <span className='font-bold text-white opacity-100'
+                            >
+                                RECENT ITEMS
+                            </span>
                             {/* We need to pass a prop to this containing
                             shortcuts to recently created parcels */}
                             <DisplayRecentParcelPics />
