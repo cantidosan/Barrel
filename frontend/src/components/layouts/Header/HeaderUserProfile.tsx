@@ -1,6 +1,6 @@
 import React from 'react'
 import SignInModal from '../../SignInModal'
-import { signOut, getAuth } from "firebase/auth"
+import { signOut, getAuth, onAuthStateChanged } from "firebase/auth"
 
 function HeaderUserProfile() {
     const auth = getAuth();
@@ -12,6 +12,8 @@ function HeaderUserProfile() {
             // An error happened.
         });
     }
+
+    const user = auth.currentUser;
 
     return (
         <div className="flex items-center md:order-2">
@@ -45,8 +47,8 @@ function HeaderUserProfile() {
                         shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
 
                 <div className="py-3 px-4">
-                    <span className="block text-sm text-gray-900 dark:text-white">Jane Doe</span>
-                    <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">jDoe@barrel.com</span>
+                    <span className="block text-sm text-gray-900 dark:text-white">{!!user ? user.uid : 'Jane Doe'}</span>
+                    <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{!!user ? user.email : 'JDoe@email.com'}</span>
                 </div>
                 <ul className="py-1" id="dropdown" aria-labelledby='dropdown'>
                     <li>
