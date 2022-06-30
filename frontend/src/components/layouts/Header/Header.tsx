@@ -4,9 +4,7 @@ import { signInWithGoogle } from '../../../auth/SignInUser'
 import HeaderMain from './HeaderMain'
 import HeaderSearch from './HeaderSearch'
 
-//TODO FIEN TUNE THE HEADER STYLING
-//TODO ACCURATLEY FILL IN USER PROFILE SPOT THEN REFACTOR FOR REUSABILITY
-//TODO ADD SEARCH ICON TO HEADER
+
 
 const Header: FC<any> = (): ReactElement => {
     ///dimensions are h=110px w=vw
@@ -14,7 +12,7 @@ const Header: FC<any> = (): ReactElement => {
     /// create a navBarSearch component to be centered
     /// CTA text and user profile icon.
 
-    let valid = true
+    let valid = false
 
 
 

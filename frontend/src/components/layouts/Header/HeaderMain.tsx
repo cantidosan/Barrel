@@ -18,11 +18,12 @@ function HeaderMain() {
                         ark:focus:ring-gray-600" id="user-menu-button"
                         aria-expanded="false"
                         data-dropdown-toggle="dropdown"
+
                     >
                         <span className="sr-only">Open user menu</span>
                         <img className="w-8 h-8 rounded-full"
                             src="/docs/images/people/profile-picture-3.jpg"
-                            alt="user photo" />
+                            alt="user pic " />
                     </button>
 
                     <div className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100
@@ -32,7 +33,7 @@ function HeaderMain() {
                             <span className="block text-sm text-gray-900 dark:text-white">Jane Doe</span>
                             <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">jDoe@barrel.com</span>
                         </div>
-                        <ul className="py-1" id="dropdown">
+                        <ul className="py-1" id="dropdown" aria-labelledby='dropdown'>
                             <li>
                                 <a href="#"
                                     className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100
