@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "firebase/auth"
+import { useNavigate } from "react-router-dom"
 
 function SignInModal() {
+
     const auth = getAuth();
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    let navigate = useNavigate();
 
     const handleSubmit = (event: any) => {
         // Prevent page reload
@@ -28,6 +31,11 @@ function SignInModal() {
 
 
     };
+
+    const handleRegisterUser = (even: any) => {
+
+        navigate('/users/register')
+    }
 
 
     return (
@@ -90,8 +98,12 @@ function SignInModal() {
                                         Sign In
                                     </button>
                                     <button className="bg-green hover:bg-green-dark text-black 
-                                    font-bold py-2 px-4 rounded border-b-4 border-green-darkest"
-                                        type="button">
+                                        font-bold py-2 px-4 rounded border-b-4 border-green-darkest"
+                                        data-modal-toggle="defaultModal"
+                                        type="button"
+                                        onClick={even => handleRegisterUser(even)}
+
+                                    >
                                         Register
                                     </button>
                                 </div>
@@ -101,8 +113,8 @@ function SignInModal() {
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
 
     )
 }
