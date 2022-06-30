@@ -18,6 +18,7 @@ function SignInModal() {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                window.location.reload()
                 console.log('userdeets', user)
                 // ...
             })

@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SignInModal from '../../SignInModal'
 import { signOut, getAuth, onAuthStateChanged } from "firebase/auth"
 
 function HeaderUserProfile() {
     const auth = getAuth();
+    const [currentUserEmail, setCurrentUserEmail] = useState('');
+    const [currentUsername, setCurrentUsername] = useState('');
 
     const handleSignout = () => {
         signOut(auth).then(() => {
+            window.location.reload()
             // Sign-out successful.
         }).catch((error) => {
             // An error happened.
         });
     }
 
-    const user = auth.currentUser;
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            setCurrentUserEmail(user.email as string)
+            setCurrentUsername(user.displayName as string)
+            console.log('WOLOLOLOL')
+            // ...
+        } else {
+            // User is signed out
+            // ...
+        }
+    });
 
     return (
         <div className="flex items-center md:order-2">
@@ -47,8 +62,8 @@ function HeaderUserProfile() {
                         shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown">
 
                 <div className="py-3 px-4">
-                    <span className="block text-sm text-gray-900 dark:text-white">{!!user ? user.uid : 'Jane Doe'}</span>
-                    <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{!!user ? user.email : 'JDoe@email.com'}</span>
+                    <span className="block text-sm text-gray-900 dark:text-white">{!!currentUsername ? currentUsername : 'Jane Doe'}</span>
+                    <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{!!currentUserEmail ? currentUserEmail : 'JDoe@email.com'}</span>
                 </div>
                 <ul className="py-1" id="dropdown" aria-labelledby='dropdown'>
                     <li>
