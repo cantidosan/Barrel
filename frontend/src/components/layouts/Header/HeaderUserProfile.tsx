@@ -1,9 +1,20 @@
 import React from 'react'
-
+import SignInModal from '../../SignInModal'
 function HeaderUserProfile() {
     return (
         <div className="flex items-center md:order-2">
-            <button className=' mr-10 font-hansief text-gray-100'>BECOME A CoURIER</button >
+            <button type="button" data-modal-toggle="defaultModal"
+                className='mr-10 font-hansief text-gray-100'
+            >BECOME A CoURIER
+            </button >
+            <div id="defaultModal" tabIndex={-1} aria-hidden="true"
+                className="hidden overflow-y-auto 
+                overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0
+                h-modal md:h-full">
+                <div className="relative p-4 w-full max-w-2xl h-full ">
+                    <SignInModal />
+                </div>
+            </div>
             <button type="button"
                 className="flex mr-3 text-sm bg-gray-800  
                         rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 

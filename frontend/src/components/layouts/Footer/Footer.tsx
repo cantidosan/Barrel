@@ -4,7 +4,7 @@ import headerLogo from '../../../assets/images/headerLogo.png'
 const Footer: FC<any> = (): ReactElement => {
     return (
 
-        <footer className="p-4 bg-white  shadow md:px-6 md:py-8 dark:bg-barrel-green">
+        <footer className="p-4 bg-barrel-green  shadow md:px-6 md:py-8 dark:bg-barrel-green">
             <div className="sm:flex sm:items-center sm:justify-center">
                 <a href="#" className="flex items-center mb-4 sm:mb-0">
                     <img src={headerLogo} className="mr-3 h-8" alt="Barrel Logo" />
