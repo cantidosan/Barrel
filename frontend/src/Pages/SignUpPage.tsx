@@ -85,15 +85,15 @@ const SignUpPage: FC = () => {
                     <div className="grid gap-6  pt-10 justify-center bg-barrel-green ">
 
                         <div className="font-roboto">
-                            <label htmlFor="username" className='block mb-2 text-sm font-medium 
-                                text-gray-900 dark:text-gray-300'
+                            <label htmlFor="username" className='block mb-2 text-sm font-thin 
+                                text-white dark:text-gray-300'
                             >
                                 Username
                             </label>
                             <Field id="username"
                                 name="username"
 
-                                className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
+                                className="block p-2 w-full text-white bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -101,7 +101,7 @@ const SignUpPage: FC = () => {
                         </div>
                         <div>
                             <label htmlFor="cell" className='block mb-2 text-sm font-medium 
-                                text-gray-900 dark:text-gray-300'
+                                text-white dark:text-white'
                             >
                                 Cellular
                             </label>
@@ -109,7 +109,7 @@ const SignUpPage: FC = () => {
                             <Field id="cellular"
                                 name="cellular"
                                 placeholder="888-888-8888"
-                                className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
+                                className="block p-2 w-full text-white bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 
                                     focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
                                     dark:placeholder-gray-400 dark:text-white 
@@ -118,7 +118,7 @@ const SignUpPage: FC = () => {
                         </div>
                         <div>
                             <label className="block mb-2 text-sm font-medium 
-                                text-gray-900 dark:text-gray-300" htmlFor="email">Email</label>
+                                text-white dark:text-gray-300" htmlFor="email">Email</label>
 
                             <Field className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
@@ -128,7 +128,7 @@ const SignUpPage: FC = () => {
                         <div>
 
                             <label className='block mb-2 text-sm font-medium 
-                                text-gray-900 dark:text-gray-300' htmlFor="firstName">First Name</label>
+                                text-white dark:text-gray-300' htmlFor="firstName">First Name</label>
 
                             <Field className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
@@ -138,7 +138,7 @@ const SignUpPage: FC = () => {
                         </div>
                         <div>
                             <label className='block mb-2 text-sm font-medium 
-                                text-gray-900 dark:text-gray-300' htmlFor="lastName">Last Name</label>
+                                text-white dark:text-gray-300' htmlFor="lastName">Last Name</label>
 
                             <Field className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
@@ -148,7 +148,7 @@ const SignUpPage: FC = () => {
 
                         <div>
                             <label className='block mb-2 text-sm font-medium 
-                                text-gray-900 dark:text-gray-300' htmlFor="password">Password</label>
+                                text-white dark:text-gray-300' htmlFor="password">Password</label>
 
                             <Field className="block p-2 w-full text-gray-900 bg-gray-50 
                                     rounded-lg border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
