@@ -3,7 +3,7 @@ import headerLogo from '../../../assets/images/headerLogo.png'
 import { signInWithGoogle } from '../../../auth/SignInUser'
 import HeaderMain from './HeaderMain'
 import HeaderSearch from './HeaderSearch'
-
+import HeaderSearchDate from './HeaderSearchDate'
 
 
 const Header: FC<any> = (): ReactElement => {
@@ -12,13 +12,15 @@ const Header: FC<any> = (): ReactElement => {
     /// create a navBarSearch component to be centered
     /// CTA text and user profile icon.
 
-    let valid = false
+    let valid = true
 
 
 
     return (
         <>
-            {valid ? <HeaderSearch /> : <HeaderMain />}
+            {valid ? <HeaderSearchDate /> : ''}
+            {<HeaderMain />}
+            {<HeaderSearch />}
         </>
     )
 
