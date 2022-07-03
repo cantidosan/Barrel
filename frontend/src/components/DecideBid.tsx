@@ -2,11 +2,21 @@ import React, { FC } from 'react'
 
 const DecideBid: FC = () => {
     return (
-        <div className='container  border-2'>
-            <div className='flex border-2 pt-4 text-3xl font-bold 
-                justify-center text-white'>
-                $80.00
+        <div className='container'>
+            <div className='flex  text-3xl font-bold 
+                justify-center'>
+                <span className='pt-2 text-white'
+                >$80.00
+                </span>
+                <div className=''>
+                    <a href="#" className="inline-block py-2 px-5 
+                        rounded-full text-2xs bg-amber-300
+                        hover:bg-amber-400 duration-300 text-red-400">
+                        modify bid
+                    </a>
+                </div>
             </div>
+
             <div className='flex flex-column mt-2 gap-3 pt-3 mx-2 justify-center'>
                 <div className='border-2 justify-center'>
                     <button className="text-white-500 bg-gradient-to-r 

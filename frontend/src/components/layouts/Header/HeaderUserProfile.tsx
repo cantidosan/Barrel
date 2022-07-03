@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import SignInModal from '../../SignInModal'
 import { signOut, getAuth, onAuthStateChanged } from "firebase/auth"
+import { useNavigate } from "react-router-dom"
 
 function HeaderUserProfile() {
     const auth = getAuth();
     const [currentUserEmail, setCurrentUserEmail] = useState('');
     const [currentUsername, setCurrentUsername] = useState('');
-
+    let navigate = useNavigate();
     const handleSignout = () => {
         signOut(auth).then(() => {
             window.location.reload()
@@ -68,8 +69,12 @@ function HeaderUserProfile() {
                 <ul className="py-1" id="dropdown" aria-labelledby='dropdown'>
                     <li>
                         <a href="#"
-                            className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100
-                                    dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                            className="block py-2 px-4 text-sm text-gray-700 
+                                hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200
+                                 dark:hover:text-white"
+                            onClick={e => navigate('/dashboard/courier/:user_id')}
+
+                        >
                             Dashboard
                         </a>
                     </li>

@@ -5,11 +5,11 @@ import MakeBid from './MakeBid'
 
 const DisplayBidDetails: FC = () => {
 
-    let emptyBool = false
+    let emptyBool = true
 
     return (
         <div className='flex flex-row border  '>
-            {true ? <MakeBid /> : <DecideBid />}
+            {false ? <MakeBid /> : <DecideBid />}
             <BidDetails />
         </div>
     )
