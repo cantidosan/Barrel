@@ -28,6 +28,7 @@ function App() {
     parcelID: '',
     deptPort: '',
     arrivPort: '',
+    headerState: ''
 
   };
 
@@ -67,6 +68,12 @@ function App() {
         return {
           ...state,
           arrivPort: action.payload,
+
+        }
+      case 'headerState':
+        return {
+          ...state,
+          headerState: action.payload,
 
         }
 

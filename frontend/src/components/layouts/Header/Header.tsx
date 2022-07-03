@@ -4,6 +4,7 @@ import { signInWithGoogle } from '../../../auth/SignInUser'
 import HeaderMain from './HeaderMain'
 import HeaderSearch from './HeaderSearch'
 import HeaderSearchDate from './HeaderSearchDate'
+import { useStateValue } from '../../../state/index'
 
 
 const Header: FC<any> = (): ReactElement => {
@@ -11,16 +12,20 @@ const Header: FC<any> = (): ReactElement => {
     /// icon left aligned
     /// create a navBarSearch component to be centered
     /// CTA text and user profile icon.
-
-    let valid = true
+    const [{ headerState }, dispatch] = useStateValue();
 
 
 
     return (
         <>
-            {valid ? <HeaderSearchDate /> : ''}
-            {<HeaderMain />}
-            {<HeaderSearch />}
+            {headerState === '' ? <HeaderMain /> :
+                headerState === 1 ? <HeaderSearch /> :
+                    headerState === 3 ? <HeaderSearchDate /> : ''
+
+
+
+            }
+
         </>
     )
 
