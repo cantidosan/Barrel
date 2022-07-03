@@ -8,6 +8,7 @@ import InputParcelInfo from '../components/InputParcelInfo'
 import InputParcelDetails from '../components/InputParcelDetails'
 import NextPageNavButton from '../buttons/NextPageNavButton'
 import PrevPageNavButton from '../buttons/PrevPageNavButton'
+import DisplayRecentParcelPics from '../components/DisplayRecentParcelPics'
 
 ///###TODO complete this page
 const CreateParcelPage: FC = () => {
@@ -31,6 +32,14 @@ const CreateParcelPage: FC = () => {
             </section>
             <section className='flex  justify-center pt-6 bg-barrel-green'>
                 {pageCount === 0 ? <UploadImage /> : pageCount === 1 ? <InputParcelInfo /> : <InputParcelDetails />}
+
+            </section>
+            <section className='flex flex-col justify-center bg-barrel-green py-6'>
+                {/* THIS COMPONENT SHOULD ALLOW QUICK SELECTION OF RECENTLY
+                OR FREQUENTLY USED ITEMS */}
+                <p className='pl-4 font-bold text-white font-hansief'>Top Items</p>
+
+                <DisplayRecentParcelPics />
 
             </section>
 

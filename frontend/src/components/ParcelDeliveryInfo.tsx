@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import profilepic from '../assets/images/profilepic.jpg'
+import QrCode from './QrCode'
 
 ///TODO THIS COMPONENT WILL NEED CONDITIONAL RENDERING
 /// BASED ON COURIER OR SENDER VIEW TO HIDE QR CODE FOR e.g
@@ -8,6 +9,8 @@ import profilepic from '../assets/images/profilepic.jpg'
 //from the delivery table
 
 const ParcelDeliveryInfo: FC = () => {
+
+
 
     return (
 
@@ -26,8 +29,12 @@ const ParcelDeliveryInfo: FC = () => {
             </div>
             <div>
                 <p className='m-1 text-white opacity-60 font-roboto'>QR CODE</p>
-                <img className="float-right mb-3  rounded-full shadow-lg "
-                    src={profilepic} alt="QR Code" width="84" />
+                {/* <img className="float-right mb-3  rounded-full shadow-lg "
+                    src={profilepic} alt="QR Code" width="84" >
+                </img> */}
+                <button >
+                    <QrCode />
+                </button>
             </div>
         </div>
 
