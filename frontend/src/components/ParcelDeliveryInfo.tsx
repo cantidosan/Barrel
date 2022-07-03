@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import profilepic from '../assets/images/profilepic.jpg'
 import QrCode from './QrCode'
+import RecipientSetupModal from './RecipientSetupModal'
 
 ///TODO THIS COMPONENT WILL NEED CONDITIONAL RENDERING
 /// BASED ON COURIER OR SENDER VIEW TO HIDE QR CODE FOR e.g
@@ -32,9 +33,14 @@ const ParcelDeliveryInfo: FC = () => {
                 {/* <img className="float-right mb-3  rounded-full shadow-lg "
                     src={profilepic} alt="QR Code" width="84" >
                 </img> */}
-                <button >
+                <button type="button" data-modal-toggle="modal" className="">
                     <QrCode />
                 </button>
+                <div id="modal" tabIndex={-1} aria-hidden="true" className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+                    <div className="relative p-4 w-full max-w-md h-full md:h-auto">
+                        <RecipientSetupModal />
+                    </div>
+                </div>
             </div>
         </div>
 
