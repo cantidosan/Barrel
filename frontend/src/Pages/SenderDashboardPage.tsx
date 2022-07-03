@@ -3,9 +3,9 @@ import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import PageLayout from '../components/layouts/PageLayout'
 import ParcelDeliveryDetails from '../components/ParcelDeliveryDetails'
-import DisplayParcelPictures from '../components/DisplayParcelPictures'
+import DisplayActiveBids from '../components/DisplayActiveBids'
 import DisplayDeliveryUpdates from '../components/DisplayDeliveryUpdates'
-import DisplayRecentParcelPics from '../components/DisplayRecentParcelPics'
+import DisplayParcelPictures from '../components/DisplayParcelPictures'
 
 
 const SenderDashboardPage: FC = () => {
@@ -33,11 +33,11 @@ const SenderDashboardPage: FC = () => {
                         <div className='opacity-70 hover:opacity-100  '>
                             <span className='font-bold text-white opacity-100'
                             >
-                                RECENT ITEMS
+                                MANAGE BIDS
                             </span>
                             {/* We need to pass a prop to this containing
                             shortcuts to recently created parcels */}
-                            <DisplayRecentParcelPics />
+                            <DisplayActiveBids />
                         </div>
                     </section>
                 </main>

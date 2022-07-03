@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 const DecideBid: FC = () => {
     return (
         <div className='container'>
-            <div className='flex  text-3xl font-bold 
+            <div className='pt-10 flex  text-3xl font-bold 
                 justify-center'>
                 <span className='pt-2 text-white'
                 >$80.00
