@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Formik, FormikHelpers, FormikProps, Form, Field, FieldProps } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons';
 import { signUpUser } from '../auth/SignUpUser';
@@ -26,14 +26,14 @@ interface MyFormValues {
 const SignUpPage: FC = () => {
 
 
-    function handleSignup(email: string, password: string) {
+    function handleSignup(values: any) {
 
-        signUpUser(email, password)
+        signUpUser(values)
 
     }
-    function handleCreateUser(values: any) {
-        createUser(values)
-    }
+    // function handleCreateUser(values: any) {
+    //     createUser(values)
+    // }
 
     const initialValues: MyFormValues = {
 
@@ -59,8 +59,8 @@ const SignUpPage: FC = () => {
                 onSubmit={(values, actions) => {
 
                     console.log({ values, actions });
-                    handleSignup(values.email, values.password)
-                    handleCreateUser(values)
+                    handleSignup(values)
+                    // handleCreateUser(values)
                     // alert(JSON.stringify(values, null, 2));
 
                 }}

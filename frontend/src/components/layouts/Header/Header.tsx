@@ -1,4 +1,4 @@
-import React, { ReactElement, FC } from 'react'
+import React, { ReactElement, FC, useEffect } from 'react'
 import headerLogo from '../../../assets/images/headerLogo.png'
 import { signInWithGoogle } from '../../../auth/SignInUser'
 import HeaderMain from './HeaderMain'
@@ -15,15 +15,14 @@ const Header: FC<any> = (): ReactElement => {
     const [{ headerState }, dispatch] = useStateValue();
 
 
-
     return (
         <>
+
+
+
             {headerState === '' ? <HeaderMain /> :
-                headerState === 1 ? <HeaderSearch /> :
-                    headerState === 3 ? <HeaderSearchDate /> : ''
-
-
-
+                headerState === '1' ? <HeaderSearch /> :
+                    headerState === '3' ? <HeaderSearchDate /> : ''
             }
 
         </>

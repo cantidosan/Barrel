@@ -24,8 +24,8 @@ const PageLayout: FC<PageProps> = ({ children }) => {
         <>
             <Header />
             {/* allows header to return to original state if clicked off */}
-            <div onClick={e => handleClick('')}>
-                <main>
+            <div >
+                <main >
                     {children}
                 </main>
             </div>

@@ -24,6 +24,7 @@ function HeaderUserProfile() {
             setCurrentUserEmail(user.email as string)
             setCurrentUsername(user.displayName as string)
 
+
             // ...
         } else {
             // User is signed out

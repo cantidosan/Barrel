@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from 'react'
 import DisplayLuggageAttributes from './DisplayLuggageAttributes';
 
 const DisplayRouteInfoCard: FC = (props) => {
-    let emptyBool = true
+    let emptyBool = false
 
     //THIS COMPONENT WILL CONDITIONALY RENDER SPACE AND WEIGHT AVAILABILITY 
     //BASED ON SOME PARAMETER

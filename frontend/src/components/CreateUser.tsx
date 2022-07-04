@@ -11,7 +11,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
-export async function createUser(values: any) {
+export async function createUser(values: any, uid: any) {
     console.log(values.cellular)
     console.log(values.email)
     console.log(values.password)
@@ -20,7 +20,7 @@ export async function createUser(values: any) {
     console.log(values.lastName)
     console.log(`${!!values.user.sender ? true : false}`)
 
-    await setDoc(doc(db, "users", `${values.username}`), {
+    await setDoc(doc(db, "users", `${uid}`), {
 
         cell: values.cellular,
         email: values.email,

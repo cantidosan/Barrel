@@ -13,6 +13,7 @@ import CreateRoutePage from './Pages/CreateRoutePage';
 import UpdateRouteInfoPage from './Pages/UpdateRouteInfoPage';
 import { StateProvider } from './state/index'
 import UpdateParcelInfoPage from './Pages/UpdateParcelInfoPage';
+import { AuthProvider } from "../src/auth/AuthProvider";
 
 //TODO FINE TUNE THE FLAG DISPLAY STYLING
 //TODO STYLE THE ROUTE INFO CARD TO COMPLETION
@@ -28,7 +29,8 @@ function App() {
     parcelID: '',
     deptPort: '',
     arrivPort: '',
-    headerState: ''
+    headerState: '',
+    deptDate: ''
 
   };
 
@@ -76,6 +78,12 @@ function App() {
           headerState: action.payload,
 
         }
+      case 'deptDate':
+        return {
+          ...state,
+          deptDate: action.payload,
+
+        }
 
       default:
         return state;
@@ -85,24 +93,26 @@ function App() {
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
 
-          <Route path="/dashboard/sender/:user_id" element={<SenderDashboardPage />} />
-          <Route path="/dashboard/courier/:user_id" element={<CourierDashboardPage />} />
-          <Route path="/deliveries/:delivery_id" element={<DeliveryDetailsPage />} />
-          <Route path="/parcels/:parcel_id" element={<ParcelDetailsPage />} />
-          <Route path="/parcels/:parcel_id/update" element={<UpdateParcelInfoPage />} />
-          <Route path="/parcels/new" element={<CreateParcelPage />} />
-          <Route path="/users/register" element={<SignUpPage />} />
-          <Route path="/users/:user_id/update" element={<UpdateUserProfilePage />} />
-          <Route path="/routes/new" element={<CreateRoutePage />} />
-          <Route path="/routes/:route_id" element={<RouteDetailsPage />} />
-          <Route path="/routes/:route_id/update" element={<UpdateRouteInfoPage />} />
+            <Route path="/dashboard/sender/:user_id" element={<SenderDashboardPage />} />
+            <Route path="/dashboard/courier/:user_id" element={<CourierDashboardPage />} />
+            <Route path="/deliveries/:delivery_id" element={<DeliveryDetailsPage />} />
+            <Route path="/parcels/:parcel_id" element={<ParcelDetailsPage />} />
+            <Route path="/parcels/:parcel_id/update" element={<UpdateParcelInfoPage />} />
+            <Route path="/parcels/new" element={<CreateParcelPage />} />
+            <Route path="/users/register" element={<SignUpPage />} />
+            <Route path="/users/:user_id/update" element={<UpdateUserProfilePage />} />
+            <Route path="/routes/new" element={<CreateRoutePage />} />
+            <Route path="/routes/:route_id" element={<RouteDetailsPage />} />
+            <Route path="/routes/:route_id/update" element={<UpdateRouteInfoPage />} />
 
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </StateProvider>
   );
 }
