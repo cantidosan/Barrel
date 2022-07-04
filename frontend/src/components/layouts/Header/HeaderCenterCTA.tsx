@@ -17,9 +17,9 @@ function HeaderCenterCTA() {
         >
 
             <li>
-                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 
+                <a href="#" className="block py-2 pr-4 pl-3 text-white 
                     border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent
-                    md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400
+                    md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white
                     md:dark:hover:text-white dark:hover:bg-gray-700
                     dark:hover:text-white md:dark:hover:bg-transparent
                     dark:border-gray-700"
@@ -29,18 +29,21 @@ function HeaderCenterCTA() {
                 </a>
             </li>
             <li>
-                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700
+                {/* this component will simulate a price and likelieyhood
+                of finding a courier for that particular object while developing 
+                our own item codex */}
+                <a href="#" className="block py-2 pr-4 pl-3 text-white
                      border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent
-                      md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400
+                      md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white
                       md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white
                        md:dark:hover:bg-transparent dark:border-gray-700"
-                    onClick={e => handleClick(2)}
+
                 >WHAT</a>
             </li>
             <li>
-                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b 
+                <a href="#" className="block py-2 pr-4 pl-3 text-white border-b 
                     border-gray-100 hover:bg-gray-50 md:hover:bg-transparent
-                    md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400
+                    md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white
                     md:dark:hover:text-white dark:hover:bg-gray-700
                     dark:hover:text-white md:dark:hover:bg-transparent
                     dark:border-gray-700"
