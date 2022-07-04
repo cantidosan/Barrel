@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import headerLogo from '../../../assets/images/headerLogo.png'
 import HeaderUserProfile from './HeaderUserProfile'
 import Datepicker from 'react-datepicker'
@@ -8,13 +8,26 @@ function HeaderSearchDate() {
 
     const [{ headerState }, dispatch] = useStateValue();
 
+    const [startDate, setStartDate] = useState(new Date());
+
+
     const handleNavChange = (e: any) => {
 
         dispatch({ type: 'headerState', payload: e });
 
 
     }
-    const [startDate, setStartDate] = useState(new Date());
+    const handleDateSet = (date: Date) => {
+
+        setStartDate(date)
+
+        dispatch({ type: 'deptDate', payload: date });
+
+
+    }
+
+
+
     return (
         <nav className=" bg-barrel-green border-b-2 border-gray-500
              px-2 sm:px-4 py-2.5 rounded dark:bg-barrel-green"
@@ -39,7 +52,16 @@ function HeaderSearchDate() {
                         <span className='text-white font-bold pl-14' >Departure Date</span>
                         <div className='pl-14'>
 
-                            <Datepicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+                            <Datepicker selected={startDate}
+                                onChange={(date: Date) =>
+
+                                    handleDateSet(date)
+
+
+
+
+                                } />
+
                         </div>
                     </div>
                 </div>
