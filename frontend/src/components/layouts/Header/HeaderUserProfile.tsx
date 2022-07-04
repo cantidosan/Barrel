@@ -23,7 +23,7 @@ function HeaderUserProfile() {
             // https://firebase.google.com/docs/reference/js/firebase.User
             setCurrentUserEmail(user.email as string)
             setCurrentUsername(user.displayName as string)
-            console.log('WOLOLOLOL')
+
             // ...
         } else {
             // User is signed out

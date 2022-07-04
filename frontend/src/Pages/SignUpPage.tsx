@@ -3,10 +3,7 @@ import { Formik, FormikHelpers, FormikProps, Form, Field, FieldProps } from 'for
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons';
 import { signUpUser } from '../auth/SignUpUser';
-
-
-
-
+import { createUser } from '../components/CreateUser'
 
 
 enum userType {
@@ -34,9 +31,9 @@ const SignUpPage: FC = () => {
         signUpUser(email, password)
 
     }
-
-
-
+    function handleCreateUser(values: any) {
+        createUser(values)
+    }
 
     const initialValues: MyFormValues = {
 
@@ -63,8 +60,8 @@ const SignUpPage: FC = () => {
 
                     console.log({ values, actions });
                     handleSignup(values.email, values.password)
-
-                    alert(JSON.stringify(values, null, 2));
+                    handleCreateUser(values)
+                    // alert(JSON.stringify(values, null, 2));
 
                 }}
             >
@@ -93,9 +90,9 @@ const SignUpPage: FC = () => {
                             <Field id="username"
                                 name="username"
 
-                                className="block p-2 w-full text-white bg-gray-50 rounded-lg 
+                                className="block p-2 w-full text-black bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
-                                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+                                    dark:bg-gray-700 dark:border-gray-600 placeholder:text-slate-400 dark:text-black 
                                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             />
                         </div>
@@ -112,7 +109,7 @@ const SignUpPage: FC = () => {
                                 className="block p-2 w-full text-white bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 
                                     focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
-                                    dark:placeholder-gray-400 dark:text-white 
+                                    dark:placeholder-black dark:text-white 
                                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             />
                         </div>
