@@ -20,9 +20,9 @@ const Header: FC<any> = (): ReactElement => {
 
 
 
-            {headerState === '' ? <HeaderMain /> :
+            {headerState === '0' ? <HeaderMain /> :
                 headerState === '1' ? <HeaderSearch /> :
-                    headerState === '3' ? <HeaderSearchDate /> : ''
+                    headerState === '2' ? <HeaderSearchDate /> : ''
             }
 
         </>

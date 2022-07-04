@@ -29,7 +29,7 @@ function App() {
     parcelID: '',
     deptPort: '',
     arrivPort: '',
-    headerState: '',
+    headerState: '0',
     deptDate: ''
 
   };

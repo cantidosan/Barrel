@@ -14,7 +14,7 @@ function AirportSearchArriv() {
     useEffect(() => {
 
 
-        dispatch({ type: 'deptPort', payload: selectedAirport });
+        dispatch({ type: 'arrivPort', payload: selectedAirport });
         console.log('inside useefect')
     }, [selectedAirport])
 

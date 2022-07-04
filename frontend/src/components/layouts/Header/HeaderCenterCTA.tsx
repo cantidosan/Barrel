@@ -47,7 +47,7 @@ function HeaderCenterCTA() {
                     md:dark:hover:text-white dark:hover:bg-gray-700
                     dark:hover:text-white md:dark:hover:bg-transparent
                     dark:border-gray-700"
-                    onClick={e => handleClick('3')}>WHEN</a>
+                    onClick={e => handleClick('2')}>WHEN</a>
             </li>
 
         </ul>

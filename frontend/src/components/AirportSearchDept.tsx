@@ -13,7 +13,8 @@ function AirportSearchDept() {
 
 
         dispatch({ type: 'deptPort', payload: selectedAirport });
-        console.log('inside useefect')
+
+
     }, [selectedAirport])
 
     Airports.forEach(codePush)

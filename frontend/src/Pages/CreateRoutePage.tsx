@@ -1,11 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons'
 import Airports from '../assets/AirportList/Airports.json'
-
 import "react-datepicker/dist/react-datepicker.css";
 import "react-widgets/styles.css";
-
 import InputRouteInfo from '../components/InputRouteInfo'
 import InputExchangeDetails from '../components/InputExchangeDetails'
 import InputLuggageDetails from '../components/InputLuggageDetails'
@@ -13,6 +11,7 @@ import { useStateValue } from '../state/';
 import CreateRouteSubheader from '../components/layouts/subheaders/CreateRouteSubheader';
 import PrevPageNavButton from '../buttons/PrevPageNavButton';
 import NextPageNavButton from '../buttons/NextPageNavButton';
+import AuthContext from '../auth/authContext'
 
 ///###TODO ADD THE AIRPORT NAME AS PART OF THE DROPDOWN DISPLAY
 ///###TODO We have the option of flight timetable look up API use however
@@ -24,6 +23,8 @@ const CreateRoutePage: FC = () => {
 
 
     let pgContext = pageCount
+
+    const { user } = useContext(AuthContext);
 
 
 

@@ -36,7 +36,7 @@ function HeaderUserProfile() {
         <div className="flex items-center md:order-2">
             <button type="button" data-modal-toggle="defaultModal"
                 className='mr-10 font-hansief text-gray-100'
-            >BECOME A CoURIER
+            >Login/SignUp
             </button >
             <div id="defaultModal" tabIndex={-1} aria-hidden="true"
                 className="hidden overflow-y-auto 
