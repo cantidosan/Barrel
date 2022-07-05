@@ -57,9 +57,6 @@ function HeaderSearchDate() {
 
                                     handleDateSet(date)
 
-
-
-
                                 } />
 
                         </div>
