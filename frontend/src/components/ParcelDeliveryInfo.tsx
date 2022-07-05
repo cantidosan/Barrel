@@ -33,7 +33,7 @@ const ParcelDeliveryInfo: FC = () => {
                 <span className='text-left font-bold text-white'>   USA PUR</span><br />
             </div>
             <div>
-                <p className='m-1 text-white opacity-60 font-roboto'>QR CODE</p>
+                <p className={`m-1 text-white ${userAuth === 'true' ? '' : 'hidden'} opacity-60 font-roboto`}>QR CODE</p>
                 {/* <img className="float-right mb-3  rounded-full shadow-lg "
                     src={profilepic} alt="QR Code" width="84" >
                 </img> */}
