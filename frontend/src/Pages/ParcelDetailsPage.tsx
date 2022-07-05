@@ -5,12 +5,19 @@ import DisplayParcelPicture from '../components/DisplayParcelPicture'
 import DisplayRouteFlag from '../components/DisplayRouteFlag'
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
+import { isCourier } from '../components/isCourier'
 
 
 const ParcelDetailsPage: FC = () => {
+
+
     const url = [prflag, americanflag]
+
+    isCourier()
+
     return (
         <PageLayout>
+
             <div className='bg-barrel-green'>
                 <div className='flex  flex-col  bg-barrel-green items-center  '>
                     <div className='flex  m-12 gap-8 '>
