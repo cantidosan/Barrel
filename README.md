@@ -31,8 +31,6 @@ transportation costs or physical possession of the parcel while maintaining tran
   >> #### Entity Relationship Diagram
    ![ERD](https://github.com/cantidosan/Barrel/blob/main/DOCS%20%26%20UMLS/BARREL%20ERD.png)
 ## Figma Mockup
-Click below to view the prototype so far.
-
 ![ezgif com-gif-maker(3)](https://github.com/cantidosan/Barrel/blob/main/DOCS%20%26%20UMLS/figma%20hi-res%20demo.gif)
 
 ## Technologies
