@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import ParcelDeliveryDetails from '../components/ParcelDeliveryDetails'
 import DisplayDeliveryUpdates from '../components/DisplayDeliveryUpdates'
@@ -6,15 +6,31 @@ import CreateDeliveryUpdates from '../components/CreateDeliveryUpdates'
 import DisplayRouteFlag from '../components/DisplayRouteFlag'
 import americanflag from '../assets/images/americanflag.png'
 import prflag from '../assets/images/prflag.png'
-
+import { isDeliveryOwner } from '../components/isDeliveryOwner'
+import AuthContext from '../auth/authContext'
+import { useNavigate } from 'react-router-dom'
 
 const DeliveryDetailsPage: FC = () => {
 
     const url = [prflag, americanflag]
+    const [userAuth, setUserAuth] = useState('false')
+    console.log(userAuth)
 
+    let navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+    console.log('user', user)
+    isDeliveryOwner(user).then(res => setUserAuth(res))
 
+    console.log('valid viewer', userAuth)
+    // CODE BELOW LIMITS PAGE ACCESS TO SENDER AND COURIER SOLELY
+    // if (userAuth === 'false') {
+
+    //     navigate("/");
+
+    // }
     return (
         <PageLayout>
+
             <div className='bg-barrel-green'>
                 <main className=''>
                     <section className='flex justify-center pr-2'>
@@ -79,6 +95,7 @@ const DeliveryDetailsPage: FC = () => {
                     </section>
                 </main>
             </div>
+
         </PageLayout>
     )
 }

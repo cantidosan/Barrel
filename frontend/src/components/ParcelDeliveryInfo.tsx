@@ -16,7 +16,7 @@ const ParcelDeliveryInfo: FC = () => {
     const [userAuth, setUserAuth] = useState('false')
     const { user } = useContext(AuthContext);
     isSender(user).then(res => setUserAuth(res))
-    console.log('valid', userAuth)
+
     return (
 
         <div className='mt-4 flex flex-col justify-center'>
