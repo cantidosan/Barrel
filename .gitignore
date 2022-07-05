@@ -31,5 +31,6 @@ stream
 UMLS
 stream overlay.zip
 LOGO
+barrel-mockup
 #firebase
 FirebaseConfig
