@@ -8,15 +8,15 @@ import DisplayParcelPicture from './DisplayParcelPicture'
 const DisplayParcelPictures: FC = (props) => {
 
 
-
     return (
         <div className='box-content p-4 bg-gray-600 rounded-lg  '>
-            <div className='flex flex-column gap-4'>
+            <div className='flex flex-column gap-4' >
 
                 <DisplayParcelPicture />
                 <DisplayParcelPicture />
                 <DisplayParcelPicture />
                 <DisplayParcelPicture />
+
 
             </div>
 

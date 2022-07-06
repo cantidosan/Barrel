@@ -12,7 +12,9 @@ function HeaderUserProfile() {
 
     let navigate = useNavigate();
     const { user } = useContext(AuthContext);
+
     console.log(user)
+
     const handleSignout = () => {
 
         signOut(auth).then(() => {
@@ -54,7 +56,9 @@ function HeaderUserProfile() {
             </div>
 
             <button type="button"
-                className={`flex mr-3 text-sm ${user ? '' : 'hidden'} bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600`} id="user-menu-button"
+                className={`flex mr-3 text-sm ${user ? '' : 'hidden'} bg-gray-800 
+                    rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600`}
+                id="user-menu-button"
                 aria-expanded="false"
                 data-dropdown-toggle="dropdown"
             >

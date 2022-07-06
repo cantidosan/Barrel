@@ -7,7 +7,7 @@ import { useStateValue } from '../state/index'
 
 const DisplayParcelPicture: FC = () => {
 
-    const [selectedImage, setSelectedImage] = useState<any | null>(null);
+    const [selectedImage, setSelectedImage] = useState('hello');
 
     const [{ parcelId }, dispatch] = useStateValue();
 
@@ -17,10 +17,9 @@ const DisplayParcelPicture: FC = () => {
         //state variable and lift it up to SENDER dashboard page
         //the pass it down one level to Parcel Delivery Details
         // setSelectedImage()
+
         dispatch({ type: 'parcelId', payload: selectedImage });
-
-
-
+        console.log('inside handle')
     }
     const url = [prflag, americanflag]
 
@@ -29,7 +28,6 @@ const DisplayParcelPicture: FC = () => {
             <a href="#" className=" flex flex-col 
                 items-center rounded-lg overflow-hidden
                 border bg-gray-300"
-                onClick={handleSelect}
             >
 
                 <img className="opacity-80 object-cover 
@@ -40,6 +38,8 @@ const DisplayParcelPicture: FC = () => {
                      "
                     src={url[1]}
                     alt=""
+                    onClick={handleSelect}
+
                 />
 
             </a>

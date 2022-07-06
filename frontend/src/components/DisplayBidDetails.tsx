@@ -1,15 +1,22 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import BidDetails from './BidDetails'
 import DecideBid from './DecideBid'
 import MakeBid from './MakeBid'
+import AuthContext from '../auth/authContext'
+import { isRouteOwner } from './isRouteOwner'
 
 const DisplayBidDetails: FC = () => {
 
-    let emptyBool = true
+    const [userAuth, setUserAuth] = useState('false')
+    console.log(userAuth)
+
+    const { user } = useContext(AuthContext);
+
+    isRouteOwner(user).then(res => setUserAuth(res as string))
 
     return (
         <div className='flex flex-row border  '>
-            {false ? <MakeBid /> : <DecideBid />}
+            {userAuth ? <DecideBid /> : <MakeBid />}
             <BidDetails />
         </div>
     )

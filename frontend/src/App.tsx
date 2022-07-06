@@ -26,7 +26,7 @@ function App() {
     pageCount: 0,
     metricToggle: 'IMP',
     courierToggle: 'Route',
-    parcelID: '',
+    parcelId: '',
     deptPort: '',
     arrivPort: '',
     headerState: '0',
