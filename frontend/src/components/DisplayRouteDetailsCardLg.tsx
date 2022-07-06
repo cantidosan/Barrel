@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from 'react'
 import DisplayRouteFlag from './DisplayRouteFlag';
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
-import DisplayRouteInfoCard from './DisplayRouteInfoCard';
+import DisplayRouteInfoCardDetail from './DisplayRouteInfoCardDetail';
 
 
 
@@ -18,7 +18,7 @@ const DisplayRouteDetailsCardLg: FC = () => {
                 <DisplayRouteFlag url={url[1]} />
             </div>
             <div className='border-1'>
-                <DisplayRouteInfoCard />
+                <DisplayRouteInfoCardDetail />
 
             </div>
         </div>

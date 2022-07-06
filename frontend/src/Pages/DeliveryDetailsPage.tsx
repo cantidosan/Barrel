@@ -14,9 +14,11 @@ const DeliveryDetailsPage: FC = () => {
 
     const url = [prflag, americanflag]
     const [userAuth, setUserAuth] = useState('false')
+
     console.log(userAuth)
 
     let navigate = useNavigate();
+
     const { user } = useContext(AuthContext);
     console.log('user', user)
     isDeliveryOwner(user).then(res => setUserAuth(res))
