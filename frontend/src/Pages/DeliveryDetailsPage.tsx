@@ -1,9 +1,9 @@
 import React, { FC, useContext, useState } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import ParcelDeliveryDetails from '../components/ParcelDeliveryDetails'
-import DisplayDeliveryUpdates from '../components/DisplayDeliveryUpdates'
+import DeliveryUpdates from '../components/DeliveryUpdates'
 import CreateDeliveryUpdates from '../components/CreateDeliveryUpdates'
-import DisplayRouteFlag from '../components/DisplayRouteFlag'
+import RouteFlag from '../components/RouteFlag'
 import americanflag from '../assets/images/americanflag.png'
 import prflag from '../assets/images/prflag.png'
 import { isDeliveryOwner } from '../components/isDeliveryOwner'
@@ -42,8 +42,8 @@ const DeliveryDetailsPage: FC = () => {
 
                             <div className='flex border-2 bg-barrel-green px-1'>
                                 <div className=' pt-2 w-full ' id="flags">
-                                    <DisplayRouteFlag url={url[1]} />
-                                    <DisplayRouteFlag url={url[0]} />
+                                    <RouteFlag url={url[1]} />
+                                    <RouteFlag url={url[0]} />
                                 </div>
                                 <div className='ml-3 pt-9' id="payouttext">
                                     <span className='m-1 text-left font-bold font-hansief
@@ -89,7 +89,7 @@ const DeliveryDetailsPage: FC = () => {
                     <section className='flex flex-col pt-8  px-4 md:flex-row  gap-4 
                         justify-center mt-8 '>
 
-                        <DisplayDeliveryUpdates />
+                        <DeliveryUpdates />
                         <CreateDeliveryUpdates />
 
                     </section>

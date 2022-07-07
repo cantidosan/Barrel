@@ -1,8 +1,8 @@
 import React, { FC, useContext } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
-import DisplayParcelPictures from '../components/DisplayParcelPictures'
-import DisplayParcelPicture from '../components/DisplayParcelPicture'
-import DisplayRouteFlag from '../components/DisplayRouteFlag'
+import ParcelPictures from '../components/ParcelPictures'
+import ParcelPicture from '../components/ParcelPicture'
+import RouteFlag from '../components/RouteFlag'
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import { isCourier } from '../components/isCourier'
@@ -29,7 +29,7 @@ const ParcelDetailsPage: FC = () => {
             <div className='bg-barrel-green'>
                 <div className='flex  flex-col  bg-barrel-green items-center  '>
                     <div className='flex  m-12 gap-8 '>
-                        <DisplayRouteFlag url={url[1]} />
+                        <RouteFlag url={url[1]} />
                         <div className='flex flex-col justify-between '>
                             <div className='mt-1'>
                                 <span className=' text-xs font-thin text-white opacity-80 font-weight-200'>Name:</span><br />
@@ -47,7 +47,7 @@ const ParcelDetailsPage: FC = () => {
 
                     </div>
                     <div className='w-74  flex'>
-                        <DisplayParcelPictures />
+                        <ParcelPictures />
                     </div>
                     <div className='flex gap-6  m-12 w-22 '>
                         <div className=' basis-1/2 pt-16 border-r-2 pr-2 '>

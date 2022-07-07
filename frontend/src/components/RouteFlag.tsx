@@ -8,7 +8,7 @@ type UrlProp = {
 
 }
 
-const DisplayRouteFlag: FC<UrlProp> = (props) => {
+const RouteFlag: FC<UrlProp> = (props) => {
 
     return (
 
@@ -36,4 +36,4 @@ const DisplayRouteFlag: FC<UrlProp> = (props) => {
 
 }
 
-export default DisplayRouteFlag;
+export default RouteFlag;

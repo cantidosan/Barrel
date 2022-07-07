@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 import DeliveryDetailInfoCard from './DeliveryDetailInfoCard'
-import DisplayParcelPicture from './DisplayParcelPicture'
+import ParcelPicture from './ParcelPicture'
 
 const DeliveryDetailsCardSmCourrierView: FC = () => {
     return (
         <div className='flex'>
-            <DisplayParcelPicture />
+            <ParcelPicture />
             <DeliveryDetailInfoCard />
         </div>
     )

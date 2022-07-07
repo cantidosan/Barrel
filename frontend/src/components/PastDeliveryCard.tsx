@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import DisplayRouteFlag from './DisplayRouteFlag'
+import RouteFlag from './RouteFlag'
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
-import DisplayParcelPicture from './DisplayParcelPicture'
+import ParcelPicture from './ParcelPicture'
 
 
-const DisplayPastDeliveryCard: FC = () => {
+const PastDeliveryCard: FC = () => {
 
     const url = [prflag, americanflag]
     return (
@@ -13,18 +13,18 @@ const DisplayPastDeliveryCard: FC = () => {
         <div className='flex'>
             <figure className='flex flex-col basis-1/2 '>
                 <div className='w-7'>
-                    <DisplayRouteFlag url={url[0]} />
+                    <RouteFlag url={url[0]} />
                 </div>
                 <div className='w-7'>
-                    <DisplayRouteFlag url={url[1]} />
+                    <RouteFlag url={url[1]} />
                 </div>
 
             </figure>
             <div className='pt-1' >
-                <DisplayParcelPicture />
+                <ParcelPicture />
             </div>
         </div>
     )
 }
 
-export default DisplayPastDeliveryCard
+export default PastDeliveryCard

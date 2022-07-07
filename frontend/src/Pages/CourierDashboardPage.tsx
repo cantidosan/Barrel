@@ -3,13 +3,13 @@ import PageLayout from '../components/layouts/PageLayout'
 
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
-import DisplayRouteFlag from '../components/DisplayRouteFlag'
-import DisplayRouteInfoCard from '../components/DisplayRouteInfoCard'
+import RouteFlag from '../components/RouteFlag'
+import RouteInfoCard from '../components/RouteInfoCard'
 import RouteDetailsCardSmCourrierView from '../components/RouteDetailsCardSmCourrierView'
-import DisplayParcelPicture from '../components/DisplayParcelPicture'
-import DisplayPendingBidCardSm from '../components/DisplayPendingBidCardSm'
+import ParcelPicture from '../components/ParcelPicture'
+import PendingBidCardSm from '../components/PendingBidCardSm'
 import DeliveryDetailsCardSmCourrierView from '../components/DeliveryDetailsCardSmCourrierView'
-import DisplayPastDeliveryCard from '../components/DisplayPastDeliveryCard'
+import PastDeliveryCard from '../components/PastDeliveryCard'
 import ToggleRouteDeliveryButton from '../buttons/ToggleRouteDeliveryButton'
 import { useStateValue } from '../state/';
 import ScanButton from '../buttons/ScanButton'
@@ -88,17 +88,17 @@ const CourierDashboardPage: FC = () => {
                     {
                         dashboardView === 'Route' ?
                             <div className='flex flex-col md:flex-row gap-4 '>
-                                <DisplayPendingBidCardSm />
-                                <DisplayPendingBidCardSm />
-                                <DisplayPendingBidCardSm />
+                                <PendingBidCardSm />
+                                <PendingBidCardSm />
+                                <PendingBidCardSm />
 
                             </div> :
 
 
                             <div className='flex flex-col md:flex-row gap-4 '>
-                                <DisplayPastDeliveryCard />
-                                <DisplayPastDeliveryCard />
-                                <DisplayPastDeliveryCard />
+                                <PastDeliveryCard />
+                                <PastDeliveryCard />
+                                <PastDeliveryCard />
                             </div>
                     }
 

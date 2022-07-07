@@ -1,12 +1,12 @@
 import React, { FC, ReactElement } from 'react'
-import DisplayRouteFlag from './DisplayRouteFlag';
+import RouteFlag from './RouteFlag';
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
-import DisplayRouteInfoCardDetail from './DisplayRouteInfoCardDetail';
+import RouteInfoCardDetail from '../components/RouteInfoCardDetail';
 
 
 
-const DisplayRouteDetailsCardLg: FC = () => {
+const RouteDetailsCardLg: FC = () => {
 
     const url = [prflag, americanflag]
 
@@ -14,15 +14,15 @@ const DisplayRouteDetailsCardLg: FC = () => {
     return (
         <div className=' flex flex-row basis-1/2  '>
             <div className='flex flex-col basis-1/2 '>
-                <DisplayRouteFlag url={url[0]} />
-                <DisplayRouteFlag url={url[1]} />
+                <RouteFlag url={url[0]} />
+                <RouteFlag url={url[1]} />
             </div>
             <div className='border-1'>
-                <DisplayRouteInfoCardDetail />
+                <RouteInfoCardDetail />
 
             </div>
         </div>
     )
 }
 
-export default DisplayRouteDetailsCardLg;
+export default RouteDetailsCardLg;

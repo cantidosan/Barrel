@@ -1,8 +1,8 @@
 import React, { FC, ReactElement } from 'react'
-import DisplayLuggageAttributes from './DisplayLuggageAttributes';
+import LuggageAttributes from './LuggageAttributes';
 
 
-const DisplayRouteInfoCard: FC = (props) => {
+const RouteInfoCard: FC = (props) => {
 
     let emptyBool = true
 
@@ -43,4 +43,4 @@ const DisplayRouteInfoCard: FC = (props) => {
 }
 
 
-export default DisplayRouteInfoCard
+export default RouteInfoCard

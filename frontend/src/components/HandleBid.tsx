@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 
-import DisplayBidDetails from './DisplayBidDetails';
+import BidDetails from './BidDetails';
 
 
 const HandleBid: FC = () => {
     return (
         <div className='bg-barrel-green'>
-            <DisplayBidDetails />
+            <BidDetails />
 
         </div>
     )

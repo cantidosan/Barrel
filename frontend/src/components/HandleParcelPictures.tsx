@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import americanflag from '../assets/images/americanflag.png'
 import prflag from '../assets/images/prflag.png'
-import DisplayParcelPictures from './DisplayParcelPictures'
+import ParcelPictures from './ParcelPictures'
 import { useStateValue } from '../state/index'
 import InputParcelInfo from './InputParcelInfo'
 import InputParcelDetails from './InputParcelDetails'
@@ -70,7 +70,7 @@ const HandleParcelPictures = () => {
 
                     </div >
                     <div className='flex justify-center bg-barrel-green '>
-                        <DisplayParcelPictures />
+                        <ParcelPictures />
                     </div>
                 </section > : pageCount === 1 ? <InputParcelInfo /> : <InputParcelDetails />
             }
@@ -93,7 +93,7 @@ const HandleParcelPictures = () => {
                 </button>
             </div>
             <div className='flex justify-center bg-barrel-green '>
-                <DisplayParcelPictures />
+                <ParcelPictures />
             </div>
         </>
     )

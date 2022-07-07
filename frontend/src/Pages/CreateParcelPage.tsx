@@ -8,7 +8,7 @@ import InputParcelInfo from '../components/InputParcelInfo'
 import InputParcelDetails from '../components/InputParcelDetails'
 import NextPageNavButton from '../buttons/NextPageNavButton'
 import PrevPageNavButton from '../buttons/PrevPageNavButton'
-import DisplayRecentParcelPics from '../components/DisplayRecentParcelPics'
+import RecentParcelPics from '../components/RecentParcelPics'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../auth/authContext'
 import { isSender } from '../components/isSender'
@@ -59,7 +59,7 @@ const CreateParcelPage: FC = () => {
                 OR FREQUENTLY USED ITEMS */}
                 <p className='pl-4 font-bold text-white font-hansief'>Top Items</p>
 
-                <DisplayRecentParcelPics />
+                <RecentParcelPics />
 
             </section>
 

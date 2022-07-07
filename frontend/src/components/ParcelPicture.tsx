@@ -5,7 +5,7 @@ import { useStateValue } from '../state/index'
 
 //this component accepts a parcel object
 
-const DisplayParcelPicture: FC = () => {
+const ParcelPicture: FC = () => {
 
     const [selectedImage, setSelectedImage] = useState('hello');
 
@@ -47,4 +47,4 @@ const DisplayParcelPicture: FC = () => {
     )
 }
 
-export default DisplayParcelPicture
+export default ParcelPicture

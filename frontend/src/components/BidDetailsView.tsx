@@ -5,7 +5,7 @@ import MakeBid from './MakeBid'
 import AuthContext from '../auth/authContext'
 import { isRouteOwner } from './isRouteOwner'
 
-const DisplayBidDetails: FC = () => {
+const BidDetailsView: FC = () => {
 
     const [userAuth, setUserAuth] = useState('false')
     console.log(userAuth)
@@ -22,4 +22,4 @@ const DisplayBidDetails: FC = () => {
     )
 }
 
-export default DisplayBidDetails
+export default BidDetailsView

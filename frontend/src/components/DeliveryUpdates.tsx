@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 // this componentt should recieve a parcelID as a prop
 // and fetch delivery table to retrieve deliveryID then
 //fetch the delivery update from the deliveryupdates table
-const DisplayDeliveryUpdates: FC = () => {
+const DeliveryUpdates: FC = () => {
     return (
         <div className='  '>
 
@@ -32,4 +32,4 @@ const DisplayDeliveryUpdates: FC = () => {
     )
 }
 
-export default DisplayDeliveryUpdates
+export default DeliveryUpdates

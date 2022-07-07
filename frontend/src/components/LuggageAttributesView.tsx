@@ -3,7 +3,7 @@ import LuggageAttributes from './LuggageAttributes'
 import pencilIcon from '../assets/images/pencilIcon.png'
 
 
-const DisplayLuggageAttributes: FC = () => {
+const LuggageAttributesView: FC = () => {
 
     return (
         <div className='flex flex-col'>
@@ -27,4 +27,4 @@ const DisplayLuggageAttributes: FC = () => {
     )
 }
 
-export default DisplayLuggageAttributes
+export default LuggageAttributesView
