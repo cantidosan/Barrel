@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons'
 import Airports from '../assets/AirportList/Airports.json'
@@ -12,6 +12,8 @@ import CreateRouteSubheader from '../components/layouts/subheaders/CreateRouteSu
 import PrevPageNavButton from '../buttons/PrevPageNavButton';
 import NextPageNavButton from '../buttons/NextPageNavButton';
 import AuthContext from '../auth/authContext'
+import { isCourier } from '../components/isCourier';
+import { useNavigate } from 'react-router-dom'
 
 ///###TODO ADD THE AIRPORT NAME AS PART OF THE DROPDOWN DISPLAY
 ///###TODO We have the option of flight timetable look up API use however
@@ -20,8 +22,8 @@ import AuthContext from '../auth/authContext'
 const CreateRoutePage: FC = () => {
 
     const [{ pageCount }, dispatch] = useStateValue();
-
-
+    let navigate = useNavigate();
+    const [userAuth, setUserAuth] = useState('false')
     let pgContext = pageCount
 
     const { user } = useContext(AuthContext);
@@ -35,6 +37,12 @@ const CreateRoutePage: FC = () => {
     function codePush(item: any, index: any, arr: any) {
 
         ApCodes.push(item.code)
+
+    }
+    isCourier(user).then(res => setUserAuth(res))
+    if (!!user && userAuth) {
+        // CODE BELOW LIMITS PAGE ACCESS TO LOGGED IN Couriers
+        navigate("/");
 
     }
 
