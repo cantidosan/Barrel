@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import DisplayParcelPictures from '../components/DisplayParcelPictures'
 import DisplayParcelPicture from '../components/DisplayParcelPicture'
@@ -6,15 +6,23 @@ import DisplayRouteFlag from '../components/DisplayRouteFlag'
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import { isCourier } from '../components/isCourier'
+import AuthContext from '../auth/authContext'
+import { useNavigate } from 'react-router-dom'
 
 
 const ParcelDetailsPage: FC = () => {
 
 
     const url = [prflag, americanflag]
+    const { user } = useContext(AuthContext);
+    let navigate = useNavigate();
 
-    isCourier()
+    ///CODE BELOW LIMITS  ACCESS TO SENDER  SOLELY
+    if (!user) {
 
+        navigate("/");
+
+    }
     return (
         <PageLayout>
 

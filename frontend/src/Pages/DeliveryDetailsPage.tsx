@@ -25,10 +25,8 @@ const DeliveryDetailsPage: FC = () => {
 
     console.log('valid viewer', userAuth)
     // CODE BELOW LIMITS PAGE ACCESS TO SENDER AND COURIER SOLELY
-    // if (userAuth === 'false') {
-
+    // if (!user && userAuth) {
     //     navigate("/");
-
     // }
     return (
         <PageLayout>

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react'
+import React, { ChangeEvent, FC, useEffect, useState, useContext } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons'
 import CreateParcelSubheader from '../components/layouts/subheaders/CreateParcelSubheader'
@@ -9,14 +9,34 @@ import InputParcelDetails from '../components/InputParcelDetails'
 import NextPageNavButton from '../buttons/NextPageNavButton'
 import PrevPageNavButton from '../buttons/PrevPageNavButton'
 import DisplayRecentParcelPics from '../components/DisplayRecentParcelPics'
+import { useNavigate } from 'react-router-dom'
+import AuthContext from '../auth/authContext'
+import { isSender } from '../components/isSender'
+
 
 ///###TODO complete this page
 const CreateParcelPage: FC = () => {
 
     const [{ pageCount }, dispatch] = useStateValue();
 
+    const [userAuth, setUserAuth] = useState('false')
 
-    let pgContext = pageCount
+    console.log(userAuth)
+
+    let navigate = useNavigate();
+
+    const { user } = useContext(AuthContext);
+
+    console.log('user', user)
+    isSender(user).then(res => setUserAuth(res))
+    // CODE BELOW LIMITS  ACCESS TO SENDER  SOLELY
+    // if (!!user && userAuth) {
+
+    //     navigate("/");
+
+    // }
+
+
 
     return (
         <PageLayout>

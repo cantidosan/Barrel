@@ -12,6 +12,8 @@ const UpdateUserProfilePage: FC = () => {
 
     const [{ pageCount }, dispatch] = useStateValue();
 
+
+
     return (
 
         <PageLayout>

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons'
 import UpdateLocation from '../components/UpdateLocation'
@@ -9,10 +9,15 @@ import CreateRouteSubheader from '../components/layouts/subheaders/CreateRouteSu
 import UpdateRouteSubheader from '../components/layouts/subheaders/UpdateRouteSubheader'
 import NextPageNavButton from '../buttons/NextPageNavButton'
 import PrevPageNavButton from '../buttons/PrevPageNavButton'
-
-
+import AuthContext from '../auth/authContext'
+import { useNavigate } from 'react-router-dom'
+import { isRouteOwner } from '../components/isRouteOwner'
 const UpdateRouteInfoPage: FC = () => {
+
     const [{ pageCount }, dispatch] = useStateValue();
+    const { user } = useContext(AuthContext);
+    const [userAuth, setUserAuth] = useState('false')
+
     let pgContext = pageCount
 
     const nextPage = () => {
@@ -41,10 +46,17 @@ const UpdateRouteInfoPage: FC = () => {
         dispatch({ type: 'pageCount', payload: pgContext });
 
     }
+
+    let navigate = useNavigate();
+
+    isRouteOwner(user).then(res => setUserAuth(res as string))
+
+    // CODE BELOW LIMITS PAGE ACCESS TO  COURIER SOLELY
+    if (!user && userAuth) {
+        navigate("/");
+    }
     return (
         <PageLayout>
-
-
             <UpdateRouteSubheader />
             <section className='flex justify-center bg-barrel-green pt-5  '>
 
