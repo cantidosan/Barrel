@@ -6,10 +6,12 @@ import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 
 
+const flagCode = 'PR'
 
 const RouteDetailsCardSm: FC = (props) => {
 
-    const url = [prflag, americanflag]
+   
+    let url = [`https://countryflagsapi.com/png/${flagCode}`,`https://countryflagsapi.com/png/${'JAM'}`]
 
     return (
 
@@ -19,8 +21,8 @@ const RouteDetailsCardSm: FC = (props) => {
                 <div className='flex flex-col basis-1/2 border-2 
                              '>
 
-                    <RouteFlag url={url[0]} />
-                    <RouteFlag url={url[1]} />
+                    <RouteFlag url={url[0]!} />
+                    <RouteFlag url={url[1]!} />
 
                 </div>
 

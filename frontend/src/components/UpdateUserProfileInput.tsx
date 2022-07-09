@@ -2,10 +2,11 @@ import React, { FC } from 'react'
 
 const UpdateUserProfileInput: FC = () => {
     return (
-        <div><div className="font-roboto">
+        <div>
+            <div className="font-roboto">
 
             <label htmlFor="username" className='block mb-2 text-sm
-            font-medium text-gray-900 dark:text-gray-300'
+            font-medium text-white dark:text-gray-300'
             >
                 Username
             </label>
@@ -20,7 +21,7 @@ const UpdateUserProfileInput: FC = () => {
         </div>
             <div>
                 <label htmlFor="cell" className='block mb-2 text-sm font-medium 
-            text-gray-900 dark:text-gray-300'
+            text-white dark:text-gray-300'
                 >
                     Cellular
                 </label>
@@ -36,7 +37,7 @@ const UpdateUserProfileInput: FC = () => {
             </div>
             <div>
                 <label className="block mb-2 text-sm font-medium 
-            text-gray-900 dark:text-gray-300" htmlFor="email">Email</label>
+            text-white dark:text-gray-300" htmlFor="email">Email</label>
 
                 <input className="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg 
                 border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
@@ -45,7 +46,7 @@ const UpdateUserProfileInput: FC = () => {
             </div>
             <div>
                 <label className='block mb-2 text-sm font-medium 
-            text-gray-900 dark:text-gray-300' htmlFor="password">Password</label>
+            text-white dark:text-gray-300' htmlFor="password">Password</label>
 
                 <input className="block p-2 w-full text-gray-900 bg-gray-50 
             rounded-lg border border-gray-300 sm:text-xs focus:ring-blue-500 

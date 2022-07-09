@@ -1,10 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC,useState } from 'react'
 
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import RouteDetailsCardSm from '../components/RouteDetailsCardSm'
 import PageLayout from '../components/layouts/PageLayout'
 import { useStateValue } from '../state/index'
+
+
 //TODO REFACTOR RANDOM DIVS TO BE MORE SPEFICI SEMANTIC HTML
 
 
@@ -12,11 +14,12 @@ const HomePage: FC = () => {
 
     const [{ deptPort, arrivPort }, dispatch] = useStateValue();
 
+
+    const [flagPic, setFlagPic] = useState();
+
     const url = [prflag, americanflag]
-
-    console.log(deptPort, arrivPort)
-
-
+    
+   
     return (
         <PageLayout>
             <section className='bg-barrel-green'>
