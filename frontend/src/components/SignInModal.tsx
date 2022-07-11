@@ -19,7 +19,7 @@ function SignInModal() {
                 // Signed in 
                 const user = userCredential.user;
                 window.location.reload()
-                console.log('userdeets', user)
+                
                 // ...
             })
             .catch((error) => {

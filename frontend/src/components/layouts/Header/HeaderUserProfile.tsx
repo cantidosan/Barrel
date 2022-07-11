@@ -13,7 +13,7 @@ function HeaderUserProfile() {
     let navigate = useNavigate();
     const { user } = useContext(AuthContext);
 
-    console.log(user)
+    
 
     const handleSignout = () => {
 
