@@ -18,7 +18,8 @@ const InputRouteInfo: FC<userProp> = (props: userProp) => {
     const { userId } = props
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const [{ pageCount }, dispatch] = useStateValue();
+    
+    const [{ pageCount,docRef }, dispatch] = useStateValue();
     
     const [startDate, setStartDate] = useState(new Date());
     const [deptValue, setDeptValue] = useState('')
@@ -59,6 +60,8 @@ const InputRouteInfo: FC<userProp> = (props: userProp) => {
             userId: userId
             
         });
+        //allows rest of multi-form to have access to db reference
+        dispatch({ type: 'docRef', payload: docRef});
         
 
 
@@ -111,15 +114,15 @@ const InputRouteInfo: FC<userProp> = (props: userProp) => {
                 <Datepicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />
             </div>
             <div className='flex justify-center w-58 bg-barrel-green pt-5'>
-            <button className='m-2 focus:outline-none text-white bg-purple-700 
-                hover:bg-purple-800 focus:ring-4 focus:ring-purple-300
-                font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600
-                dark: hover: bg-purple-700 dark:focus:ring-purple-900'
-            type="submit" onClick={handleClick}
-            >
-            NEXT
-        </button>
-        </div>
+                <button className='m-2 focus:outline-none text-white bg-purple-700 
+                    hover:bg-purple-800 focus:ring-4 focus:ring-purple-300
+                    font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600
+                    dark: hover: bg-purple-700 dark:focus:ring-purple-900'
+                type="submit" onClick={handleClick}
+                >
+                NEXT
+                </button>
+            </div>
             
         </div>
 

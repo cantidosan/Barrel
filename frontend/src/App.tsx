@@ -30,7 +30,8 @@ function App() {
     deptPort: '',
     arrivPort: '',
     headerState: '0',
-    deptDate: ''
+    deptDate: '',
+    docRef:''
 
   };
 
@@ -82,6 +83,12 @@ function App() {
         return {
           ...state,
           deptDate: action.payload,
+
+        }
+      case 'docRef':
+        return {
+          ...state,
+          docRef: action.payload,
 
         }
 

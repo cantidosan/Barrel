@@ -82,7 +82,7 @@ const CreateRoutePage: FC = () => {
                     pageCount === 1 ? <InputExchangeDetails /> :
                         <InputLuggageDetails />
             }
-            <div className={`${pageCount===0? 'hidden':''} flex justify-center w-58 bg-barrel-green pt-5`}>
+            <div className={`${pageCount===0 || 1 ? 'hidden':''} flex justify-center w-58 bg-barrel-green pt-5`}>
                 <PrevPageNavButton />
                 <NextPageNavButton />
             </div>
