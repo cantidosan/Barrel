@@ -14,7 +14,8 @@ import UpdateRouteInfoPage from './Pages/UpdateRouteInfoPage';
 import { StateProvider } from './state/index'
 import UpdateParcelInfoPage from './Pages/UpdateParcelInfoPage';
 import { AuthProvider } from "../src/auth/AuthProvider";
-
+import InitialState from './state/InitialState';
+import reducer from './state/reducer';
 //TODO FINE TUNE THE FLAG DISPLAY STYLING
 //TODO STYLE THE ROUTE INFO CARD TO COMPLETION
 
@@ -22,92 +23,9 @@ import { AuthProvider } from "../src/auth/AuthProvider";
 
 function App() {
 
-  const initialState = {
-    pageCount: 0,
-    metricToggle: 'IMP',
-    courierToggle: 'Route',
-    parcelId: '',
-    deptPort: '',
-    arrivPort: '',
-    headerState: '0',
-    deptDate: '',
-    docRef:''
-
-  };
-
-  const reducer = (state: any, action: any) => {
-
-      console.log('inside reducer action type',action.type)
-      console.log('inside reducer state',state)
-      console.log('inside reducer action payload', action.payload)
-    
-    switch (action.type) {
-      case 'pageCount':
-
-        console.log('inside switch  state', state.pageCount)
-        
-        return {
-          ...state,
-          pageCount: action.payload,
-
-        }
-      case 'metricToggle':
-        return {
-          ...state,
-          metricToggle: action.payload,
-
-        }
-      case 'courierToggle':
-        return {
-          ...state,
-          courierToggle: action.payload,
-
-        }
-      case 'parcelId':
-        return {
-          ...state,
-          parcelId: action.payload,
-
-        }
-      case 'deptPort':
-        return {
-          ...state,
-          deptPort: action.payload,
-
-        }
-      case 'arrivPort':
-        return {
-          ...state,
-          arrivPort: action.payload,
-
-        }
-      case 'headerState':
-        return {
-          ...state,
-          headerState: action.payload,
-
-        }
-      case 'deptDate':
-        return {
-          ...state,
-          deptDate: action.payload,
-
-        }
-      case 'docRef':
-        return {
-          ...state,
-          docRef: action.payload,
-
-        }
-
-      default:
-        return state;
-    }
-  };
-
 
   return (
-    <StateProvider initialState={initialState} reducer={reducer}>
+    <StateProvider initialState={InitialState} reducer={reducer}>
       <AuthProvider>
         <BrowserRouter>
           <Routes>

@@ -31,7 +31,7 @@ const CreateRoutePage: FC = () => {
     let navigate = useNavigate();
     const [userAuth, setUserAuth] = useState('false')
     
-    let pgContext = pageCount
+   
 
     const { user } = useContext(AuthContext);
 

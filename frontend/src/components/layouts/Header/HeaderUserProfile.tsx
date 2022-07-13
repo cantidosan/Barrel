@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import SignInModal from '../../SignInModal'
 import { signOut, getAuth, onAuthStateChanged } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
@@ -24,21 +24,25 @@ function HeaderUserProfile() {
             // An error happened.
         });
     }
+    useEffect(() => {
+            setCurrentUserEmail(user?.email as string)
+            setCurrentUsername(user?.displayName as string)
+    },[user])
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
-            setCurrentUserEmail(user.email as string)
-            setCurrentUsername(user.displayName as string)
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         // User is signed in, see docs for a list of available properties
+    //         // https://firebase.google.com/docs/reference/js/firebase.User
+    //         setCurrentUserEmail(user.email as string)
+    //         setCurrentUsername(user.displayName as string)
 
 
-            // ...
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
+    //         // ...
+    //     } else {
+    //         // User is signed out
+    //         // ...
+    //     }
+    // });
 
     return (
         <div className="flex items-center md:order-2">

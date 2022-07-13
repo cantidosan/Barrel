@@ -5,20 +5,14 @@ const PrevPageNavButton: FC = () => {
 
     const [{ pageCount }, dispatch] = useStateValue();
 
-    let pgContext = pageCount
+
 
     const prevPage = () => {
 
-        pgContext--
-        if (pgContext <= 0) {
 
-            pgContext = 0
+       
 
-        }
-
-        // console.log('PageCountD', pgContext)
-
-        dispatch({ type: 'pageCount', payload: pgContext });
+        dispatch({ type: 'pageCount', payload: pageCount-1 });
 
     }
     return (

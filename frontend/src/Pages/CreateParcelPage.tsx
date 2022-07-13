@@ -21,14 +21,14 @@ const CreateParcelPage: FC = () => {
 
     const [userAuth, setUserAuth] = useState('false')
 
-    console.log(userAuth)
+    console.log(pageCount)
 
     let navigate = useNavigate();
 
-    let pgContext = pageCount
+    
     const { user } = useContext(AuthContext);
 
-    console.log('user', user)
+    // console.log('user', user)
     isSender(user).then(res => setUserAuth(res))
     // CODE BELOW LIMITS  ACCESS TO SENDER  SOLELY
     // if (!!user && userAuth) {
@@ -38,17 +38,11 @@ const CreateParcelPage: FC = () => {
     // }
     const nextPage = () => {
 
-        console.log('before dispatch',pgContext)
-        pgContext++
-
-        // console.log('PageCount+', pgContext)
-        if (pgContext > 2) {
-            console.log('context reset')
-            pgContext = 0
-        }
         
-        dispatch({ type: 'pageCount', payload: pgContext })
-        console.log('after dispatch',pageCount)
+       
+        
+        dispatch({ type: 'pageCount', payload: pageCount+1 })
+        
     }
 
     return (

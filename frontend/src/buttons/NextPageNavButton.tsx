@@ -5,18 +5,11 @@ const NextPageNavButton: FC = () => {
 
     const [{ pageCount }, dispatch] = useStateValue();
 
-    let pgContext = pageCount
 
     const nextPage = () => {
 
-        pgContext++
-        // console.log('PageCount+', pgContext)
-
-        if (pgContext > 2) {
-            pgContext = 0
-        }
-
-        dispatch({ type: 'pageCount', payload: pgContext });
+      
+        dispatch({ type: 'pageCount', payload: pageCount+1 });
 
     }
     return (

@@ -28,8 +28,6 @@ const InputLuggageDetails: FC = () => {
     const [luggageWidth, setLuggageWidth] = useState('');
     const [luggageLength, setLuggageLength] = useState('');
 
-    let pgContext = pageCount
-
 
     const handleClick = async () => {
 
@@ -40,17 +38,7 @@ const InputLuggageDetails: FC = () => {
             width_capacity:luggageWidth
         })
 
-
-         //switches to part to of the form input
-         pgContext++
-         // console.log('PageCount+', pgContext)
- 
-         if (pgContext > 2) {
-             pgContext = 0
-         }
- 
-         dispatch({ type: 'pageCount', payload: pgContext });
-
+         dispatch({ type: 'pageCount', payload: pageCount+1 });
 
     }
     useEffect(() => {

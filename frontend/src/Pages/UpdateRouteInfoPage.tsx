@@ -18,32 +18,21 @@ const UpdateRouteInfoPage: FC = () => {
     const { user } = useContext(AuthContext);
     const [userAuth, setUserAuth] = useState('false')
 
-    let pgContext = pageCount
+    
 
     const nextPage = () => {
 
-        pgContext++
-        // console.log('PageCount+', pgContext)
+       
 
-        if (pgContext > 2) {
-            pgContext = 0
-        }
-
-        dispatch({ type: 'pageCount', payload: pgContext });
+        dispatch({ type: 'pageCount', payload: pageCount + 1 });
 
     }
     const prevPage = () => {
 
-        pgContext--
-        if (pgContext <= 0) {
 
-            pgContext = 0
+        
 
-        }
-
-        // console.log('PageCountD', pgContext)
-
-        dispatch({ type: 'pageCount', payload: pgContext });
+        dispatch({ type: 'pageCount', payload: pageCount-1 });
 
     }
 

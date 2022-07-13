@@ -10,7 +10,7 @@ const InputExchangeDetails: FC = () => {
     const [exLocation, setExLocation] = useState('')
     const [exPolicy, setExPolicy] = useState('')
 
-    let pgContext = pageCount
+    
 
     const handleClick = async () => {
 
@@ -20,16 +20,11 @@ const InputExchangeDetails: FC = () => {
         }, { merge: true })
         
         //switches to part to of the form input
-        pgContext++
-        // console.log('PageCount+', pgContext)
-
-        if (pgContext > 2) {
-            pgContext = 0
-        }
+      
         //TODO use firebase SDK docRef and local variables to
         //update the route in the DB
         
-        dispatch({ type: 'pageCount', payload: pgContext });
+        dispatch({ type: 'pageCount', payload: pageCount+1 });
     }
     return (
         <>

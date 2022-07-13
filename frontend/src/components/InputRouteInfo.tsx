@@ -28,7 +28,7 @@ const InputRouteInfo: FC<userProp> = (props: userProp) => {
 
     const ApCodes: any = []
 
-    let pgContext = pageCount
+    
 
     Airports.forEach(codePush)
 
@@ -62,20 +62,10 @@ const InputRouteInfo: FC<userProp> = (props: userProp) => {
         });
         //allows rest of multi-form to have access to db reference
         dispatch({ type: 'docRef', payload: docRef});
-        
-
-
-
 
         //switches to part to of the form input
-        pgContext++
-        // console.log('PageCount+', pgContext)
 
-        if (pgContext > 2) {
-            pgContext = 0
-        }
-
-        dispatch({ type: 'pageCount', payload: pgContext });
+        dispatch({ type: 'pageCount', payload: pageCount+1 });
 
     }
     return (
