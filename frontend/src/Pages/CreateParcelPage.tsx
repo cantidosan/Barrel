@@ -25,6 +25,7 @@ const CreateParcelPage: FC = () => {
 
     let navigate = useNavigate();
 
+    let pgContext = pageCount
     const { user } = useContext(AuthContext);
 
     console.log('user', user)
@@ -35,8 +36,20 @@ const CreateParcelPage: FC = () => {
     //     navigate("/");
 
     // }
+    const nextPage = () => {
 
+        console.log('before dispatch',pgContext)
+        pgContext++
 
+        // console.log('PageCount+', pgContext)
+        if (pgContext > 2) {
+            console.log('context reset')
+            pgContext = 0
+        }
+        
+        dispatch({ type: 'pageCount', payload: pgContext })
+        console.log('after dispatch',pageCount)
+    }
 
     return (
         <PageLayout>
@@ -58,22 +71,21 @@ const CreateParcelPage: FC = () => {
                  py-6 '>
                 {/* THIS COMPONENT SHOULD ALLOW QUICK SELECTION OF RECENTLY
                 OR FREQUENTLY USED ITEMS */}
-                <p className=' text-center  font-bold text-white font-hansief'>Top Items</p>
+                <p className=' text-center font-bold text-white font-hansief'>Top Items</p>
 
                 <RecentParcelPics />
 
             </section>
-
             <div className='flex justify-center w-58 bg-barrel-green pt-5'>
-
-                <PrevPageNavButton />
-                <NextPageNavButton />
-
+                <button className='m-2 focus:outline-none text-white bg-purple-700 
+                            hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 
+                            font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 
+                            dark:hover:bg-purple-700 dark:focus:ring-purple-900'
+                    type="button" onClick={nextPage}
+                >
+                    NEXT
+                </button>
             </div>
-
-
-
-
 
         </PageLayout >
     )

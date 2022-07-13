@@ -36,8 +36,16 @@ function App() {
   };
 
   const reducer = (state: any, action: any) => {
+
+      console.log('inside reducer action type',action.type)
+      console.log('inside reducer state',state)
+      console.log('inside reducer action payload', action.payload)
+    
     switch (action.type) {
       case 'pageCount':
+
+        console.log('inside switch  state', state.pageCount)
+        
         return {
           ...state,
           pageCount: action.payload,
