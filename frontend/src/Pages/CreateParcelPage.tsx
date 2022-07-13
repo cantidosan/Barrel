@@ -54,10 +54,11 @@ const CreateParcelPage: FC = () => {
                 {pageCount === 0 ? <UploadImage /> : pageCount === 1 ? <InputParcelInfo /> : <InputParcelDetails />}
 
             </section>
-            <section className='flex flex-col justify-center bg-barrel-green py-6'>
+            <section className='flex flex-col justify-center bg-barrel-green
+                 py-6 '>
                 {/* THIS COMPONENT SHOULD ALLOW QUICK SELECTION OF RECENTLY
                 OR FREQUENTLY USED ITEMS */}
-                <p className='pl-4 font-bold text-white font-hansief'>Top Items</p>
+                <p className=' text-center  font-bold text-white font-hansief'>Top Items</p>
 
                 <RecentParcelPics />
 

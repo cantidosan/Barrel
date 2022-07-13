@@ -9,7 +9,7 @@ import PendingBidCardSm from './PendingBidCardSm'
 const RecentParcelPics = () => {
     return (
         <div className='max-w-54 p-4 bg-barrel-green rounded-lg'>
-            <div className=' flex flex-column gap-4 pb-2 overflow-x-scroll overflow-hidden'>
+            <div className=' flex flex-column justify-center gap-4 pb-2 overflow-x-scroll overflow-hidden'>
 
 
                 <ParcelPicture />
