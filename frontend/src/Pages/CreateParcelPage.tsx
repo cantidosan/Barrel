@@ -58,7 +58,9 @@ const CreateParcelPage: FC = () => {
 
             </section>
             <section className='flex  justify-center pt-6 bg-barrel-green'>
-                {pageCount === 0 ? <UploadImage /> : pageCount === 1 ? <InputParcelInfo /> : <InputParcelDetails />}
+                {pageCount === 0 ? <UploadImage /> :
+                    pageCount === 1 ? <InputParcelInfo /> :
+                        <InputParcelDetails />}
 
             </section>
             <section className='flex flex-col justify-center bg-barrel-green
