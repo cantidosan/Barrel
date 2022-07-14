@@ -1,11 +1,14 @@
 import React, { FC, ChangeEvent, useState, useEffect } from 'react'
 import UploadImagePreviewSm from './UploadImagePreviewSm';
+import { useStateValue } from '../state/index'
+
 
 const UploadImage: FC = () => {
 
     const [selectedFiles, setSelectedFiles] = useState<any | null>(null);
     const [preview, setPreview] = useState<any | null>(null);
     const [fileUrls, setFileUrls] = useState<any | null>(null);;
+    const [{ pageCount }, dispatch] = useStateValue();
 
     console.log(selectedFiles)
     console.log(preview)
@@ -28,6 +31,16 @@ const UploadImage: FC = () => {
 
         setSelectedFiles((e.target as HTMLInputElement).files)
 
+
+    }
+    const nextPage = () => {
+    
+        dispatch({ type: 'pageCount', payload: pageCount+1 })
+        
+    }
+    const prevPage = () => {
+
+        dispatch({ type: 'pageCount', payload: pageCount-1 });
 
     }
 
@@ -63,6 +76,24 @@ const UploadImage: FC = () => {
                     selectedFiles={selectedFiles}
                     preview={preview} />
 
+            </div>
+            <div className='flex justify-center w-58 bg-barrel-green pt-5'>
+                <button className='m-2 focus:outline-none text-white bg-purple-700 
+                            hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 
+                            font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 
+                            dark:hover:bg-purple-700 dark:focus:ring-purple-900'
+                    type="button" onClick={nextPage}
+                >
+                    NEXT
+                </button>
+                <button className='m-2 focus:outline-none text-white bg-gray-700 
+                        hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium 
+                        rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 
+                        dark:focus:ring-gray-900"' type="button" onClick={prevPage}
+                >
+                    BACK
+                </button>
+                
             </div>
         </div>
     )

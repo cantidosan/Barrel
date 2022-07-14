@@ -1,15 +1,15 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState,useContext } from 'react'
 import americanflag from '../assets/images/americanflag.png'
 import prflag from '../assets/images/prflag.png'
 import ParcelPictures from './ParcelPictures'
 import { useStateValue } from '../state/index'
 import InputParcelInfo from './InputParcelInfo'
 import InputParcelDetails from './InputParcelDetails'
-
+import AuthContext from '../auth/authContext'
 const HandleParcelPictures = () => {
 
     const url = [prflag, americanflag]
-
+    const { user } = useContext(AuthContext);
     const [{ pageCount }, dispatch] = useStateValue();
 
     //ParcelUrls will contain all editable items tied to the sender account
@@ -57,7 +57,7 @@ const HandleParcelPictures = () => {
                     <div className='flex justify-center bg-barrel-green '>
                         <ParcelPictures />
                     </div>
-                </section > : pageCount === 1 ? <InputParcelInfo /> : <InputParcelDetails />
+                </section > : pageCount === 1 ? <InputParcelInfo userId={user?.uid} /> : <InputParcelDetails />
             }
             <div className='flex justify-center w-58 bg-barrel-green pt-5 pb-4'>
 

@@ -8,12 +8,7 @@ const PrevPageNavButton: FC = () => {
 
 
     const prevPage = () => {
-
-
-       
-
         dispatch({ type: 'pageCount', payload: pageCount-1 });
-
     }
     return (
         <button className='m-2 focus:outline-none text-white bg-gray-700 

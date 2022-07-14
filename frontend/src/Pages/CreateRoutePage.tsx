@@ -30,8 +30,6 @@ const CreateRoutePage: FC = () => {
 
     let navigate = useNavigate();
     const [userAuth, setUserAuth] = useState('false')
-    
-   
 
     const { user } = useContext(AuthContext);
 
@@ -48,7 +46,6 @@ const CreateRoutePage: FC = () => {
 
     }
 
-
     //authorize user
     isCourier(user).then(res => setUserAuth(res))
 
@@ -59,9 +56,6 @@ const CreateRoutePage: FC = () => {
             navigate("/");
     
         }
-
-    
-  
 
     return (
 
@@ -82,10 +76,8 @@ const CreateRoutePage: FC = () => {
                     pageCount === 1 ? <InputExchangeDetails /> :
                         <InputLuggageDetails />
             }
-            <div className={`${pageCount===0 || 1 ? 'hidden':''} flex justify-center w-58 bg-barrel-green pt-5`}>
-                <PrevPageNavButton />
-                <NextPageNavButton />
-            </div>
+            
+            
 
 
         </PageLayout >

@@ -16,11 +16,11 @@ import { isSender } from '../components/isSender'
 
 ///###TODO complete this page
 const CreateParcelPage: FC = () => {
-
+    
     const [{ pageCount }, dispatch] = useStateValue();
 
     const [userAuth, setUserAuth] = useState('false')
-
+    
     console.log(pageCount)
 
     let navigate = useNavigate();
@@ -37,10 +37,7 @@ const CreateParcelPage: FC = () => {
 
     // }
     const nextPage = () => {
-
-        
-       
-        
+    
         dispatch({ type: 'pageCount', payload: pageCount+1 })
         
     }
@@ -58,9 +55,9 @@ const CreateParcelPage: FC = () => {
 
             </section>
             <section className='flex  justify-center pt-6 bg-barrel-green'>
-                {pageCount === 0 ? <UploadImage /> :
-                    pageCount === 1 ? <InputParcelInfo /> :
-                        <InputParcelDetails />}
+                {pageCount === 0 ? <InputParcelInfo userId={user?.uid}/> :
+                    pageCount === 1 ?  <InputParcelDetails /> :
+                    <UploadImage />}
 
             </section>
             <section className='flex flex-col justify-center bg-barrel-green
@@ -72,7 +69,7 @@ const CreateParcelPage: FC = () => {
                 <RecentParcelPics />
 
             </section>
-            <div className='flex justify-center w-58 bg-barrel-green pt-5'>
+            {/* <div className='flex justify-center w-58 bg-barrel-green pt-5'>
                 <button className='m-2 focus:outline-none text-white bg-purple-700 
                             hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 
                             font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 
@@ -81,7 +78,7 @@ const CreateParcelPage: FC = () => {
                 >
                     NEXT
                 </button>
-            </div>
+            </div> */}
 
         </PageLayout >
     )
