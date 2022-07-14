@@ -1,16 +1,23 @@
 import React, { FC, ChangeEvent, useState, useEffect } from 'react'
 import UploadImagePreviewSm from './UploadImagePreviewSm';
 import { useStateValue } from '../state/index'
-
+import { getStorage, ref, uploadBytes,getDownloadURL  } from "firebase/storage";
+import { firebaseConfig } from "../FirebaseConfig";
+import { initializeApp } from "firebase/app";
+import { doc, setDoc, getFirestore, collection, addDoc } from "firebase/firestore"; 
 
 const UploadImage: FC = () => {
 
     const [selectedFiles, setSelectedFiles] = useState<any | null>(null);
     const [preview, setPreview] = useState<any | null>(null);
     const [fileUrls, setFileUrls] = useState<any | null>(null);;
-    const [{ pageCount }, dispatch] = useStateValue();
+    const [{ pageCount, docRef }, dispatch] = useStateValue();
+    const storage = getStorage();
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-    console.log(selectedFiles)
+
+    console.log('selected files',selectedFiles)
     console.log(preview)
 
     useEffect(() => {
@@ -22,7 +29,34 @@ const UploadImage: FC = () => {
         const objectUrl = URL.createObjectURL(selectedFiles[0])
 
         setPreview(objectUrl)
+        
+        
+        const storageRef = ref(storage, selectedFiles[0].name.replace());
+        console.log('selected files',selectedFiles[0].name)
+        console.log('storageref ',storageRef)
+        uploadBytes(storageRef, selectedFiles[0]).then((snapshot) => {
+            
+            console.log('Uploaded a blob or file!');
+        });
 
+        const luggageRef = collection(db, "items", docRef.id, "pictures")
+        console.log('luggageref',luggageRef)
+        
+        getDownloadURL(ref(storage, selectedFiles[0].name))
+            .then(
+                    (url) =>
+                { 
+                    console.log('url',url)
+                        addDoc(
+                                        luggageRef,
+                                        {
+                                        url: url,
+                                        itemId:docRef.id
+                            
+                                    }
+                                )
+                }
+            )
 
     }, [selectedFiles])
 
@@ -31,6 +65,7 @@ const UploadImage: FC = () => {
 
         setSelectedFiles((e.target as HTMLInputElement).files)
 
+        
 
     }
     const nextPage = () => {

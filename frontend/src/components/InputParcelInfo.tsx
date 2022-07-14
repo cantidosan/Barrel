@@ -56,7 +56,7 @@ const  InputParcelInfo:FC<userProp>=(props:userProp)=> {
                 <input id="username"
                     name="username"
 
-                    className="block p-2 w-full text-white bg-gray-50 rounded-lg 
+                    className="block p-2 w-full text-black bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 
                                     focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
                                     dark:placeholder-gray-400 dark:text-white 
@@ -74,7 +74,7 @@ const  InputParcelInfo:FC<userProp>=(props:userProp)=> {
                 <input id="itemNumber"
                     name="itemNumber"
                     placeholder="s/n #453320498"
-                    className="block p-2 w-full text-white bg-gray-50 rounded-lg 
+                    className="block p-2 w-full text-black bg-gray-50 rounded-lg 
                                     border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                                     dark:focus:ring-blue-500 dark:focus:border-blue-500"
