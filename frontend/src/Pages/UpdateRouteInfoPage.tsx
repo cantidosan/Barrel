@@ -20,6 +20,7 @@ const UpdateRouteInfoPage: FC = () => {
     const { user } = useContext(AuthContext);
     const [userAuth, setUserAuth] = useState('false')
     let { route_id } = useParams();
+    
     //this takes the routeId from the params and passes it to children
 
     const nextPage = () => {
@@ -61,20 +62,20 @@ const UpdateRouteInfoPage: FC = () => {
             {
 
                 pageCount === 0 ? <UpdateLocation routeId={route_id!} /> :
-                    pageCount === 1 ? <UpdatePolicy routeId={route_id!} /> :
+                    pageCount === 1 ? <UpdatePolicy  /> :
                         <UpdateLuggageAttributes  routeId={route_id!}/>
 
 
             }
-            {
+            
 
-
+{/* 
                 <div className='flex justify-center 
                     bg-barrel-green pt-5'>
                     <PrevPageNavButton />
                     <NextPageNavButton />
-                </div>
-            }
+                </div> */}
+            
 
 
 
