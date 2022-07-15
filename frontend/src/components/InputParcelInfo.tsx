@@ -16,7 +16,7 @@ const  InputParcelInfo:FC<userProp>=(props:userProp)=> {
     const [itemName, setItemName] = useState('')
     const [itemNum, setItemNum] = useState('')
     
-    const [{ pageCount,docRef }, dispatch] = useStateValue();
+    const [{ pageCount, docRef }, dispatch] = useStateValue();
 
     const app = initializeApp(firebaseConfig);
 

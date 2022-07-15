@@ -1,6 +1,13 @@
-import React from 'react'
+import React,{FC} from 'react'
 
-function UpdateLuggageAttributes() {
+interface routeIdProp{
+
+    routeId: string,
+    
+}
+
+
+const  UpdateLuggageAttributes:FC<routeIdProp> = (props:routeIdProp)=> {
     return (
         <div>
             <section className='grid gap-6 pt-10 justify-center bg-barrel-green '>

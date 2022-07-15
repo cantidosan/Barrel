@@ -12,13 +12,15 @@ import PrevPageNavButton from '../buttons/PrevPageNavButton'
 import AuthContext from '../auth/authContext'
 import { useNavigate } from 'react-router-dom'
 import { isRouteOwner } from '../components/isRouteOwner'
+import { useParams } from 'react-router-dom'
+
 const UpdateRouteInfoPage: FC = () => {
 
     const [{ pageCount }, dispatch] = useStateValue();
     const { user } = useContext(AuthContext);
     const [userAuth, setUserAuth] = useState('false')
-
-    
+    let { route_id } = useParams();
+    //this takes the routeId from the params and passes it to children
 
     const nextPage = () => {
 
@@ -47,7 +49,8 @@ const UpdateRouteInfoPage: FC = () => {
     return (
         <PageLayout>
             <UpdateRouteSubheader />
-            <section className='flex justify-center bg-barrel-green pt-5  '>
+            <section className='flex justify-center 
+                bg-barrel-green pt-5  '>
 
                 <div className='w-52'>
                     <NavigationIcons />
@@ -57,14 +60,17 @@ const UpdateRouteInfoPage: FC = () => {
 
             {
 
-                pageCount === 0 ? <UpdateLocation /> : pageCount === 1 ? <UpdatePolicy /> : <UpdateLuggageAttributes />
+                pageCount === 0 ? <UpdateLocation routeId={route_id!} /> :
+                    pageCount === 1 ? <UpdatePolicy routeId={route_id!} /> :
+                        <UpdateLuggageAttributes  routeId={route_id!}/>
 
 
             }
             {
 
 
-                <div className='flex justify-center bg-barrel-green pt-5'>
+                <div className='flex justify-center 
+                    bg-barrel-green pt-5'>
                     <PrevPageNavButton />
                     <NextPageNavButton />
                 </div>

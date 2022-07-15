@@ -65,8 +65,6 @@ const UploadImage: FC = () => {
 
         setSelectedFiles((e.target as HTMLInputElement).files)
 
-        
-
     }
     const nextPage = () => {
     

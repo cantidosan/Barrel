@@ -1,6 +1,16 @@
 import React, { FC } from 'react'
 
-const UpdatePolicy: FC = () => {
+interface routeIdProp{
+
+    routeId: string,
+    
+}
+
+
+const UpdatePolicy: FC<routeIdProp> = (props:routeIdProp) => {
+
+
+
     return (
         <div className='bg-barrel-green'>
             <div className="grid gap-6 pt-10 justify-center bg-barrel-green font-bold text-white ">
