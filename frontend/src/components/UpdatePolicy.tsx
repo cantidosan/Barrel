@@ -52,7 +52,7 @@ const UpdatePolicy: FC = () => {
                     >
                         New Policy
                     </label>
-                    <textarea id="message" rows={4} className="block p-2.5 w-full text-sm text-white bg-gray-50 
+                    <textarea id="message" rows={4} className="block p-2.5 w-full text-sm text-black bg-gray-50 
                         rounded-lg border border-gray-300 focus:ring-blue-500
                         focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
                         dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 

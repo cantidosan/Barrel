@@ -1,6 +1,9 @@
 import React, { FC,useState } from 'react'
 import { useStateValue } from '../state/';
-import { collection, addDoc,updateDoc,doc } from "firebase/firestore"; 
+import { getFirestore, addDoc,updateDoc,doc,getDocs,query,collection,where } from "firebase/firestore"; 
+import { firebaseConfig } from "../FirebaseConfig";
+import { initializeApp } from "firebase/app";
+
 
 interface routeIdProp{
 
@@ -10,17 +13,19 @@ interface routeIdProp{
 
 
 const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
-    
+    const {routeId} = props
     const [{ pageCount, metricToggle, docRef }, dispatch] = useStateValue();
     const [luggageWeight, setLuggageWeight] = useState('');
     const [luggageHeight, setLuggageHeight] = useState('');
     const [luggageWidth, setLuggageWidth] = useState('');
     const [luggageLength, setLuggageLength] = useState('');
+    const [luggageId, setLuggageId] = useState('');
 
     console.log(luggageHeight)
     console.log(luggageWeight)
     console.log(luggageLength)
     console.log(luggageWidth)
+    console.log(luggageId)
 
     let data = {
 
@@ -30,7 +35,8 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
         length_capacity:luggageLength
         
     }
-
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
     const dataAsArray = Object.entries(data)
 
     const filteredData = dataAsArray.filter(([key,value])=> value !=='')
@@ -39,9 +45,26 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
 
 
     const nextPage = async () => {
+
+        const querySnapshot = await getDocs(
+            query(
+                collection(db,`routes/${docRef.id}/luggage`),
+                where('height_capacity', '>=', '0')
+                
+            )
+
+        )
+        querySnapshot.forEach((queryDocumentSnapshot) => {
+            
+                setLuggageId(queryDocumentSnapshot.id)
+                console.log(luggageId)
+          })
     
-        console.log('new location has been updated')
-        await updateDoc(docRef,newData)
+        
+        const luggageRef = doc(db, "routes", routeId, "luggage", luggageId);
+        
+        console.log('docRef',docRef)
+        updateDoc(luggageRef,newData)
 
         dispatch({ type: 'pageCount', payload: pageCount+1 })
       
