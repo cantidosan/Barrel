@@ -26,12 +26,10 @@ const  InputParcelInfo:FC<userProp>=(props:userProp)=> {
 
         const  newItemDocRef = await addDoc(collection(db, "items"), {
 
-        
             name:itemName,
             number: itemNum,
             userId:userId
            
-            
         });
         dispatch({ type: 'docRef', payload: newItemDocRef })
         dispatch({ type: 'pageCount', payload: pageCount+1 })

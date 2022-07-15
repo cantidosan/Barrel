@@ -7,7 +7,6 @@ import { isSender } from '../components/isSender'
 import AuthContext from '../auth/authContext'
 import { useNavigate } from 'react-router-dom'
 
-
 function UpdateParcelInfoPage() {
 
     const { user } = useContext(AuthContext);

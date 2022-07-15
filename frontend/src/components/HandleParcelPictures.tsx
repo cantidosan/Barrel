@@ -6,6 +6,9 @@ import { useStateValue } from '../state/index'
 import InputParcelInfo from './InputParcelInfo'
 import InputParcelDetails from './InputParcelDetails'
 import AuthContext from '../auth/authContext'
+import UploadImage from './UploadImage'
+
+
 const HandleParcelPictures = () => {
 
     const url = [prflag, americanflag]
@@ -18,20 +21,10 @@ const HandleParcelPictures = () => {
     const [parcelUrls, setParcelUrls] = useState<any | null>(null);;
 
     const nextPage = () => {
-
-       
-
         dispatch({ type: 'pageCount', payload: pageCount+1 });
-
     }
     const prevPage = () => {
-
-     
-
-       
-
         dispatch({ type: 'pageCount', payload: pageCount -1 });
-
     }
 
 
@@ -40,7 +33,7 @@ const HandleParcelPictures = () => {
 
             {pageCount === 0 ?
                 <section className=''>
-                    <div className='flex justify-center bg-barrel-green'>
+                    {/* <div className='flex justify-center bg-barrel-green'>
 
 
                         <figure className='flex ' >
@@ -53,30 +46,16 @@ const HandleParcelPictures = () => {
                         </figure>
 
 
-                    </div >
-                    <div className='flex justify-center bg-barrel-green '>
-                        <ParcelPictures />
+                    </div > */}
+                    <div className='flex  justify-center pt-6 bg-barrel-green'>
+                    <UploadImage />
                     </div>
+                    {/* <div className='flex justify-center bg-barrel-green '>
+                        <ParcelPictures />
+                    </div> */}
                 </section > : pageCount === 1 ? <InputParcelInfo userId={user?.uid} /> : <InputParcelDetails />
             }
-            <div className='flex justify-center w-58 bg-barrel-green pt-5 pb-4'>
-
-                <button className='m-2 focus:outline-none text-white bg-purple-700 
-                        hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium 
-                        rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 
-                        dark:focus:ring-purple-900"' type="submit" onClick={prevPage}
-                >
-                    BACK
-                </button>
-                <button className='m-2 focus:outline-none text-white bg-purple-700 
-                        hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg 
-                        text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 
-                        dark:focus:ring-purple-900'
-                    type="submit" onClick={nextPage}
-                >
-                    NEXT
-                </button>
-            </div>
+            
             <div className='flex justify-center bg-barrel-green '>
                 <ParcelPictures />
             </div>
