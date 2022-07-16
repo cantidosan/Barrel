@@ -2,7 +2,7 @@ import React, { FC,useState } from 'react'
 import { useStateValue } from '../state'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc,updateDoc,doc } from "firebase/firestore"; 
+import { collection, addDoc,updateDoc,doc,getDoc } from "firebase/firestore"; 
 import { firebaseConfig } from "../FirebaseConfig";
 
 
@@ -12,11 +12,34 @@ import { firebaseConfig } from "../FirebaseConfig";
 
 
 const UpdatePolicy: FC = () => {
-    const [newPolicy, setNewPolicy] = useState('')
-    const [{ pageCount,docRef }, dispatch] = useStateValue();
-    
+
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const [originalPolicy, setOriginalPolicy] = useState('')
+
+    const [newPolicy, setNewPolicy] = useState('')
+
+    const [{ pageCount, docRef }, dispatch] = useStateValue()
+    
+    const locationRef = doc(db, "routes", docRef.id);
+    
+
+    getDoc(locationRef).then(docSnap => {
+
+
+        if (docSnap.exists()) {
+
+            console.log("Document data:", docSnap.data());
+
+            setOriginalPolicy(docSnap.data().exchange_policy)
+
+            } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+            }
+        
+    })
+
     const prevPage = () => {
 
         dispatch({ type: 'pageCount', payload: pageCount - 1 });
@@ -44,7 +67,7 @@ const UpdatePolicy: FC = () => {
             <div className="grid gap-6 pt-10 justify-center bg-barrel-green font-bold text-white ">
                 <div>
                     <label htmlFor="small-input" className="block mb-2 text-md font-bold text-white underline font-roboto">Old Policy</label>
-                    <p className='text-sm  opacity-70'>Scan at arrival gate</p>
+                    <p className='text-sm  opacity-70'>{ originalPolicy}</p>
                 </div>
                 <div>
                     <label htmlFor="small-input" className="block mb-2 text-md font-bold text-white 

@@ -25,18 +25,11 @@ const UpdateRouteInfoPage: FC = () => {
 
     const nextPage = () => {
 
-       
-
         dispatch({ type: 'pageCount', payload: pageCount + 1 });
-
     }
     const prevPage = () => {
 
-
-        
-
         dispatch({ type: 'pageCount', payload: pageCount-1 });
-
     }
 
     let navigate = useNavigate();

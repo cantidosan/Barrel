@@ -1,7 +1,7 @@
 import React, { FC,useEffect,useState } from 'react'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc,updateDoc,doc } from "firebase/firestore"; 
+import { collection, addDoc,updateDoc,doc,getDoc } from "firebase/firestore"; 
 import { firebaseConfig } from "../FirebaseConfig";
 import { useStateValue } from '../state'
 
@@ -13,13 +13,39 @@ const UpdateLocation: FC<routeIdProp> = (props: routeIdProp) => {
 
     const { routeId } = props
     
+
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const locationRef = doc(db, "routes", routeId);
+    const [originalLocation, setOriginalLocation] = useState('');
+
+
+    getDoc(locationRef).then(docSnap => {
+
+
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            setOriginalLocation(docSnap.data().exchange_location)
+            } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+            }
+        
+    })
+
     
+
+    // const [luggageWidth, setLuggageWidth] = useState('');
+
     const [{ pageCount, docRef }, dispatch] = useStateValue();
     
-    const locationRef = doc(db, "routes", routeId);
+    
+   
+        
+    
 
+    
+  
 
     ///THIS READS FROM THE DB TO POPULATE THE OLD INFORMATION
     
@@ -31,6 +57,9 @@ const UpdateLocation: FC<routeIdProp> = (props: routeIdProp) => {
         
     }
     const nextPage = async () => {
+
+        
+
 
         if (newLocation !== '') {
         console.log('new location has been updated')
@@ -53,7 +82,7 @@ const UpdateLocation: FC<routeIdProp> = (props: routeIdProp) => {
             <div>
                 <label htmlFor="small-input" className="block mb-2 text-md 
                 font-bold text-white underline font-roboto">Old Location</label>
-                <p>100 Hope Road Avenue</p>
+                <p>{originalLocation}</p>
             </div>
             <div>
                 <label htmlFor="small-input" className="block mb-2 text-md 

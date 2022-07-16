@@ -1,6 +1,6 @@
-import React, { FC,useState } from 'react'
+import React, { FC,useEffect,useState } from 'react'
 import { useStateValue } from '../state/';
-import { getFirestore, addDoc,updateDoc,doc,getDocs,query,collection,where } from "firebase/firestore"; 
+import { getFirestore, addDoc,updateDoc,doc,getDocs,query,collection,where,getDoc } from "firebase/firestore"; 
 import { firebaseConfig } from "../FirebaseConfig";
 import { initializeApp } from "firebase/app";
 
@@ -13,9 +13,14 @@ interface routeIdProp{
 
 
 const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
-    const {routeId} = props
+    const { routeId } = props
+    
     const [{ pageCount, metricToggle, docRef }, dispatch] = useStateValue();
 
+    const [oldLuggageWeight, setOldLuggageWeight] = useState('');
+    const [oldLuggageHeight, setOldLuggageHeight] = useState('');
+    const [oldLuggageWidth, setOldLuggageWidth] = useState('');
+    const [oldLuggageLength, setOldLuggageLength] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
     const [luggageHeight, setLuggageHeight] = useState('');
     const [luggageWidth, setLuggageWidth] = useState('');
@@ -26,6 +31,10 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
     console.log(luggageWeight)
     console.log(luggageLength)
     console.log(luggageWidth)
+    console.log(oldLuggageHeight)
+    console.log(oldLuggageWeight)
+    console.log(oldLuggageLength)
+    console.log(oldLuggageWidth)
     console.log(luggageId)
 
     let data = {
@@ -38,8 +47,46 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
     }
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    
+    // getDocs(query(collection(db,`routes/${routeId}/luggage`),
+    //         where('height_capacity', '>=', '0')
+    // )).then((querySnapshot) => {
+    //     querySnapshot.forEach((queryDocumentSnapshot) => {
+    //         console.log('snapshot data',queryDocumentSnapshot.id)
+    //         setLuggageId(queryDocumentSnapshot.id)
+            
+    // })
+    // })
+    const citiesRef = collection(db, "routes",routeId,"luggage");
+
+    const q = query(citiesRef, where("height_capacity", ">=", "0"));
+    console.log('q',q)
+    let locationRef = doc(db, "routes", routeId, "luggage", luggageId);
+    
+
+    
+    useEffect(() => {
+
+        getDoc(locationRef).then(docSnap => {
 
 
+            if (docSnap.exists()) {
+    
+                console.log("Document data:", docSnap.data());
+    
+                setOldLuggageWeight(docSnap.data().weight_capacity)
+                setOldLuggageHeight(docSnap.data().height_capacity)
+                setOldLuggageWidth(docSnap.data().width_capacity)
+                setOldLuggageLength(docSnap.data().luggage_length)
+    
+                } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+                }
+            
+        })
+    },[locationRef])
+    
     //below filters the dataobject of all 
     //unchanged key value attributes
     //before uploading
@@ -68,6 +115,8 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
         
         const luggageRef = doc(db, "routes", routeId, "luggage", luggageId);
         
+
+
         console.log('docRef',docRef)
         updateDoc(luggageRef,newData)
 
@@ -93,7 +142,7 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
                         border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                         focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="lbs" required
+                        placeholder={oldLuggageWeight} required
                         onChange={(e)=>setLuggageWeight(e.target.value)}
                     />
                 </div>
@@ -106,7 +155,7 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
                         text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                         block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-white-500
                         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="inches " required
+                        placeholder={oldLuggageHeight} required
                         onChange={(ev)=>setLuggageHeight(ev.target.value)}
                     />
                 </div>
@@ -115,7 +164,7 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
                     <input type="text" id="item_length" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                         block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                         placeholder-white-500 dark:text-white dark:focus:ring-blue-500
-                        dark:focus:border-blue-500" placeholder="inches" required
+                        dark:focus:border-blue-500" placeholder={oldLuggageLength} required
                         onChange={(eve)=>setLuggageLength(eve.target.value)}
                     />
                 </div>
@@ -127,7 +176,7 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
                         text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
                         block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-white-500
                         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="inches" required
+                        placeholder={oldLuggageWidth} required
                         onChange={(even)=>setLuggageWidth(even.target.value)}
                     />
                 </div>
