@@ -11,7 +11,8 @@ interface userProp{
     userId:string,
 }
 
-const  InputParcelInfo:FC<userProp>=(props:userProp)=> {
+const InputParcelInfo: FC<userProp> = (props: userProp) => {
+    
     const {userId} = props
     const [itemName, setItemName] = useState('')
     const [itemNum, setItemNum] = useState('')

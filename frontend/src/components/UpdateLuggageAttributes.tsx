@@ -15,6 +15,7 @@ interface routeIdProp{
 const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
     const {routeId} = props
     const [{ pageCount, metricToggle, docRef }, dispatch] = useStateValue();
+
     const [luggageWeight, setLuggageWeight] = useState('');
     const [luggageHeight, setLuggageHeight] = useState('');
     const [luggageWidth, setLuggageWidth] = useState('');
@@ -37,10 +38,14 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
     }
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+
+
+    //below filters the dataobject of all 
+    //unchanged key value attributes
+    //before uploading
+    
     const dataAsArray = Object.entries(data)
-
     const filteredData = dataAsArray.filter(([key,value])=> value !=='')
-
     const newData = Object.fromEntries(filteredData);
 
 

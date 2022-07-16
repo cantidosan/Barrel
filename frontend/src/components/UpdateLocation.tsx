@@ -12,6 +12,7 @@ interface routeIdProp{
 const UpdateLocation: FC<routeIdProp> = (props: routeIdProp) => {
 
     const { routeId } = props
+    
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     

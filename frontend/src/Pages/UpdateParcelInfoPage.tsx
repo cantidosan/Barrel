@@ -7,13 +7,15 @@ import { isSender } from '../components/isSender'
 import AuthContext from '../auth/authContext'
 import { useNavigate } from 'react-router-dom'
 
-function UpdateParcelInfoPage() {
+const  UpdateParcelInfoPage:FC = ()=> {
 
     const { user } = useContext(AuthContext);
     const [userAuth, setUserAuth] = useState('false')
     let navigate = useNavigate();
+    
+    
     isSender(user).then(res => setUserAuth(res))
-
+    // console.log('itemId',item_id)
     // CODE BELOW LIMITS PAGE ACCESS TO SENDER 
     if (!user && userAuth) {
 
