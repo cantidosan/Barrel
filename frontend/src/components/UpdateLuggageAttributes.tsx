@@ -26,6 +26,9 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
     const [luggageWidth, setLuggageWidth] = useState('');
     const [luggageLength, setLuggageLength] = useState('');
     const [luggageId, setLuggageId] = useState('');
+   
+
+
 
     console.log(luggageHeight)
     console.log(luggageWeight)
@@ -48,24 +51,36 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     
-    // getDocs(query(collection(db,`routes/${routeId}/luggage`),
-    //         where('height_capacity', '>=', '0')
-    // )).then((querySnapshot) => {
-    //     querySnapshot.forEach((queryDocumentSnapshot) => {
-    //         console.log('snapshot data',queryDocumentSnapshot.id)
-    //         setLuggageId(queryDocumentSnapshot.id)
-            
-    // })
-    // })
-    const citiesRef = collection(db, "routes",routeId,"luggage");
-
-    const q = query(citiesRef, where("height_capacity", ">=", "0"));
-    console.log('q',q)
-    let locationRef = doc(db, "routes", routeId, "luggage", luggageId);
+    useEffect(() => {
+                getDocs(query(collection(db,`routes/${routeId}/luggage`),
+                where('height_capacity', '>=', '0')
+                )).then((querySnapshot) => {
+                
+                    console.log('snapshot', querySnapshot)
+                    
+                querySnapshot.forEach((queryDocumentSnapshot) => {
+                
+                    setLuggageId(queryDocumentSnapshot.id)
+                
+        })
+        })
+        
+    }, [routeId])
     
+
+    // const citiesRef = collection(db, "routes",routeId,"luggage");
+
+    // const q = query(citiesRef, where("height_capacity", ">=", "0"));
+    // console.log('q',q)
+    
+    // let locationRef = doc(db, "routes", routeId, "luggage", luggageId);
 
     
     useEffect(() => {
+
+        if (!!luggageId) {
+            
+        let locationRef = doc(db, "routes", routeId, "luggage", luggageId);
 
         getDoc(locationRef).then(docSnap => {
 
@@ -77,7 +92,7 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
                 setOldLuggageWeight(docSnap.data().weight_capacity)
                 setOldLuggageHeight(docSnap.data().height_capacity)
                 setOldLuggageWidth(docSnap.data().width_capacity)
-                setOldLuggageLength(docSnap.data().luggage_length)
+                setOldLuggageLength(docSnap.data().length_capacity)
     
                 } else {
                 // doc.data() will be undefined in this case
@@ -85,7 +100,8 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
                 }
             
         })
-    },[locationRef])
+    }
+    },[luggageId])
     
     //below filters the dataobject of all 
     //unchanged key value attributes
@@ -117,7 +133,7 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
         
 
 
-        console.log('docRef',docRef)
+        console.log('luggageREf down low',luggageRef)
         updateDoc(luggageRef,newData)
 
         dispatch({ type: 'pageCount', payload: pageCount+1 })
