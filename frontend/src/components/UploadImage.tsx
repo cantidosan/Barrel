@@ -10,7 +10,7 @@ const UploadImage: FC = () => {
 
     const [selectedFiles, setSelectedFiles] = useState<any | null>(null);
     const [preview, setPreview] = useState<any | null>(null);
-    const [fileUrls, setFileUrls] = useState<any | null>(null);;
+    const [fileUrls, setFileUrls] = useState<any | null>(null);
     const [{ pageCount, docRef }, dispatch] = useStateValue();
     const storage = getStorage();
     const app = initializeApp(firebaseConfig);
@@ -40,7 +40,7 @@ const UploadImage: FC = () => {
         });
 
         const luggageRef = collection(db, "items", docRef.id, "pictures")
-        console.log('luggageref',luggageRef)
+        console.log('fileName',selectedFiles[0].name)
         
         getDownloadURL(ref(storage, selectedFiles[0].name))
             .then(

@@ -4,7 +4,7 @@ import PageLayout from '../components/layouts/PageLayout'
 import NavigationIcons from '../components/NavigationIcons/NavigationIcons';
 import { signUpUser } from '../auth/SignUpUser';
 import { createUser } from '../components/CreateUser'
-
+import { useNavigate } from 'react-router-dom';
 
 enum userType {
 
@@ -25,10 +25,12 @@ interface MyFormValues {
 
 const SignUpPage: FC = () => {
 
+    let navigate = useNavigate();
 
     function handleSignup(values: any) {
 
         signUpUser(values)
+        navigate('/')
 
     }
     // function handleCreateUser(values: any) {
@@ -62,6 +64,7 @@ const SignUpPage: FC = () => {
                     handleSignup(values)
                     // handleCreateUser(values)
                     // alert(JSON.stringify(values, null, 2));
+
 
                 }}
             >

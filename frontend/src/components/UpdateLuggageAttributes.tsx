@@ -129,12 +129,14 @@ const UpdateLuggageAttributes: FC<routeIdProp> = (props: routeIdProp) => {
           })
     
         
-        const luggageRef = doc(db, "routes", routeId, "luggage", luggageId);
+        
+        
+        const luggageRef =  await doc(db, "routes", routeId, "luggage", luggageId);
         
 
 
         console.log('luggageREf down low',luggageRef)
-        updateDoc(luggageRef,newData)
+         await updateDoc(luggageRef,newData)
 
         dispatch({ type: 'pageCount', payload: pageCount+1 })
       

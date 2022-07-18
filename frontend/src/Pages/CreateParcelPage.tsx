@@ -29,17 +29,15 @@ const CreateParcelPage: FC = () => {
     const { user } = useContext(AuthContext);
 
     // console.log('user', user)
-    isSender(user).then(res => setUserAuth(res))
+    // isSender(user).then(res => setUserAuth(res))
     // CODE BELOW LIMITS  ACCESS TO SENDER  SOLELY
-    // if (!!user && userAuth) {
+    // if (!user || userAuth) {
 
     //     navigate("/");
 
     // }
     const nextPage = () => {
-    
-        dispatch({ type: 'pageCount', payload: pageCount+1 })
-        
+        dispatch({ type: 'pageCount', payload: pageCount+1 })   
     }
 
     return (

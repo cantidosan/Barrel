@@ -13,14 +13,15 @@ import { useStateValue } from '../state/index'
 const HomePage: FC = () => {
 
     const [{ deptPort, arrivPort }, dispatch] = useStateValue();
-
-
     const [flagPic, setFlagPic] = useState();
-
     const url = [prflag, americanflag]
     
    
+
+
+
     return (
+
         <PageLayout>
             <section className='bg-barrel-green'>
                 <div className='container mx-auto pt-20 px-16 
