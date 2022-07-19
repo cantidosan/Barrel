@@ -37,12 +37,14 @@ const UploadImage: FC = () => {
         uploadBytes(storageRef, selectedFiles[0]).then((snapshot) => {
             
             console.log('Uploaded a blob or file!');
-        });
 
-        const luggageRef = collection(db, "items", docRef.id, "pictures")
-        console.log('fileName',selectedFiles[0].name)
-        
-        getDownloadURL(ref(storage, selectedFiles[0].name))
+        }).then((result) => {
+
+            let luggageRef = collection(db, "items", docRef.id, "pictures")
+            
+            return luggageRef
+
+        }).then((luggageRef)=>{getDownloadURL(ref(storage, selectedFiles[0].name))
             .then(
                     (url) =>
                 { 
@@ -56,7 +58,10 @@ const UploadImage: FC = () => {
                                     }
                                 )
                 }
-            )
+            )})
+        console.log('fileName',selectedFiles[0].name)
+        
+        
 
     }, [selectedFiles])
 
