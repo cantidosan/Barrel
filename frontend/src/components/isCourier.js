@@ -13,7 +13,7 @@ const db = getFirestore(app);
 
 
 export async function isCourier(user) {
-    const docRef = doc(db, "users", "UW6Ys4EnOMQufwKTUoKPpdcYXYc2");
+    const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
 
     if ((docSnap.exists()) && docSnap.data().isCourier === 'true') {

@@ -1,10 +1,34 @@
 import React, { FC, ReactElement } from 'react'
 import LuggageAttributes from './LuggageAttributes';
 
+interface UrlProp  {
 
-const RouteInfoCardDetail: FC = (props) => {
+    
+    deptAirport: string;
+    arrivAirport: string;
+    deptDate: string;
+    luggageWeight: string;
 
+}
+
+
+const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
+
+    const {
+      
+        deptAirport,
+        arrivAirport,
+        deptDate,
+        luggageWeight
+            
+    } = props
+    
     let emptyBool = false
+
+    console.log('deptDate', deptDate.toDate() )
+    // let dateObject = new Date(deptDate.toDate())
+    // console.log('dateObj',dateObject )
+
 
     //THIS COMPONENT WILL CONDITIONALY RENDER SPACE AND WEIGHT AVAILABILITY 
     //BASED ON SOME PARAMETER
@@ -15,18 +39,18 @@ const RouteInfoCardDetail: FC = (props) => {
                 <div className='flex flex-col justify-evenly'>
                     <div className=''>
                         <span className='text-white text-xs md:text-lg md:text-2xl  font-thin opacity-80 font-roboto  '>DEPT  :</span>
-                        <span className=' font-bold   text-xs md:text-lg md:text-2xl text-white'> JFK </span><br />
+                        <span className=' font-bold   text-xs md:text-lg md:text-2xl text-white'> {deptAirport}</span><br />
                         <span className='text-white  text-xs md:text-lg md:text-2xl font-thin opacity-80 font-roboto  '>ARR:</span>
-                        <span className=' font-bold  text-xs md:text-lg md:text-2xl text-white'> MIA </span><br />
+                        <span className=' font-bold  text-xs md:text-lg md:text-2xl text-white'>{arrivAirport} </span><br />
                     </div>
                     <div className='md:pt-4'>
                         <span className=' underline text-xs md:text-lg md:text-2xl text-white  opacity-80 font-roboto '>DATE:</span>
-                        <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>    06/05/2022</span>
+                        <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>{deptDate}</span>
                     </div>
                     <div>
                         <div className='md:pt-4'>
                             <span className='text-white text-xs md:text-lg md:text-2xl font-thin opacity-80 font-roboto'>WEIGHT:</span>
-                            <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>13 </span><br />
+                            <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>{luggageWeight} </span><br />
                         </div>
                         <div className='md:pt-4'>
                             <span className='text-white text-xs md:text-lg md:text-2xl font-thin opacity-80 font-roboto'>SPACE:</span>
@@ -40,13 +64,13 @@ const RouteInfoCardDetail: FC = (props) => {
                 <div>
                     <div className=''>
                         <span className='text-white text-xs md:text-lg md:text-xl  font-thin opacity-80 font-roboto  '>DEPT  :</span>
-                        <span className=' font-bold ml-1  text-xs md:text-lg md:text-xl text-white'> JFK </span><br />
+                        <span className=' font-bold ml-1  text-xs md:text-lg md:text-xl text-white'> {deptAirport} </span><br />
                         <span className='text-white  text-xs md:text-lg md:text-xl font-thin opacity-80 font-roboto  '>ARR:</span>
-                        <span className=' font-bold ml-3 text-xs md:text-lg md:text-xl text-white'> MIA </span><br />
+                        <span className=' font-bold ml-3 text-xs md:text-lg md:text-xl text-white'> {arrivAirport} </span><br />
                     </div>
                     <div className='md:pt-4'>
                         <span className=' underline text-xs md:text-lg md:text-xl text-white  opacity-80 font-roboto pl-9 '>DATE:</span><br />
-                        <span className=' font-bold text-xs md:text-lg md:text-xl text-white pl-5'>    06/05/2022</span>
+                        <span className=' font-bold text-xs md:text-lg md:text-xl text-white pl-5'>{}</span>
                     </div>
                     <div>
                         <div className='md:pt-4'>

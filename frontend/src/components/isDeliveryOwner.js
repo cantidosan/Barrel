@@ -10,7 +10,7 @@ const db = getFirestore(app);
 
 export async function isDeliveryOwner(user) {
     console.log('user', user.uid)
-    const docRef = doc(db, "deliveries", "HAlkxPUw5AO6zvqtTsHB");
+    const docRef = doc(db, "deliveries", user.uid);
     const docSnap = await getDoc(docRef);
     console.log('1', docSnap.data().owners.CourierId)
     console.log('2', docSnap.data().owners.SenderId)

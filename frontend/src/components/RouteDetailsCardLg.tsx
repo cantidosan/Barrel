@@ -5,20 +5,47 @@ import americanflag from '../assets/images/americanflag.png'
 import RouteInfoCardDetail from '../components/RouteInfoCardDetail';
 
 
+interface UrlProp  {
 
-const RouteDetailsCardLg: FC = () => {
+    url: string[] ;
+    deptAirport: string;
+    arrivAirport: string;
+    deptDate: string;
+    luggageWeight: string;
 
-    const url = [prflag, americanflag]
+}
+
+const RouteDetailsCardLg: FC<UrlProp> = (props:UrlProp) => {
+
+    const {
+        url,
+        deptAirport,
+        arrivAirport,
+        deptDate,
+        luggageWeight
+            
+        } = props
 
 
     return (
         <div className=' flex flex-row basis-1/2  '>
             <div className='flex flex-col basis-1/2 '>
-                <RouteFlag url={url[0]} />
-                <RouteFlag url={url[1]} />
+                <RouteFlag
+                    url={url[0]}
+                />
+                <RouteFlag
+                    url={url[1]}
+                />
             </div>
             <div className='border-1'>
-                <RouteInfoCardDetail />
+                <RouteInfoCardDetail
+                    deptAirport={deptAirport}
+                    arrivAirport={arrivAirport}
+                    deptDate={deptDate}
+                    luggageWeight={luggageWeight}
+                    
+                
+                />
 
             </div>
         </div>
