@@ -3,7 +3,11 @@ import RouteDetailsCardLg from '../components/RouteDetailsCardLg'
 import ParcelPictures from '../components/ParcelPictures'
 import HandleBid from '../components/HandleBid'
 import PageLayout from '../components/layouts/PageLayout'
-import { getFirestore, addDoc,updateDoc,doc,getDocs,query,collection,where,getDoc } from "firebase/firestore"; 
+import {
+    getFirestore, addDoc, updateDoc,
+    doc, getDocs, query,
+    collection, where, getDoc
+} from "firebase/firestore"; 
 import AuthContext from '../auth/authContext'
 import { firebaseConfig } from "../FirebaseConfig";
 import { initializeApp } from "firebase/app";
@@ -27,9 +31,9 @@ const RouteDetailsPage: FC = () => {
     const [arrivAirport, setArrivAirport] = useState('');
     const [deptCountry, setDeptCountry] = useState('');
     const [arrivCountry, setArrivCountry] = useState('');
-    const [luggageHeight, setLuggageHeight] = useState('');
-    const [luggageLength, setLuggageLength] = useState('');
-    const [luggageWidth, setLuggageWidth] = useState('');
+    const [luggageHeight, setLuggageHeight] = useState<number>(0);
+    const [luggageLength, setLuggageLength] = useState<number>(0);
+    const [luggageWidth, setLuggageWidth] = useState<number>(0);
     const [deptDate, setDeptDate] = useState();
     const [luggageId, setLuggageId] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
@@ -57,7 +61,7 @@ const RouteDetailsPage: FC = () => {
                 setDeptCountry(docSnap.data().departure_country)
                 setDeptDate(docSnap.data().departure_date)
 
-                console.log("Document data:", docSnap.data())
+                console.log("Document data: critical", docSnap.data())
                     ;
 
                 } else {
@@ -122,8 +126,11 @@ const RouteDetailsPage: FC = () => {
                         <RouteDetailsCardLg url={url}
                             deptAirport={deptAirport}
                             arrivAirport={arrivAirport}
-                            deptDate={deptDate!}
+                            deptDate={deptDate}
                             luggageWeight={luggageWeight}
+                            luggageHeight={luggageHeight}
+                            luggageLength={luggageLength}
+                            luggageWidth={luggageWidth}
 
 
                         />

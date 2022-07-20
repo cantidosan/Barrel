@@ -51,7 +51,7 @@ const InputRouteInfo: FC<userProp> = (props: userProp) => {
         
         const docRef = await addDoc(collection(db, "routes"), {
 
-            arrival_ariport:arriValue,
+            arrival_airport:arriValue,
             arrival_country:countryArrivName,
             departure_airport:deptValue,
             departure_country:countryDeptName,

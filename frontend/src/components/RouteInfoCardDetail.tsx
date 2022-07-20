@@ -6,8 +6,12 @@ interface UrlProp  {
     
     deptAirport: string;
     arrivAirport: string;
-    deptDate: string;
+    deptDate: any;
     luggageWeight: string;
+    luggageHeight: number;
+    luggageLength: number;
+    luggageWidth: number;
+
 
 }
 
@@ -19,15 +23,22 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
         deptAirport,
         arrivAirport,
         deptDate,
-        luggageWeight
+        luggageWeight,
+        luggageHeight,
+        luggageLength,
+        luggageWidth
             
     } = props
-    
-    let emptyBool = false
+    let volume = (luggageHeight * luggageLength * luggageWidth)
+    let emptyBool = true
 
-    console.log('deptDate', deptDate.toDate() )
-    // let dateObject = new Date(deptDate.toDate())
-    // console.log('dateObj',dateObject )
+    console.log('VOlume',volume)
+    // console.log('deptDatejson', deptDate.toJSON())
+    // console.log('deptDate', deptDate.valueOf())
+    let dateObject = new Date(deptDate?.toDate())
+    console.log('date',dateObject?.getDate() )
+    console.log('month',dateObject?.getMonth() )
+    console.log('day',dateObject?.getDay() )
 
 
     //THIS COMPONENT WILL CONDITIONALY RENDER SPACE AND WEIGHT AVAILABILITY 
@@ -45,7 +56,7 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
                     </div>
                     <div className='md:pt-4'>
                         <span className=' underline text-xs md:text-lg md:text-2xl text-white  opacity-80 font-roboto '>DATE:</span>
-                        <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>{deptDate}</span>
+                        <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>{`${dateObject?.getMonth()} / ${dateObject?.getMonth()} `}</span>
                     </div>
                     <div>
                         <div className='md:pt-4'>
@@ -54,7 +65,7 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
                         </div>
                         <div className='md:pt-4'>
                             <span className='text-white text-xs md:text-lg md:text-2xl font-thin opacity-80 font-roboto'>SPACE:</span>
-                            <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>15 </span><br />
+                            <span className=' font-bold text-xs md:text-lg md:text-2xl text-white'>{volume} </span><br />
                         </div>
                     </div>
                 </div> : ''

@@ -10,8 +10,11 @@ interface UrlProp  {
     url: string[] ;
     deptAirport: string;
     arrivAirport: string;
-    deptDate: string;
+    deptDate: any;
     luggageWeight: string;
+    luggageHeight:number;
+    luggageLength: number;
+    luggageWidth: number;
 
 }
 
@@ -22,7 +25,10 @@ const RouteDetailsCardLg: FC<UrlProp> = (props:UrlProp) => {
         deptAirport,
         arrivAirport,
         deptDate,
-        luggageWeight
+        luggageWeight,
+        luggageHeight,
+        luggageLength,
+        luggageWidth
             
         } = props
 
@@ -43,6 +49,9 @@ const RouteDetailsCardLg: FC<UrlProp> = (props:UrlProp) => {
                     arrivAirport={arrivAirport}
                     deptDate={deptDate}
                     luggageWeight={luggageWeight}
+                    luggageHeight={luggageHeight}
+                    luggageLength={luggageLength}
+                    luggageWidth={luggageWidth}
                     
                 
                 />
