@@ -4,6 +4,11 @@ import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import RouteInfoCardDetail from '../components/RouteInfoCardDetail';
 
+//  THIS COMP NEEDS TO FETCH DATA FROM THE DELIVERIES TABLE TO UPDATE THE
+// USED COLUMN FOR SPACE AND WEIGHT
+//
+//
+
 
 interface UrlProp  {
 

@@ -81,7 +81,7 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
                     </div>
                     <div className='md:pt-4'>
                         <span className=' underline text-xs md:text-lg md:text-xl text-white  opacity-80 font-roboto pl-9 '>DATE:</span><br />
-                        <span className=' font-bold text-xs md:text-lg md:text-xl text-white pl-5'>{}</span>
+                        <span className=' font-bold text-xs md:text-lg md:text-xl text-white pl-5'>{`${dateObject?.getMonth()} / ${dateObject?.getMonth()} `}</span>
                     </div>
                     <div>
                         <div className='md:pt-4'>
@@ -89,7 +89,7 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
                             <span className='ml-2 text-2xs font-bold text-lime-500 opacity-60'>edit</span><br />
                             <span className='font-bold text-xs md:text-lg md:text-xl text-white '>USED </span>
                             <span className='ml-3 font-bold text-xs md:text-lg md:text-xl text-white'>AVAILABLE </span><br />
-                            <span className='ml-2 font-bold text-xs md:text-lg md:text-xl text-white'>13 </span>
+                            <span className='ml-2 font-bold text-xs md:text-lg md:text-xl text-white'>{luggageWeight} </span>
                             <span className='text-2xs  text-white opacity-60'>lbs</span>
                             <span className='ml-8 font-bold text-xs md:text-lg md:text-xl text-lime-500'>8.5</span>
                             <span className=' ml-1 text-2xs  text-white opacity-60'>lbs</span>
@@ -99,7 +99,7 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
                             <span className='text-white text-xs md:text-lg md:text-xl font-thin opacity-80 font-roboto pl-7 underline'>SPACE:</span><br />
                             <span className='font-bold text-xs md:text-lg md:text-xl text-white '>USED </span>
                             <span className='ml-3 font-bold text-xs md:text-lg md:text-xl text-white'>AVAILABLE </span><br />
-                            <span className='ml-2 font-bold text-xs md:text-lg md:text-xl text-white'>5 </span>
+                            <span className='ml-2 font-bold text-xs md:text-lg md:text-xl text-white'>{volume} </span>
                             <span className='text-2xs  text-white opacity-60'>sqft</span>
                             <span className='ml-8 font-bold text-xs md:text-lg md:text-xl text-lime-500'>2.5</span>
                             <span className=' ml-1 text-2xs  text-white opacity-60'>sqft</span>

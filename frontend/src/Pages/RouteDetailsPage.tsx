@@ -117,7 +117,8 @@ const RouteDetailsPage: FC = () => {
     
     ///
     let url = [`https://countryflagsapi.com/png/${deptCountry}`,
-                `https://countryflagsapi.com/png/${arrivCountry}`]
+        `https://countryflagsapi.com/png/${arrivCountry}`]
+    
     return (
         <PageLayout>
             <div className=''>
@@ -131,8 +132,6 @@ const RouteDetailsPage: FC = () => {
                             luggageHeight={luggageHeight}
                             luggageLength={luggageLength}
                             luggageWidth={luggageWidth}
-
-
                         />
                     </div>
 
