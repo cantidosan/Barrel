@@ -30,7 +30,7 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
             
     } = props
     let volume = (luggageHeight * luggageLength * luggageWidth)
-    let emptyBool = true
+    let emptyBool = false
 
     console.log('VOlume',volume)
     // console.log('deptDatejson', deptDate.toJSON())
@@ -40,7 +40,12 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
     console.log('month',dateObject?.getMonth() )
     console.log('day',dateObject?.getDay() )
 
-
+    //THIS COMP WILL PULL USED WEIGHT AND SPACE DATA FROM
+    //THE RESPECTIVE DELIVERY DB
+    //
+    //THIS COMP WILL ALSO
+    //
+    //
     //THIS COMPONENT WILL CONDITIONALY RENDER SPACE AND WEIGHT AVAILABILITY 
     //BASED ON SOME PARAMETER
     return (

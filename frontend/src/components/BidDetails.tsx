@@ -10,7 +10,7 @@ import React, { FC } from 'react'
 const BidDetails: FC = () => {
 
     ///THIS FUNCTION CONDITIONALLY RENDERS BASED ON THE STATE OF THE ROUTE
-    let emptyBool = false
+    let emptyBool = true
 
     return (
         <>

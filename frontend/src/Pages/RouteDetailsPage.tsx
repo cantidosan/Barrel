@@ -72,17 +72,22 @@ const RouteDetailsPage: FC = () => {
     },[route_id])
     
     useEffect(() => {
-        getDocs(query(collection(db,`routes/${route_id}/luggage`),
-        where('height_capacity', '>=', '0')
+
+        getDocs(query(collection(db, `routes/${route_id}/luggage`),
+            
+            where('height_capacity', '>=', '0')
+        
         )).then((querySnapshot) => {
         
             console.log('snapshot', querySnapshot)
             
-        querySnapshot.forEach((queryDocumentSnapshot) => {
-        
-            setLuggageId(queryDocumentSnapshot.id)
-        
-        })
+            querySnapshot.forEach((queryDocumentSnapshot) =>
+            {
+            
+                console.log(queryDocumentSnapshot.data())
+                setLuggageId(queryDocumentSnapshot.id)
+            
+            })
         })
 
     }, [deptDate])
