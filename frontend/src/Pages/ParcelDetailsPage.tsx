@@ -86,26 +86,37 @@ const ParcelDetailsPage: FC = () => {
                 }
         })
         
+        getDocs(query(collection(db, `items/${parcel_id}/pictures`),
+            where('url', '!=', ''))).then((querySnapshot) => {
+                console.log("TEMP SNAP1",querySnapshot)
+                querySnapshot.forEach((result) => {
+                    console.log("TEMP SNAP2",result.data())
+                    setPicId(result.id)
+                })
+        })
+        
+        
     }, [picId])
 
-    useEffect(() => {
+    // useEffect(() => {
         //change the way you obtain the queryDocumentSnapshot
         //to see if that will allow ForEach to map through 
         //the documents and get the ID and place it in state
-        getDocs(query(collection(db,`items/${parcel_id}/pictures`),
-        where('height_capacity', '>=', '0')
-        )).then((querySnapshot) => {
+        // getDocs(query(collection(db,`items/${parcel_id}/pictures`),
+        // where('height_capacity', '>=', '0')
+        // )).then((querySnapshot) => {
 
-            querySnapshot.forEach(queryDocumentSnapshot =>
-            {     
+        //     querySnapshot.forEach(result => { setPicId(result.id) })
+            //     .forEach(queryDocumentSnapshot =>
+            // {     
                 
-                    setPicId(queryDocumentSnapshot.id)
-                    console.log(queryDocumentSnapshot.data())
+            //         setPicId(queryDocumentSnapshot.id)
+            //         console.log(queryDocumentSnapshot.data())
                 
-            })
-        })
+            // })
+        // })
 
-    }, [parcel_id])
+    // }, [parcel_id])
 
 
     useEffect(() => {
