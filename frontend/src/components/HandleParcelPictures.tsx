@@ -33,7 +33,7 @@ const HandleParcelPictures = () => {
             }
             
             <div className='flex justify-center bg-barrel-green '>
-                <ParcelPictures />
+                <ParcelPictures userId={user.uid} />
             </div>
         </>
     )

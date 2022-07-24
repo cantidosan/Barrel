@@ -141,7 +141,7 @@ const RouteDetailsPage: FC = () => {
                     </div>
 
                     <div className='w-88  flex'>
-                        {user ? <ParcelPictures /> : ''}
+                        {user ? <ParcelPictures userId={user.uid} /> : ''}
                     </div>
                     <div className='bg-green-400 m-12 w-22'>
                         {user ? <HandleBid /> : ''}

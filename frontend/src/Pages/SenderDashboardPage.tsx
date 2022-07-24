@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC,useContext,useState } from 'react'
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import PageLayout from '../components/layouts/PageLayout'
@@ -6,12 +6,12 @@ import ParcelDeliveryDetails from '../components/ParcelDeliveryDetails'
 import ActiveBids from '../components/ActiveBids'
 import DeliveryUpdates from '../components/DeliveryUpdates'
 import ParcelPictures from '../components/ParcelPictures'
-
+import AuthContext from '../auth/authContext'
 
 const SenderDashboardPage: FC = () => {
 
     const url = [prflag, americanflag]
-
+    const { user } = useContext(AuthContext);
 
     return (
         <PageLayout>
@@ -21,7 +21,7 @@ const SenderDashboardPage: FC = () => {
                         <ParcelDeliveryDetails />
                     </section>
                     <section className='flex justify-center  mt-8'>
-                        <ParcelPictures />
+                        <ParcelPictures userId={user.uid} />
                     </section>
                     <section className='flex flex-col px-3 
                         md:flex-row  gap-4 md:gap-4 justify-center

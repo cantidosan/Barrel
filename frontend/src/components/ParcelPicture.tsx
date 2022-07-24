@@ -4,13 +4,17 @@ import americanflag from '../assets/images/americanflag.png'
 import { useStateValue } from '../state/index'
 
 //this component accepts a parcel object
+interface UrlProp  {
 
-const ParcelPicture: FC = () => {
+    url: string[] ;
+  
 
-    const [selectedImage, setSelectedImage] = useState('hello');
-
-    const [{ parcelId }, dispatch] = useStateValue();
-
+}
+const ParcelPicture: FC<UrlProp> = (props:any) => {
+    const {url} = props
+    const [selectedImage, setSelectedImage] = useState('hello')
+    const [{ parcelId }, dispatch] = useStateValue()
+    console.log('url',url)
     const handleSelect = () => {
 
         // Place the object information inside the
@@ -21,7 +25,7 @@ const ParcelPicture: FC = () => {
         dispatch({ type: 'parcelId', payload: selectedImage });
         console.log('inside handle')
     }
-    const url = [prflag, americanflag]
+    
 
     return (
         <div>
@@ -36,7 +40,7 @@ const ParcelPicture: FC = () => {
                     md:rounded-l-lg hover:opacity-100
                     hover:bg-green-600 active:bg-green-700 
                      "
-                    src={url[1]}
+                    src={url[0]}
                     alt=""
                     onClick={handleSelect}
 

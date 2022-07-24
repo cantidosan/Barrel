@@ -20,7 +20,7 @@ const PendingBidCardSm: FC = () => {
 
             </figure>
             <div className='pt-1'>
-                <ParcelPicture />
+                <ParcelPicture url={url} />
             </div>
         </div>
     )
