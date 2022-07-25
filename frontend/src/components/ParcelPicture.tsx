@@ -10,11 +10,14 @@ interface UrlProp  {
   
 
 }
-const ParcelPicture: FC<UrlProp> = (props:any) => {
+const ParcelPicture: FC<UrlProp> = (props: any) => {
+    
     const {url} = props
     const [selectedImage, setSelectedImage] = useState('hello')
     const [{ parcelId }, dispatch] = useStateValue()
-    console.log('url',url)
+
+    console.log('url', url)
+    
     const handleSelect = () => {
 
         // Place the object information inside the
@@ -40,7 +43,7 @@ const ParcelPicture: FC<UrlProp> = (props:any) => {
                     md:rounded-l-lg hover:opacity-100
                     hover:bg-green-600 active:bg-green-700 
                      "
-                    src={url[0]}
+                    src={url}
                     alt=""
                     onClick={handleSelect}
 
