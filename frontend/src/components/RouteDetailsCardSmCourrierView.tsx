@@ -4,10 +4,36 @@ import RouteInfoCard from './RouteInfoCard'
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 
+interface routeProp  {
 
-const RouteDetailsCardSmCourrierView: FC = () => {
+    url: string[] ;
+    deptAirport: string;
+    arrivAirport: string;
+    deptDate: any;
+    luggageWeight: string;
+    luggageHeight:number;
+    luggageLength: number;
+    luggageWidth: number;
+    routeId:string
 
-    const url = [prflag, americanflag]
+}
+
+const RouteDetailsCardSmCourrierView: FC<routeProp> = (props:routeProp) => {
+
+    const {
+        url,
+        deptAirport,
+        arrivAirport,
+        deptDate,
+        luggageWeight,
+        luggageHeight,
+        luggageLength,
+        luggageWidth,
+        routeId
+            
+    } = props
+    
+    // const url = [prflag, americanflag]
 
     return (
         <div className='flex'>
@@ -17,7 +43,17 @@ const RouteDetailsCardSmCourrierView: FC = () => {
 
             </figure>
             <div className=' basis-1/2 border-2'>
-                <RouteInfoCard />
+                <RouteInfoCard
+                    routeId={routeId}
+                    luggageHeight={luggageHeight}
+                    luggageLength={luggageLength}
+                    luggageWeight={luggageWeight}
+                    luggageWidth={luggageWidth}
+                    deptAirport={deptAirport}
+                    arrivAirport={arrivAirport}
+                    deptDate={deptDate}
+
+                />
             </div>
         </div>
     )

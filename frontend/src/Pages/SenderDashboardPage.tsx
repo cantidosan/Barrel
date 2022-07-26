@@ -12,16 +12,18 @@ const SenderDashboardPage: FC = () => {
 
     const url = [prflag, americanflag]
     const { user } = useContext(AuthContext);
-
+    console.log(user)
+    
     return (
         <PageLayout>
             <div className='bg-barrel-green'>
                 <main className=''>
                     <section className='flex justify-center '>
+                        {/* this pulls data from the delivery table */}
                         <ParcelDeliveryDetails />
                     </section>
                     <section className='flex justify-center  mt-8'>
-                        <ParcelPictures userId={user.uid} />
+                        {!!user ? <ParcelPictures userId={user.uid} />:''}
                     </section>
                     <section className='flex flex-col px-3 
                         md:flex-row  gap-4 md:gap-4 justify-center
@@ -36,7 +38,7 @@ const SenderDashboardPage: FC = () => {
                                 MANAGE BIDS
                             </span>
                             {/* We need to pass a prop to this containing
-                            shortcuts to recently created parcels */}
+                            links to active bids */}
                             <ActiveBids />
                         </div>
                     </section>

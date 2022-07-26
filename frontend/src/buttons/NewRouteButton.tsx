@@ -1,5 +1,6 @@
 import React from 'react'
 
+///THIS COMPONENT JUST NEEDS TO LINK TO THE CREATE A ROUTE PAGE
 function NewRouteButton() {
     return (
         <button id="newItemButton" className=' text-white-500 bg-gradient-to-r 

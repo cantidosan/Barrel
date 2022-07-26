@@ -15,6 +15,7 @@ const ParcelDeliveryInfo: FC = () => {
 
     const [userAuth, setUserAuth] = useState('false')
     const { user } = useContext(AuthContext);
+    console.log(user)
     isSender(user).then(res => setUserAuth(res))
 
     return (

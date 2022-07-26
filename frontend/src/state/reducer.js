@@ -63,6 +63,12 @@ export default function reducer(state, action) {
                 docRef: action.payload,
 
             }
+        case 'itemList':
+            return {
+                ...state,
+                itemList: action.payload,
+
+            }
 
         default:
             return state;

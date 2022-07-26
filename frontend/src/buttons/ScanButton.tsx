@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+//THIS BUTTON WILL LINK TO THE 3rd PARTY QR CODE LIBRARY WE DECIDE ON
 function ScanButton() {
     return (
         <button id="scanButton" className='mr-12 text-white-500 bg-gradient-to-r 

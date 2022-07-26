@@ -10,6 +10,12 @@ import PrevPageNavButton from '../buttons/PrevPageNavButton'
 
 const UpdateUserProfilePage: FC = () => {
 
+    //THIS COMP NEEDS THE BUTTONS PLACED INSIDE EVERY CHILD INSTEAD
+    //OF ITS CURRENT POSITION OUTSIDE IN THE PARENT COMP
+    //THIS REQUIRES USER AUTH AND DB READING WILL
+    //BE DONE IN EACH CHILD COMP
+
+    
     const [{ pageCount }, dispatch] = useStateValue();
 
 

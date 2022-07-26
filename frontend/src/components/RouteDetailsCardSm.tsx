@@ -5,13 +5,36 @@ import RouteInfoCard from './RouteInfoCard';
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 
+interface routeProp  {
 
+    url: string[] ;
+    deptAirport: string;
+    arrivAirport: string;
+    deptDate: any;
+    luggageWeight: string;
+    luggageHeight:number;
+    luggageLength: number;
+    luggageWidth: number;
+    routeId:string
+
+}
 const flagCode = 'PR'
 
-const RouteDetailsCardSm: FC = (props) => {
-
+const RouteDetailsCardSm: FC<routeProp> = (props:routeProp) => {
+    const {
+        url,
+        deptAirport,
+        arrivAirport,
+        deptDate,
+        luggageWeight,
+        luggageHeight,
+        luggageLength,
+        luggageWidth,
+        routeId
+            
+    } = props
    
-    let url = [`https://countryflagsapi.com/png/${flagCode}`,`https://countryflagsapi.com/png/${'JAM'}`]
+    // let url = [`https://countryflagsapi.com/png/${flagCode}`,`https://countryflagsapi.com/png/${'JAM'}`]
 
     return (
 
@@ -28,7 +51,16 @@ const RouteDetailsCardSm: FC = (props) => {
 
                 <div className='basis-1/2 border-2 pt-4   '>
 
-                    <RouteInfoCard />
+                    <RouteInfoCard
+                        routeId={routeId}
+                        luggageHeight={luggageHeight}
+                        luggageLength={luggageLength}
+                        luggageWeight={luggageWeight}
+                        luggageWidth={luggageWidth}
+                        deptAirport={deptAirport}
+                        arrivAirport={arrivAirport}
+                        deptDate={deptDate}
+                    />
 
                 </div>
 

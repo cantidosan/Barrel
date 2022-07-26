@@ -8,6 +8,7 @@ export default {
     arrivPort: '',
     headerState: '0',
     deptDate: '',
-    docRef: ''
+    docRef: '',
+    itemList: []
 
 };

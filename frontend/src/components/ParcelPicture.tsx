@@ -14,9 +14,9 @@ const ParcelPicture: FC<UrlProp> = (props: any) => {
     
     const {url} = props
     const [selectedImage, setSelectedImage] = useState('hello')
-    const [{ parcelId }, dispatch] = useStateValue()
+    const [{ parcelId,itemList }, dispatch] = useStateValue()
 
-    console.log('url', url)
+    
     
     const handleSelect = () => {
 
@@ -26,6 +26,7 @@ const ParcelPicture: FC<UrlProp> = (props: any) => {
         // setSelectedImage()
 
         dispatch({ type: 'parcelId', payload: selectedImage });
+        dispatch({ type: 'itemList', payload: selectedImage });
         console.log('inside handle')
     }
     

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC,useState } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
 
 import prflag from '../assets/images/prflag.png'
@@ -25,14 +25,29 @@ const CourierDashboardPage: FC = () => {
 
     let dashboardView = courierToggle
 
+    const [deptAirport, setDeptAirport] = useState('');
+    const [arrivAirport, setArrivAirport] = useState('');
+    const [deptCountry, setDeptCountry] = useState('');
+    const [arrivCountry, setArrivCountry] = useState('');
+    const [luggageHeight, setLuggageHeight] = useState<number>(0);
+    const [luggageLength, setLuggageLength] = useState<number>(0);
+    const [luggageWidth, setLuggageWidth] = useState<number>(0);
+    const [deptDate, setDeptDate] = useState();
+    const [luggageId, setLuggageId] = useState('');
+    const [luggageWeight, setLuggageWeight] = useState('');
 
+
+    const [routeInfoList, setRouteInfoList] = useState([]);
 
     const url = [prflag, americanflag]
 
+
+    // FETCH ALL ROUTE DOCS TIED TO THE USER REGARDLESS OF ITS
+    //RELATIVE STATE(active/disabled/intransit/etc)
     return (
         <PageLayout>
             <main className='bg-barrel-green flex  flex-col '>
-
+                {/* payout represents courier lifetime earnings */}
                 <p className='text-white text-2xl 
                     font-hansief font-bold 
                     text-center bg-barrel-green 
@@ -62,9 +77,30 @@ const CourierDashboardPage: FC = () => {
                 >
                     {dashboardView === 'Route' ?
                         <div className='flex flex-col md:flex-row gap-4  '>
-                            <RouteDetailsCardSmCourrierView />
-                            <RouteDetailsCardSmCourrierView />
-
+                            {/* each comp needs two urls per url prop
+                            and route/luggage information */}
+                            {
+                                routeInfoList.map((routeInfo: any,
+                                    key: any
+                                ) =>
+                                    {
+                        
+                    
+                                        return <RouteDetailsCardSmCourrierView url={url}
+                                            deptAirport={routeInfo.deptAirport}
+                                            arrivAirport={routeInfo.arrivAirport}
+                                            deptDate={routeInfo.deptDate}
+                                            luggageWeight={routeInfo.luggageWeight}
+                                            luggageHeight={routeInfo.luggageHeight}
+                                            luggageLength={routeInfo.luggageLength}
+                                            luggageWidth={routeInfo.luggageWidth}
+                                            routeId={routeInfo.routeId}
+                                        
+                                        />
+                            
+                                    }
+                                )
+                            }
 
                         </div> :
 
@@ -88,6 +124,7 @@ const CourierDashboardPage: FC = () => {
                     {
                         dashboardView === 'Route' ?
                             <div className='flex flex-col md:flex-row gap-4 '>
+                                {/* this comp needs two flag urls and one item url */}
                                 <PendingBidCardSm />
                                 <PendingBidCardSm />
                                 <PendingBidCardSm />
