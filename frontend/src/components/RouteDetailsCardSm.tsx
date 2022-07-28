@@ -1,7 +1,7 @@
 import React, { ReactElement, FC } from 'react'
 import RouteFlag from './RouteFlag';
 import RouteInfoCard from './RouteInfoCard';
-
+import { AirportToFlagConvert } from './AirportToFlagConvert';
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 
@@ -18,7 +18,7 @@ interface routeProp  {
     routeId:string
 
 }
-const flagCode = 'PR'
+
 
 const RouteDetailsCardSm: FC<routeProp> = (props:routeProp) => {
     const {
@@ -33,9 +33,13 @@ const RouteDetailsCardSm: FC<routeProp> = (props:routeProp) => {
         routeId
             
     } = props
-   
-    // let url = [`https://countryflagsapi.com/png/${flagCode}`,`https://countryflagsapi.com/png/${'JAM'}`]
 
+    let deptFlag = AirportToFlagConvert(deptAirport)
+    let arrivFlag = AirportToFlagConvert(arrivAirport)
+   //url prop had some issues i didnt have time to deal with so the helper function was 
+    //used to get the flags
+     let url2 = [`https://countryflagsapi.com/png/${deptFlag}`,`https://countryflagsapi.com/png/${arrivFlag}`]
+    console.log('urls',url2)
     return (
 
         <>
@@ -44,8 +48,8 @@ const RouteDetailsCardSm: FC<routeProp> = (props:routeProp) => {
                 <div className='flex flex-col basis-1/2 border-2 
                              '>
 
-                    <RouteFlag url={url[0]!} />
-                    <RouteFlag url={url[1]!} />
+                    <RouteFlag url={url2[0]} />
+                    <RouteFlag url={url2[1]} />
 
                 </div>
 

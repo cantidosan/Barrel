@@ -20,6 +20,7 @@ const HomePage: FC = () => {
     
     const [routeInfoList, setRouteInfoList] = useState([]);
     const [luggageIdList, setLuggageIdList] = useState([]);
+
     console.log(routeInfoList)
 
     const [flagPic, setFlagPic] = useState();
@@ -36,81 +37,67 @@ const HomePage: FC = () => {
     useEffect(() =>
         {
 
-        getDocs(collection(db, "routes")).then((querySnapshot) =>
-            {
-            querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data().arrival_airport)
-                let dateObject = new Date(doc.data().departure_date.toDate())
-            
-                let routeObject =
-                
+            getDocs(collection(db, "routes"))
+            .then((querySnapshot) =>
                 {
-                        routeId: doc.id,
-                        arrival_ariport: doc.data().arrival_airport,
-                        arrival_country: doc.data().arrival_country,
-                        departure_airport: doc.data().departure_airport,
-                        departure_country:doc.data().departure_country,
-                        departure_date: `${dateObject?.getMonth()} / ${dateObject?.getMonth()} `,
-                        exchange_location: doc.data().exchange_location,
-                        exchange_policy: doc.data().exchange_policy,
-                        flight_number: doc.data().flight_number,
-                        userId: doc.data().userId
-                }
-                console.log('routeObject', routeObject)
-                routeObjectList.push(routeObject)
-                // console.log("post Push Data", tempItemURL)
-                setRouteInfoList(routeObjectList)
+                    querySnapshot.forEach((doc) =>
+                    {
+                        // doc.data() is never undefined for query doc snapshots
+                        console.log(doc.id, " => ", doc.data().arrival_airport)
+                        let dateObject = new Date(doc.data().departure_date.toDate())
+                    
+                        let routeObject =
+                        
+                        {
+                            routeId: doc.id,
+                            arrival_ariport: doc.data().arrival_airport,
+                            arrival_country: doc.data().arrival_country,
+                            departure_airport: doc.data().departure_airport,
+                            departure_country: doc.data().departure_country,
+                            departure_date: `${dateObject?.getMonth()} / ${dateObject?.getMonth()} `,
+                            exchange_location: doc.data().exchange_location,
+                            exchange_policy: doc.data().exchange_policy,
+                            flight_number: doc.data().flight_number,
+                            userId: doc.data().userId,
+                            luggageId: '',
+                            weight_capacity: '',
+                            width_capacity: '',
+                            height_capacity: '',
+                            length_capacity:'',
+                        }
+                        // console.log('routeObject', routeObject)
+                        // routeObjectList.push(routeObject)
+                        //  console.log("post Push Data", tempItemURL)
+                        // setRouteInfoList(routeObjectList)
 
-                // getDocs(query(collection(db, `routes/${doc.id}/luggage`),
+                        getDocs(query(collection(db, `routes/${doc.id}/luggage`),
+                        where('height_capacity', '>=', '0')))
+                        .then((luggagequerySnapshot) => {
+                            luggagequerySnapshot.forEach((queryDocumentSnapshot) =>
+                            {
+
+                                routeObject.length_capacity = queryDocumentSnapshot.data().length_capacity as string
+                                routeObject.height_capacity = queryDocumentSnapshot.data().height_capacity as string
+                                routeObject.width_capacity = queryDocumentSnapshot.data().width_capacity as string
+                                routeObject.weight_capacity = queryDocumentSnapshot.data().weight_capacity as string
+                                routeObject.luggageId = queryDocumentSnapshot.id as string
+
+                                routeObjectList.push(routeObject)
+                                
+                                setRouteInfoList(routeObjectList)
+                            })
+                        })
+                        
+                    })
                 
-                //     where('height_capacity', '>=', '0')
-                // )).then((querySnapshot) => {
-                //     querySnapshot.forEach((queryDocumentSnapshot) =>
-                //     {
-                    
-                //         console.log(queryDocumentSnapshot.data())
-                //         let luggageIdObject = { luggageId: queryDocumentSnapshot.id as string }
-                    
-                    
-                //     })
-                // })
-            
-            })
+                })
             
           
             
         }, [])
           
-                
-                
-                
-        // .then((value) => {
-
-
-
-        //     let luggageObject =
-            
-        //     {
-                    
-        //             weight_capacity: doc.data().weight_capacity,
-        //             width_capacity: doc.data().width_capacity,
-        //             height_capacity: doc.data().height_capacity,
-        //             length_capacity:doc.data().length_capacity,
-          
-        //         }
-            
-        // })
           
     
-    
-    console.log('routeInfo',routeInfoList)
-   
-    
-
-        
-
-
 
     return (
 
@@ -125,26 +112,27 @@ const HomePage: FC = () => {
                                 ) =>
                                 
                                     {
-                                        console.log(routeInfo.departure_date)
+                                        console.log('Width',routeInfo.luggageWidth)
+                                        console.log('Weight',routeInfo['weight_capacity'])
+                                        console.log('Height',routeInfo['height_capacity'])
+                                        console.log('Length',routeInfo.luggageLength)
                                         
                                         return <RouteDetailsCardSm url={url}
-                                            deptAirport={routeInfo.departure_airport}
-                                            arrivAirport={routeInfo.arrival_airport}
-                                            deptDate={routeInfo.departure_date}
-                                            luggageWeight={routeInfo.luggageWeight}
-                                            luggageHeight={routeInfo.luggageHeight}
-                                            luggageLength={routeInfo.luggageLength}
-                                            luggageWidth={routeInfo.luggageWidth}
-                                            routeId={routeInfo.routeId}
-                                            key={routeInfo.routeId}
+                                            deptAirport={routeInfo['departure_airport']}
+                                            arrivAirport={routeInfo['arrival_airport']}
+                                            deptDate={routeInfo['departure_date']}
+                                            luggageWeight={routeInfo['weight_capacity']}
+                                            luggageHeight={routeInfo['height_capacity']}
+                                            luggageLength={routeInfo['length_capacity']}
+                                            luggageWidth={routeInfo['width_capacity']}
+                                            routeId={routeInfo['routeId']}
+                                            key={routeInfo['routeId']}
                                         
                                         />
                             
                                     }
                                 )
                             }
-
-                       
 
                     </div>
                 </div >

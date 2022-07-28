@@ -34,6 +34,7 @@ const RouteInfoCard: FC<routeInfoProp> = (props:routeInfoProp) => {
     } = props
     
     let volume = (luggageHeight * luggageLength * luggageWidth)
+    
     //THIS COMPONENT WILL CONDITIONALY RENDER SPACE AND WEIGHT AVAILABILITY 
     //BASED ON SOME PARAMETER
     return (
