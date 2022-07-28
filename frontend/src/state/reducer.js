@@ -1,8 +1,6 @@
 export default function reducer(state, action) {
 
-    console.log('inside reducer action type', action.type)
-    console.log('inside reducer state', state)
-    console.log('inside reducer action payload', action.payload)
+
 
     switch (action.type) {
         case 'pageCount':
@@ -64,9 +62,14 @@ export default function reducer(state, action) {
 
             }
         case 'itemList':
+            //this required customization to allow previous data
+            // to persist in context
+            let { itemList } = state
+
             return {
+
                 ...state,
-                itemList: action.payload,
+                itemList: `${itemList}, ${action.payload}`,
 
             }
 

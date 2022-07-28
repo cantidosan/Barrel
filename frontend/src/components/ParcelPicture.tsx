@@ -7,13 +7,16 @@ import { useStateValue } from '../state/index'
 interface UrlProp  {
 
     url: string[] ;
-  
+    picId?: string[]
+    itemId?: string[]
 
 }
 const ParcelPicture: FC<UrlProp> = (props: any) => {
     
-    const {url} = props
+    const { url, picId,itemId } = props
+    
     const [selectedImage, setSelectedImage] = useState('hello')
+   
     const [{ parcelId,itemList }, dispatch] = useStateValue()
 
     
@@ -25,8 +28,8 @@ const ParcelPicture: FC<UrlProp> = (props: any) => {
         //the pass it down one level to Parcel Delivery Details
         // setSelectedImage()
 
-        dispatch({ type: 'parcelId', payload: selectedImage });
-        dispatch({ type: 'itemList', payload: selectedImage });
+        dispatch({ type: 'parcelId', payload: itemId });
+        dispatch({ type: 'itemList', payload: itemId });
         console.log('inside handle')
     }
     

@@ -40,19 +40,36 @@ const ParcelPictures: FC<userProp> = (props: userProp) => {
                 // doc.data() is never undefined for query doc snapshots
                 
                 tempItemList.push(doc.id)
+                let picInfoObject = {
+                    itemId: doc.id,
+                    picId:'',
+                    url:''
+                }
+
+
                 getDocs(query(collection(db, `items/${doc.id}/pictures`),
                     where('url', '!=', '')))
                     .then((querySnapshot) => {
                         // console.log("picIDSnapshot", querySnapshot)
                         querySnapshot.forEach((result) => {
 
+
+                            picInfoObject['picId']=result.id
+                            picInfoObject['url']=result.data().url
+
                             // console.log("pic Data URL", result.data().url)
-                            itemPicId.push(result.id)
-                            tempItemURL.push(result.data().url)
+                            // itemPicId.push(result.id)
+                            tempItemURL.push(picInfoObject)
                             // console.log("post Push Data", tempItemURL)
+
+
+
+
+
                             setItemUrlList(tempItemURL)
                             
-                            setItemPicIdList(itemPicId)
+
+
                             console.log("itemUrlList", itemUrlList)
                         }
                         )
@@ -67,8 +84,8 @@ const ParcelPictures: FC<userProp> = (props: userProp) => {
     
 
     // console.log("MAIN LIST", itemUrlList, itemPicIdList)
-    const combinedList = [...itemUrlList, ...itemPicIdList]
-    console.log("MAIN LIST", combinedList)
+   
+ 
     return (
     
          <div className='box-content p-4 
@@ -77,8 +94,13 @@ const ParcelPictures: FC<userProp> = (props: userProp) => {
             <div className='flex flex-column gap-4'
             >    
                 {
-                    itemUrlList.map((url: any,key:any) => {
-                        return <ParcelPicture url={url} key={key} />
+
+                    itemUrlList.map((url: any, key: any) => {
+                        console.log('url',url)
+                        return <ParcelPicture url={url['url']}
+                            picId={url['picId']}
+                            itemId={url['itemId']}
+                            key={url['picId']} />
                     })  
                 }
               
