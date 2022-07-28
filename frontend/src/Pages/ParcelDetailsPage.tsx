@@ -16,7 +16,7 @@ import {
 import { firebaseConfig } from "../FirebaseConfig";
 import { initializeApp } from "firebase/app";
 import { useParams } from 'react-router-dom'
-
+import {getVolume} from '../components/getVolume'
 
 
 
@@ -146,7 +146,7 @@ const ParcelDetailsPage: FC = () => {
     
     },[picId])
 
-    let volume = (parcelHeight * parcelLength * parcelWidth)
+    let volume = getVolume(parcelHeight, parcelLength, parcelWidth)
   
     
 

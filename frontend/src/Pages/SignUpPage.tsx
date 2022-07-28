@@ -60,7 +60,7 @@ const SignUpPage: FC = () => {
 
                 onSubmit={(values, actions) => {
 
-                    console.log({ values, actions });
+                    // console.log({ values, actions });
                     handleSignup(values)
                     // handleCreateUser(values)
                     // alert(JSON.stringify(values, null, 2));

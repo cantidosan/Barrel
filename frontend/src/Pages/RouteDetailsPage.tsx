@@ -120,7 +120,7 @@ const RouteDetailsPage: FC = () => {
     },[luggageId])
 
     
-    ///
+    
     let url = [`https://countryflagsapi.com/png/${deptCountry}`,
         `https://countryflagsapi.com/png/${arrivCountry}`]
     

@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react'
 import LuggageAttributes from './LuggageAttributes';
-
+import getVolume from '../components/getVolume'
 interface UrlProp  {
 
     
@@ -29,7 +29,7 @@ const RouteInfoCardDetail: FC<UrlProp> = (props:UrlProp) => {
         luggageWidth
             
     } = props
-    let volume = (luggageHeight * luggageLength * luggageWidth)
+    let volume = getVolume(luggageHeight , luggageLength , luggageWidth)
     let emptyBool = false
 
     console.log('VOlume',volume)

@@ -10,8 +10,10 @@ import AuthContext from '../auth/authContext'
 
 const SenderDashboardPage: FC = () => {
 
-    const url = [prflag, americanflag]
+    // const url = [prflag, americanflag]
+
     const { user } = useContext(AuthContext);
+    
     console.log(user)
     
     return (

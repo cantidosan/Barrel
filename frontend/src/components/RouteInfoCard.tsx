@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react'
 import LuggageAttributes from './LuggageAttributes';
-
+import { getVolume } from '../components/getVolume'
 
 interface routeInfoProp  {
 
@@ -33,7 +33,7 @@ const RouteInfoCard: FC<routeInfoProp> = (props:routeInfoProp) => {
             
     } = props
     
-    let volume = (luggageHeight * luggageLength * luggageWidth)
+    let volume = getVolume(luggageHeight , luggageLength , luggageWidth)
     
     //THIS COMPONENT WILL CONDITIONALY RENDER SPACE AND WEIGHT AVAILABILITY 
     //BASED ON SOME PARAMETER
