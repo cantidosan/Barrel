@@ -17,7 +17,7 @@ const BidDetailsView: FC = () => {
 
     return (
         <div className='flex flex-row border  '>
-            {userAuth ?   <MakeBid />:<DecideBid />}
+            {userAuth ?   <DecideBid />:<MakeBid />}
             <BidDetails />
         </div>
     )
