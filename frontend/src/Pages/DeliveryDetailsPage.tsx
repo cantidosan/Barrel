@@ -20,9 +20,9 @@ const DeliveryDetailsPage: FC = () => {
     let navigate = useNavigate();
 
     const { user } = useContext(AuthContext);
-    console.log('user', user)
+    
     isDeliveryOwner(user).then(res => setUserAuth(res))
-
+    console.log('user', user)
     console.log('valid viewer', userAuth)
     // CODE BELOW LIMITS PAGE ACCESS TO SENDER AND COURIER SOLELY
     // if (!user && userAuth) {

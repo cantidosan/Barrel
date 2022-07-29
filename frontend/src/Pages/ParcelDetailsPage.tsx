@@ -98,27 +98,7 @@ const ParcelDetailsPage: FC = () => {
         
     }, [picId])
 
-    // useEffect(() => {
-        //change the way you obtain the queryDocumentSnapshot
-        //to see if that will allow ForEach to map through 
-        //the documents and get the ID and place it in state
-        // getDocs(query(collection(db,`items/${parcel_id}/pictures`),
-        // where('height_capacity', '>=', '0')
-        // )).then((querySnapshot) => {
-
-        //     querySnapshot.forEach(result => { setPicId(result.id) })
-            //     .forEach(queryDocumentSnapshot =>
-            // {     
-                
-            //         setPicId(queryDocumentSnapshot.id)
-            //         console.log(queryDocumentSnapshot.data())
-                
-            // })
-        // })
-
-    // }, [parcel_id])
-
-
+    
     useEffect(() => {
 
         if(!!picId){

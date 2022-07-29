@@ -5,6 +5,7 @@ import MakeBid from './MakeBid'
 import AuthContext from '../auth/authContext'
 import { isRouteOwner } from './isRouteOwner'
 
+
 const BidDetailsView: FC = () => {
 
     const [userAuth, setUserAuth] = useState('false')

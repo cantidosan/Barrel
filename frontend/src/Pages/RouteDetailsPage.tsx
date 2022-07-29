@@ -79,12 +79,12 @@ const RouteDetailsPage: FC = () => {
         
         )).then((querySnapshot) => {
         
-            console.log('snapshot', querySnapshot)
+            // console.log('snapshot', querySnapshot)
             
             querySnapshot.forEach((queryDocumentSnapshot) =>
             {
             
-                console.log(queryDocumentSnapshot.data())
+                // console.log(queryDocumentSnapshot.data())
                 setLuggageId(queryDocumentSnapshot.id)
             
             })
@@ -103,7 +103,7 @@ const RouteDetailsPage: FC = () => {
 
             if (docSnap.exists()) {
     
-                console.log("Document data:", docSnap.data());
+                // console.log("Document data:", docSnap.data());
     
                 setLuggageWeight(docSnap.data().weight_capacity)
                 setLuggageHeight(docSnap.data().height_capacity)

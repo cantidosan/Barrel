@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-
+import React, { FC, useEffect } from 'react'
+import { useStateValue } from '../state/index'
 
 // THIS COMP NEEDS TO COMMUNICATE WITH THE PARCEL PICTURES
 //COMPONENT FOR TO LISTEN FOR CLICK EVENTS TO UPDATE
@@ -11,6 +11,17 @@ const BidDetails: FC = () => {
 
     ///THIS FUNCTION CONDITIONALLY RENDERS BASED ON THE STATE OF THE ROUTE
     let emptyBool = true
+
+    const [{ itemList }, dispatch] = useStateValue();
+
+    useEffect(() => {
+        
+
+        
+    }, [itemList])
+    
+    console.log('itemList',itemList)
+
 
     return (
         <>

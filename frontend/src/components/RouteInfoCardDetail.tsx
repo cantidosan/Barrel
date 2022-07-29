@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react'
 import LuggageAttributes from './LuggageAttributes';
-import getVolume from '../components/getVolume'
+import { getVolume } from '../components/getVolume'
 interface UrlProp  {
 
     
