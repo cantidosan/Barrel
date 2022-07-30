@@ -31,9 +31,9 @@ const BidDetails: FC = () => {
     ///", lA0AF4Rr2y2ED9OnEAaU"
     ///", UHrXwvDZENiEZXd2fh9O, kEZguqEWmd3X4wToHgv5"
 
-    console.log('itemList Array', JSON.stringify(itemList).replaceAll(',', ''))
+    // console.log('itemList Array', JSON.stringify(itemList).replaceAll(',', ''))
     let newItemList = JSON.stringify(itemList).replaceAll(',', '')
-    console.log('newList', newItemList)
+    // console.log('newList', newItemList)
     let newerItemList = newItemList.split(' ',)
     // console.log('newList2', newerItemList.pop())
 
@@ -69,7 +69,7 @@ const BidDetails: FC = () => {
                         
                         bidArraylist.push(bidDetailsObject)
                         setBidList([...bidList!, bidDetailsObject])
-                        console.log('bidarray',bidArraylist)
+                        // console.log('bidarray',bidArraylist)
                         
                     } else {
                         // doc.data() will be undefined in this case
@@ -94,7 +94,7 @@ const BidDetails: FC = () => {
     const bidVolume = bidList.map((bid:any, key:any)=> {
             return getVolume(bid['height'],bid['width'],bid['length'])
     })
-    console.log('bidVolume', bidVolume)
+    // console.log('bidVolume', bidVolume)
 
     //code below calculates total bidVolume
     const initialValue = 0;

@@ -2,9 +2,9 @@ import React from 'react'
 import ParcelPicture from './ParcelPicture'
 import PendingBidCardSm from './PendingBidCardSm'
 
-//This component takes the senderId as a prop and fetches
-//all items created by the user then fetches the picurls for each 
-//component
+//this component will take the user id and fetch
+// all bids that are in an "active" state
+// and map them oot ;) .
 
 const ActiveBids = () => {
     return (
