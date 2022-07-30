@@ -30,7 +30,6 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-
             <Route path="/dashboard/sender/:user_id" element={<SenderDashboardPage />} />
             <Route path="/dashboard/courier/:user_id" element={<CourierDashboardPage />} />
             <Route path="/deliveries/:delivery_id" element={<DeliveryDetailsPage />} />

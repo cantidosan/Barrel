@@ -1,6 +1,5 @@
-import React, { FC,useState } from 'react'
+import React, { FC,useState,useContext,useEffect } from 'react'
 import PageLayout from '../components/layouts/PageLayout'
-
 import prflag from '../assets/images/prflag.png'
 import americanflag from '../assets/images/americanflag.png'
 import RouteFlag from '../components/RouteFlag'
@@ -15,8 +14,14 @@ import { useStateValue } from '../state/';
 import ScanButton from '../buttons/ScanButton'
 import NewRouteButton from '../buttons/NewRouteButton'
 import BidStatusSubheader from '../components/layouts/subheaders/BidStatusSubheader'
-
-
+import AuthContext from '../auth/authContext'
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "../FirebaseConfig";
+import {
+    getFirestore, addDoc, updateDoc,
+    doc, getDocs, query,
+    collection, where, getDoc
+} from "firebase/firestore"; 
 
 ///TODO COMPLETE STYLING THE TOGGLE BUTTON MISSING SVG BARREL ICON AND PLACEHOLDER LABEL
 const CourierDashboardPage: FC = () => {
@@ -36,12 +41,70 @@ const CourierDashboardPage: FC = () => {
     const [luggageId, setLuggageId] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
 
-
+    const { user } = useContext(AuthContext);
+   
     const [routeInfoList, setRouteInfoList] = useState([]);
-
     const url = [prflag, americanflag]
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    let routeObjectList = [] as any
 
+    const q = query(collection(db, "routes"), where("userId", "==", 'kTGwi0Qd9rXq6MSdWnn5bf6JxBJ2'));
 
+    useEffect(() =>
+        {
+            getDocs(q).then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log(doc.id, " => ", doc.data());
+
+                    let dateObject = new Date(doc.data().departure_date.toDate())
+                            
+                    let routeObject =
+                    
+                    {
+                        routeId: doc.id,
+                        arrival_ariport: doc.data().arrival_airport,
+                        arrival_country: doc.data().arrival_country,
+                        departure_airport: doc.data().departure_airport,
+                        departure_country: doc.data().departure_country,
+                        departure_date: `${dateObject?.getMonth()} / ${dateObject?.getMonth()} `,
+                        exchange_location: doc.data().exchange_location,
+                        exchange_policy: doc.data().exchange_policy,
+                        flight_number: doc.data().flight_number,
+                        userId: doc.data().userId,
+                        luggageId: '',
+                        weight_capacity: '',
+                        width_capacity: '',
+                        height_capacity: '',
+                        length_capacity:'',
+                    }
+
+                    getDocs(query(collection(db, `routes/${doc.id}/luggage`),
+                                where('height_capacity', '>=', '0')))
+                                .then((luggagequerySnapshot) => {
+                                    luggagequerySnapshot.forEach((queryDocumentSnapshot) =>
+                                    {
+
+                                        routeObject.length_capacity = queryDocumentSnapshot.data().length_capacity as string
+                                        routeObject.height_capacity = queryDocumentSnapshot.data().height_capacity as string
+                                        routeObject.width_capacity = queryDocumentSnapshot.data().width_capacity as string
+                                        routeObject.weight_capacity = queryDocumentSnapshot.data().weight_capacity as string
+                                        routeObject.luggageId = queryDocumentSnapshot.id as string
+
+                                        routeObjectList.push(routeObject)
+                                        
+                                        setRouteInfoList(routeObjectList)
+                                    })
+                                })
+                    
+                    
+                    
+                    
+                });
+            })
+    }, [])
+    
     // FETCH ALL ROUTE DOCS TIED TO THE USER REGARDLESS OF ITS
     //RELATIVE STATE(active/disabled/intransit/etc)
     return (
@@ -87,14 +150,15 @@ const CourierDashboardPage: FC = () => {
                         
                     
                                         return <RouteDetailsCardSmCourrierView url={url}
-                                            deptAirport={routeInfo.deptAirport}
-                                            arrivAirport={routeInfo.arrivAirport}
-                                            deptDate={routeInfo.deptDate}
-                                            luggageWeight={routeInfo.luggageWeight}
-                                            luggageHeight={routeInfo.luggageHeight}
-                                            luggageLength={routeInfo.luggageLength}
-                                            luggageWidth={routeInfo.luggageWidth}
-                                            routeId={routeInfo.routeId}
+                                        deptAirport={routeInfo['departure_airport']}
+                                        arrivAirport={routeInfo['arrival_airport']}
+                                        deptDate={routeInfo['departure_date']}
+                                        luggageWeight={routeInfo['weight_capacity']}
+                                        luggageHeight={routeInfo['height_capacity']}
+                                        luggageLength={routeInfo['length_capacity']}
+                                        luggageWidth={routeInfo['width_capacity']}
+                                        routeId={routeInfo['routeId']}
+                                        key={routeInfo['routeId']}
                                         
                                         />
                             
@@ -105,6 +169,8 @@ const CourierDashboardPage: FC = () => {
                         </div> :
 
                         <div className='flex flex-col md:flex-row gap-4 '>
+                            {/* comp below requires */}
+
                             <DeliveryDetailsCardSmCourrierView />
                             <DeliveryDetailsCardSmCourrierView />
                         </div>
