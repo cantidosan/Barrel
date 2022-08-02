@@ -11,13 +11,14 @@ import { firebaseConfig } from "../FirebaseConfig";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export async function isRouteOwner(user) {
-    const docRef = doc(db, "routes", "KBce8i07ETSAW4BquqR9");
+export async function isRouteOwner(user, routeId) {
+    const docRef = doc(db, "routes", routeId);
     const docSnap = await getDoc(docRef);
 
     if ((docSnap.exists()) && docSnap.data().userId === user.uid) {
+
         return 'true'
     }
-    return false
+    return 'false'
 
 }

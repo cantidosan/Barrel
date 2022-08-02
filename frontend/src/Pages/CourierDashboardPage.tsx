@@ -22,6 +22,7 @@ import {
     doc, getDocs, query,
     collection, where, getDoc
 } from "firebase/firestore"; 
+import { isRouteOwner } from '../components/isRouteOwner'
 
 ///TODO COMPLETE STYLING THE TOGGLE BUTTON MISSING SVG BARREL ICON AND PLACEHOLDER LABEL
 const CourierDashboardPage: FC = () => {
@@ -40,20 +41,27 @@ const CourierDashboardPage: FC = () => {
     const [deptDate, setDeptDate] = useState();
     const [luggageId, setLuggageId] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
+    
 
     const { user } = useContext(AuthContext);
+    console.log(user)
    
     const [routeInfoList, setRouteInfoList] = useState([]);
+
     const url = [prflag, americanflag]
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+
     let routeObjectList = [] as any
 
-    const q = query(collection(db, "routes"), where("userId", "==", 'kTGwi0Qd9rXq6MSdWnn5bf6JxBJ2'));
+
 
     useEffect(() =>
-        {
-            getDocs(q).then((querySnapshot) => {
+    {
+        if(user){
+        //simple active route query
+        const routeQuery = query(collection(db, "routes"), where("userId", "==", user.uid));
+            getDocs(routeQuery).then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     // doc.data() is never undefined for query doc snapshots
                     console.log(doc.id, " => ", doc.data());
@@ -79,7 +87,7 @@ const CourierDashboardPage: FC = () => {
                         height_capacity: '',
                         length_capacity:'',
                     }
-
+                    //provides the luggage info for each route fetched
                     getDocs(query(collection(db, `routes/${doc.id}/luggage`),
                                 where('height_capacity', '>=', '0')))
                                 .then((luggagequerySnapshot) => {
@@ -97,13 +105,29 @@ const CourierDashboardPage: FC = () => {
                                         setRouteInfoList(routeObjectList)
                                     })
                                 })
-                    
-                    
-                    
-                    
+    
                 });
             })
-    }, [])
+        }
+            //fetches bid details
+        
+        // const bidQuery = query(collection(db, "bids"),
+        //     where("courierId", "==", user.uid));
+        //     getDocs(bidQuery).then((bidquerySnapshot) => {
+        //         bidquerySnapshot.forEach((doc) => {
+        //             // doc.data() is never undefined for query doc snapshots
+                    
+        //                 console.log(doc.id, " => ", doc.data().senderId);
+        //                 console.log('we made it ')
+        //         });  
+        //     })
+    }, [user])
+    
+                   
+ 
+                
+            
+    
     
     // FETCH ALL ROUTE DOCS TIED TO THE USER REGARDLESS OF ITS
     //RELATIVE STATE(active/disabled/intransit/etc)

@@ -7,12 +7,26 @@ import {
     collection, where, getDoc
 } from "firebase/firestore"; 
 
-const HandleBid: FC = () => {
 
+
+
+interface courierProp  {
+
+    
+    courierId:string
+   
+
+}
+
+
+const HandleBid: FC<courierProp> = (props:courierProp) => {
+
+    const { courierId } = props
+    
     return (
 
         <div className='bg-barrel-green'>
-            <BidDetailsView/>
+            <BidDetailsView courierId={courierId}/>
             {/* <BidDetails /> */}
 
         </div>

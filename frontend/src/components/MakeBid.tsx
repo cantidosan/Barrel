@@ -10,9 +10,22 @@ import { useParams,useNavigate } from 'react-router-dom'
 //send to the DB that will include the bid dollar amount and senderId
 
 
-const MakeBid: FC = () => {
 
+
+interface courierProp  {
+
+    
+    courierId:string
+   
+
+}
+
+const MakeBid: FC<courierProp> = (props:courierProp) => {
+
+    const { courierId } = props
+    
     const [bidAmount, setBidAmount] = useState('')
+
     const [{ itemList }, dispatch] = useStateValue();
     const { user } = useContext(AuthContext);
     const app = initializeApp(firebaseConfig);
@@ -36,8 +49,10 @@ const MakeBid: FC = () => {
             amount: bidAmount,
             routeId: route_id,
             senderId: user.uid,
-            status:'active'
+            status: 'active',
+            courierId:courierId
         });
+
         //add itemLIst to docref's subcollection
         let bidItemsRef = collection(db, "bids", docRef.id as string, "bidItems");
         await addDoc(bidItemsRef, {itemList})

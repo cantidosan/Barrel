@@ -17,8 +17,6 @@ const PendingBidCardSm: FC = () => {
 
     // const docRef = doc(db, "bids", bid_id as string);
 
-
-
     return (
         <div className='flex '>
             <figure className='flex flex-col basis-1/2  '>

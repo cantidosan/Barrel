@@ -36,6 +36,7 @@ const RouteDetailsPage: FC = () => {
     const [luggageWidth, setLuggageWidth] = useState<number>(0);
     const [deptDate, setDeptDate] = useState();
     const [luggageId, setLuggageId] = useState('');
+    const [courierId, setCourierId] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
 
 
@@ -54,7 +55,7 @@ const RouteDetailsPage: FC = () => {
         getDoc(docRef).then(docSnap => {
 
             if (docSnap.exists()) {
-                
+                setCourierId(docSnap.data().userId)
                 setArrivAirport(docSnap.data().arrival_airport)
                 setDeptAirport(docSnap.data().departure_airport)
                 setArrivCountry(docSnap.data().arrival_country)
@@ -144,7 +145,7 @@ const RouteDetailsPage: FC = () => {
                         {user ? <ParcelPictures userId={user.uid} /> : ''}
                     </div>
                     <div className='bg-green-400 m-12 w-22'>
-                        {user ? <HandleBid /> : ''}
+                        {user ? <HandleBid courierId={courierId} /> : ''}
                     </div>
 
 

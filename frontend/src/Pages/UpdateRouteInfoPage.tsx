@@ -34,7 +34,7 @@ const UpdateRouteInfoPage: FC = () => {
 
     let navigate = useNavigate();
 
-    isRouteOwner(user).then(res => setUserAuth(res as string))
+    isRouteOwner(user,route_id).then(res => setUserAuth(res as string))
 
     // CODE BELOW LIMITS PAGE ACCESS TO  COURIER SOLELY
     if (!user && userAuth) {
