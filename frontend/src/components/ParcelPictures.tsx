@@ -59,16 +59,17 @@ const ParcelPictures: FC<userProp> = (props: userProp) => {
 
                             // console.log("pic Data URL", result.data().url)
                             // itemPicId.push(result.id)
-                            tempItemURL.push(picInfoObject)
+                            
                             // console.log("post Push Data", tempItemURL)
-
-                            setItemUrlList(tempItemURL)
+                            
                             
 
 
                             console.log("itemUrlList", itemUrlList)
                         }
                         )
+                        tempItemURL.push(picInfoObject)
+                        setItemUrlList(tempItemURL)
 
                     }
                 )

@@ -30,10 +30,10 @@ const ActiveBids: FC<bidProp> = (props: bidProp) => {
     } = props
 
     return (
-        <div className='max-w-54 p-4 bg-barrel-green rounded-lg'>
-            <div className=' flex flex-column gap-4 pb-2 overflow-x-scroll overflow-hidden'>
-
-
+        // <div className='max-w-54 p-4 bg-barrel-green rounded-lg'>
+        //     <div className=' flex flex-column gap-4 pb-2 overflow-x-scroll overflow-hidden'>
+        <>
+        
             <PendingBidCardSm
                                         bidId={bidId}
                                         amount={ amount}
@@ -43,13 +43,13 @@ const ActiveBids: FC<bidProp> = (props: bidProp) => {
                                         routeId={routeId}
                                         bidItems={bidItems}
                                     />
+        </>
 
 
 
+        //     </div>
 
-            </div>
-
-        </div>
+        // </div>
     )
 }
 

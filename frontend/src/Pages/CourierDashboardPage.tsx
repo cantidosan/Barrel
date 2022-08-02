@@ -54,7 +54,7 @@ const CourierDashboardPage: FC = () => {
     const db = getFirestore(app);
 
     let routeObjectList = [] as any
-
+    let bidArray=[] as any
 
 
     useEffect(() =>
@@ -154,7 +154,9 @@ const CourierDashboardPage: FC = () => {
 
 
                             })
-                            setBidItemList([bidObject])
+                            console.log('biditems',bidObject['bidItems'])
+                            bidArray.push(bidObject)
+                            setBidItemList([...bidArray,bidObject])
                         })
                 
                 })
@@ -164,7 +166,7 @@ const CourierDashboardPage: FC = () => {
     },[user])               
  
                 
-            
+    console.log('bidItem List',bidItemList)
     
     
     // FETCH ALL ROUTE DOCS TIED TO THE USER REGARDLESS OF ITS

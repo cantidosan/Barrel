@@ -20,9 +20,11 @@ const SenderDashboardPage: FC = () => {
     let { user_id } = useParams();
     const { user } = useContext(AuthContext);
     const [bidItemList, setBidItemList] = useState<any>([]);
+    console.log('bidItem List',bidItemList)
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     console.log(user)
+    let bidArray=[] as any
 //take userId from params and
 //get bidId then query item list and routeID and store in local state var
 //use routeId  to query routeInfo
@@ -48,23 +50,27 @@ useEffect(() =>
                     } as any
 
                 getDocs(query(collection(db, `bids/${doc.id}/bidItems`),
-                    where('itemList', '!=', '0')))
+                    where('itemList', '!=', '')))
                     .then((bidItemQuerySnapshot) => {
 
                         bidItemQuerySnapshot.forEach((queryDocumentSnapshot) => {
 
                             bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
-
+                            console.log('insideloop')
 
                         })
-                        setBidItemList([bidObject])
+                        bidArray.push(bidObject)
+                        setBidItemList(bidArray)
+                        
                     })
             
             })
         })
     }
         
-},[user])  
+}, [user]) 
+    
+    console.log('bidItem List',bidItemList)
 
     return (
         <PageLayout>

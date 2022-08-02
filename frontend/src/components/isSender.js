@@ -10,7 +10,7 @@ const db = getFirestore(app);
 export async function isSender(user) {
 
     // eventually replace "UW6... " with userid variable
-    const docRef = doc(db, "users", user.uid);
+    const docRef = doc(db, "users", user?.uid);
     const docSnap = await getDoc(docRef);
 
     if ((docSnap.exists()) && docSnap.data().isCourier === 'false') {
