@@ -41,7 +41,7 @@ const SenderDashboardPage: FC = () => {
                             </span>
                             {/* We need to pass a prop to this containing
                             links to active bids */}
-                            <ActiveBids />
+                            {/* <ActiveBids /> */}
                         </div>
                     </section>
                 </main>

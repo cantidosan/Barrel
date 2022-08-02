@@ -62,10 +62,6 @@ const ParcelPictures: FC<userProp> = (props: userProp) => {
                             tempItemURL.push(picInfoObject)
                             // console.log("post Push Data", tempItemURL)
 
-
-
-
-
                             setItemUrlList(tempItemURL)
                             
 

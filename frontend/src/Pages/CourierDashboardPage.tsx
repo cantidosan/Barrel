@@ -41,6 +41,7 @@ const CourierDashboardPage: FC = () => {
     const [deptDate, setDeptDate] = useState();
     const [luggageId, setLuggageId] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
+    const [bidItemList, setBidItemList] = useState<any>([]);
     
 
     const { user } = useContext(AuthContext);
@@ -123,7 +124,44 @@ const CourierDashboardPage: FC = () => {
         //     })
     }, [user])
     
-                   
+    useEffect(() =>
+    {
+        if (user) {
+            const pendingBidsQuery = query(collection(db, "bids"), where("courierId", "==", user.uid));
+            getDocs(pendingBidsQuery).then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                
+                    let bidObject =
+                        {
+
+                            bidId: doc.id,
+                            amount: doc.data().amount,
+                            courierId: doc.data().courierId,
+                            status: doc.data().status,
+                            senderId: doc.data().senderId,
+                            routeId: doc.data().routeId,
+                            bidItems: []
+                        } as any
+
+                    getDocs(query(collection(db, `bids/${doc.id}/bidItems`),
+                        where('itemList', '!=', '0')))
+                        .then((bidItemQuerySnapshot) => {
+
+                            bidItemQuerySnapshot.forEach((queryDocumentSnapshot) => {
+
+                                bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
+
+
+                            })
+                            setBidItemList([bidObject])
+                        })
+                
+                })
+            })
+        }
+            
+    },[user])               
  
                 
             
@@ -215,9 +253,24 @@ const CourierDashboardPage: FC = () => {
                         dashboardView === 'Route' ?
                             <div className='flex flex-col md:flex-row gap-4 '>
                                 {/* this comp needs two flag urls and one item url */}
-                                <PendingBidCardSm />
-                                <PendingBidCardSm />
-                                <PendingBidCardSm />
+                                {bidItemList.map((bidDetail: any,
+                                    key: any
+                                ) => {
+                                    
+                                    return <PendingBidCardSm
+                                        bidId={bidDetail['bidId']}
+                                        amount={bidDetail['amount']}
+                                        courierId={bidDetail['courierId']}
+                                        status={bidDetail['status']}
+                                        senderId={bidDetail['senderId']}
+                                        routeId={bidDetail['routeId']}
+                                        bidItems={bidDetail['bidItems']}
+                                    />
+                                }
+                                
+                                )}
+                                
+                                
 
                             </div> :
 

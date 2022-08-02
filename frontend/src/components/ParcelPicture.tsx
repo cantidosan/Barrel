@@ -6,7 +6,7 @@ import { useStateValue } from '../state/index'
 //this component accepts a parcel object
 interface UrlProp  {
 
-    url: string[] ;
+    url: string[] | string ;
     picId?: string[]
     itemId?: string[]
 
