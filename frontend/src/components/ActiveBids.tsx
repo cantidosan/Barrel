@@ -16,22 +16,34 @@ interface bidProp{
     bidItems:[]
     
 }
-const ActiveBids: FC<bidProp> = (props:bidProp) => {
+const ActiveBids: FC<bidProp> = (props: bidProp) => {
+    const {
+    
+        bidId,
+        amount,
+        courierId,
+        status,
+        senderId,
+        routeId,
+        bidItems,
+
+    } = props
+
     return (
         <div className='max-w-54 p-4 bg-barrel-green rounded-lg'>
             <div className=' flex flex-column gap-4 pb-2 overflow-x-scroll overflow-hidden'>
 
-{/* 
+
             <PendingBidCardSm
-                                        bidId={bidDetail['bidId']}
-                                        amount={bidDetail['amount'] }
-                                        courierId={bidDetail['courierId'] }
-                                        status={ bidDetail['status']}
-                                        senderId={ bidDetail['senderId']}
-                                        routeId={bidDetail['routeId']}
-                                        bidItems={bidDetail['bidItems']}
+                                        bidId={bidId}
+                                        amount={ amount}
+                                        courierId={courierId}
+                                        status={status }
+                                        senderId={senderId}
+                                        routeId={routeId}
+                                        bidItems={bidItems}
                                     />
- */}
+
 
 
 
