@@ -149,7 +149,7 @@ const RouteDetailsPage: FC = () => {
                                 <>
                                 <ParcelPictures userId={user.uid} />
                                 <NewItemButton/>
-                                </>
+                                </> 
                                 : ''
                             
                         }
