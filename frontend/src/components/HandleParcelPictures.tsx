@@ -6,6 +6,9 @@ import UploadImage from './UploadImage'
 import ParcelDetailsUpdate from './ParcelDetailsUpdate'
 import ParcelInputUpdate from './ParcelInputUpdate'
 import { useParams } from 'react-router-dom'
+import NewItemButton from '../buttons/NewItemButton'
+
+
 const HandleParcelPictures = () => {
 
     
@@ -32,9 +35,12 @@ const HandleParcelPictures = () => {
                  : pageCount === 1 ? <ParcelDetailsUpdate itemId={parcel_id!} /> :<div className='flex  justify-center pt-6 bg-barrel-green'> <UploadImage /> </div>
             }
             
-            <div className='flex justify-center bg-barrel-green '>
-                <ParcelPictures userId={user.uid} />
-            </div>
+            {!!user ?
+                <div className='flex justify-center bg-barrel-green '>
+                    <ParcelPictures userId={user.uid} />
+                    <NewItemButton/>
+                </div>:''
+            }
         </>
     )
 }

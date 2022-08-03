@@ -5,7 +5,8 @@ import ActiveBids from '../components/ActiveBids'
 import DeliveryUpdates from '../components/DeliveryUpdates'
 import ParcelPictures from '../components/ParcelPictures'
 import AuthContext from '../auth/authContext'
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+
 import {
     getFirestore, addDoc, updateDoc,
     doc, getDocs, query,
@@ -13,6 +14,7 @@ import {
 } from "firebase/firestore"; 
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../FirebaseConfig";
+import NewItemButton from '../buttons/NewItemButton'
 
 const SenderDashboardPage: FC = () => {
 
@@ -70,7 +72,7 @@ useEffect(() =>
         
 }, [user]) 
     
-    console.log('bidItem List',bidItemList)
+    
 
     return (
         <PageLayout>
@@ -81,7 +83,19 @@ useEffect(() =>
                         <ParcelDeliveryDetails />
                     </section>
                     <section className='flex justify-center  mt-8'>
-                        {!!user ? <ParcelPictures userId={user.uid} />:''}
+                        {
+                            !!user ?
+                                <>
+                                    <ParcelPictures userId={user.uid} />
+                                    
+                                
+                                    <NewItemButton  />
+                            
+                                </>    
+                                
+                                
+                                : ''
+                        }
                     </section>
                     <section className='flex flex-col px-3 
                         md:flex-row  gap-4 md:gap-4 justify-center
@@ -112,7 +126,8 @@ useEffect(() =>
                                     bidItems={bidDetail['bidItems']}
                                 />
                             }
-                        )}
+                            )}
+                            
                         </div>
                     </section>
                 </main>

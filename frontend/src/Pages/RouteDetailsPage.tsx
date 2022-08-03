@@ -12,6 +12,8 @@ import AuthContext from '../auth/authContext'
 import { firebaseConfig } from "../FirebaseConfig";
 import { initializeApp } from "firebase/app";
 import { useParams } from 'react-router-dom'
+import NewItemButton from '../buttons/NewItemButton'
+
 
 
 type UrlProp = {
@@ -142,7 +144,15 @@ const RouteDetailsPage: FC = () => {
                     </div>
 
                     <div className='w-88  flex'>
-                        {user ? <ParcelPictures userId={user.uid} /> : ''}
+                        {
+                            user ?
+                                <>
+                                <ParcelPictures userId={user.uid} />
+                                <NewItemButton/>
+                                </>
+                                : ''
+                            
+                        }
                     </div>
                     <div className='bg-green-400 m-12 w-22'>
                         {user ? <HandleBid courierId={courierId} /> : ''}
