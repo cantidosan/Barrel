@@ -13,7 +13,8 @@ import { firebaseConfig } from "../FirebaseConfig";
 import { initializeApp } from "firebase/app";
 import { useParams } from 'react-router-dom'
 import NewItemButton from '../buttons/NewItemButton'
-
+import {isCourier} from '../components/isCourier'
+import RenderBidItemList from '../components/RenderBidItemList'
 
 
 type UrlProp = {
@@ -40,6 +41,7 @@ const RouteDetailsPage: FC = () => {
     const [luggageId, setLuggageId] = useState('');
     const [courierId, setCourierId] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
+    const [userAuth,setUserAuth] = useState('false')
 
 
     console.log(luggageHeight)
@@ -47,13 +49,14 @@ const RouteDetailsPage: FC = () => {
     console.log(luggageLength)
     console.log(luggageWidth)
     console.log(luggageId)
+    console.log(userAuth)
 
 
     /// get_document.js
     useEffect(() => {
         
         const docRef = doc(db, "routes", route_id as string);
-    
+        
         getDoc(docRef).then(docSnap => {
 
             if (docSnap.exists()) {
@@ -121,11 +124,14 @@ const RouteDetailsPage: FC = () => {
         })
     }
     },[luggageId])
-
+    useEffect(() => {
+        isCourier(user).then((res)=>setUserAuth(res))
+    },[user])
     
     
     let url = [`https://countryflagsapi.com/png/${deptCountry}`,
         `https://countryflagsapi.com/png/${arrivCountry}`]
+    
     
     return (
         <PageLayout>
@@ -145,12 +151,16 @@ const RouteDetailsPage: FC = () => {
 
                     <div className='w-88  flex'>
                         {
-                            user ?
+                            !!user && !userAuth ?
                                 <>
                                 <ParcelPictures userId={user.uid} />
                                 <NewItemButton/>
                                 </> 
-                                : ''
+                                : !!user && !!userAuth ?
+                                <>
+                                <RenderBidItemList userId={user.uid} />
+                                
+                                </> :''
                             
                         }
                     </div>

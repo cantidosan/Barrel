@@ -13,7 +13,7 @@ import { firebaseConfig } from "../FirebaseConfig";
 
 const ParcelDeliveryDetails: FC = () => {
 
-    
+    //requires a default item stand in
     const [itemUrl,setItemUrl]=useState('')
     //The component will be listen for parcelId 
     const [{ parcelId }, dispatch] = useStateValue();

@@ -1,5 +1,8 @@
 import React, { FC } from 'react'
 
+
+
+
 const DecideBid: FC = () => {
     return (
         <div className='container'>
