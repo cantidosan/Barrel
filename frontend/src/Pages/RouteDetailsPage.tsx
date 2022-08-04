@@ -41,7 +41,7 @@ const RouteDetailsPage: FC = () => {
     const [luggageId, setLuggageId] = useState('');
     const [courierId, setCourierId] = useState('');
     const [luggageWeight, setLuggageWeight] = useState('');
-    const [userAuth,setUserAuth] = useState('false')
+    const [userAuth,setUserAuth] = useState('')
 
 
     console.log(luggageHeight)
@@ -125,7 +125,8 @@ const RouteDetailsPage: FC = () => {
     }
     },[luggageId])
     useEffect(() => {
-        isCourier(user).then((res)=>setUserAuth(res))
+        isCourier(user).then((res) => setUserAuth(res))
+        console.log('auth says what',userAuth)
     },[user])
     
     
@@ -151,12 +152,12 @@ const RouteDetailsPage: FC = () => {
 
                     <div className='w-88  flex'>
                         {
-                            !!user && !userAuth ?
+                            !!user && userAuth === 'false' ?
                                 <>
                                 <ParcelPictures userId={user.uid} />
                                 <NewItemButton/>
                                 </> 
-                                : !!user && !!userAuth ?
+                                : !!user && userAuth === 'true' ?
                                 <>
                                 <RenderBidItemList userId={user.uid} />
                                 
@@ -165,7 +166,10 @@ const RouteDetailsPage: FC = () => {
                         }
                     </div>
                     <div className='bg-green-400 m-12 w-22'>
-                        {user ? <HandleBid courierId={courierId} /> : ''}
+                        {
+                            user ? <HandleBid courierId={courierId} />
+                                : ''
+                        }
                     </div>
 
 

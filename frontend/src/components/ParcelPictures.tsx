@@ -69,7 +69,7 @@ const ParcelPictures: FC<userProp> = (props: userProp) => {
                         }
                         )
                         tempItemURL.push(picInfoObject)
-                        setItemUrlList(tempItemURL)
+                        setItemUrlList([...tempItemURL])
 
                     }
                 )

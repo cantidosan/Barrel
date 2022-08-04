@@ -16,8 +16,8 @@ export async function isCourier(user) {
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
 
-    if ((docSnap.exists()) && docSnap.data().isCourier === 'true') {
-        return docSnap.data().isCourier
+    if ((docSnap.exists()) && docSnap.data().isCourier === "true") {
+        return 'true'
     } else {
         // doc.data() will be undefined in this case
         return 'false'
