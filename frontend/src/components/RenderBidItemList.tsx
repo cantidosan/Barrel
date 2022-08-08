@@ -7,7 +7,8 @@ import {
     collection, where, getDoc
 } from "firebase/firestore"; 
 import AuthContext from '../auth/authContext'
-import  UrlConvert from '../components/UrlConvert'
+import UrlConvert from '../components/UrlConvert'
+import ParcelPicture from './ParcelPicture'
 
 interface userProp{
   userId:string,
@@ -56,7 +57,7 @@ const RenderBidItemList: FC<userProp> = (props: userProp) => {
                     bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
 
                   })
-                  // console.log('biditems',bidObject['bidItems'])
+                  console.log('BIDARRAY',bidObject)
                   bidArray.push(bidObject)
                   setBidItemList([...bidArray])
                 })
@@ -72,13 +73,14 @@ const RenderBidItemList: FC<userProp> = (props: userProp) => {
                   itemArray: [] as any,
                   urlArray: [] as any
                 }
+                
                 // let stringArray = bidInfo['bidItems'].split(/\s+/)
                 // console.log('string array', stringArray)
                 bidObj.itemArray.push(bidInfo['bidItems'])
                 bidObj.bidId = bidInfo['bidId']
                 bidArray.push(bidObj)
               })
-              setItemUrl(bidArray)
+              setItemUrl([...bidArray])
 
             })
             // .then(() => {
@@ -93,20 +95,15 @@ const RenderBidItemList: FC<userProp> = (props: userProp) => {
         }
         
         //  console.log('bidItemslist',bidItemList)   
-  }, [user])  
-  
-    
+  }, [userId])  
 
-
-  
-  
   // let stringArray = finalBidList.split(/\s+/);
   
   // const  results = stringArray.filter(e as any => 
   //   return e
   // );
     
-  // console.log('joined', stringArray)
+
   
   return (
     <div className='box-content p-4 
@@ -114,16 +111,16 @@ const RenderBidItemList: FC<userProp> = (props: userProp) => {
          >
             <div className='flex flex-column gap-4'
             >    
-                {
+                {/* {
 
-                    // bidItemList.map((url: any, key: any) => {
-                    //     console.log('url',url)
-                        // return <ParcelPicture url={url['url']}
-                        //     picId={url['picId']}
-                        //     itemId={url['itemId']}
-                        //     key={url['picId']} />
-                    // })  
-                }
+                    bidItemList.map((url: any, key: any) => {
+                        console.log('url',url)
+                        return <ParcelPicture url={url['url']}
+                            picId={url['picId']}
+                            itemId={url['itemId']}
+                            key={url['picId']} />
+                    })  
+                } */}
               
              </div>
 

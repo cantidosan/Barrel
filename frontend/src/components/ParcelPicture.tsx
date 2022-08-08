@@ -6,9 +6,9 @@ import { useStateValue } from '../state/index'
 //this component accepts a parcel object
 interface UrlProp  {
 
-    url: string[] | string ;
+    url: string[] | string 
     picId?: string[]
-    itemId?: string[]
+    itemId?: string[] | string
 
 }
 const ParcelPicture: FC<UrlProp> = (props: any) => {

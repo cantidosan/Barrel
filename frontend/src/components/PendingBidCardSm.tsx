@@ -50,14 +50,22 @@ const PendingBidCardSm: FC<bidProp> = (props:bidProp) => {
 
     const [arrivAirport,setArrivAirport]= useState('')
     const [deptAirport, setDeptAirport] = useState('')
-    const [itemId, setItemId] = useState('')
+    const [itemId, setItemId] = useState<string[]>([''])
     const [itemUrl, setItemUrl] = useState('')
-
+    console.log(itemId)
+    console.log(itemUrl)
 
 
     let idElement = bidItems.toString().replaceAll('"', '').replaceAll(',', '')
-    let x = idElement.split(' ')
-    console.log('x',x)
+    
+    let finalItemList = idElement.split(' ')
+    finalItemList.shift()
+
+    // this cleans the itemList and transforms it into
+    // an array of strings
+    // console.log('idElement', finalItemList)
+    
+
     let deptFlag = AirportToFlagConvert(deptAirport)
     let arrivFlag = AirportToFlagConvert(arrivAirport)
 
@@ -72,56 +80,50 @@ const PendingBidCardSm: FC<bidProp> = (props:bidProp) => {
             if (docSnap.exists()) {
                 setArrivAirport(docSnap.data().arrival_airport)
                 setDeptAirport(docSnap.data().departure_airport)
-                setItemId(x[1] as any)
-  
+                setItemId(finalItemList)
+                console.log(itemId)
 
-                console.log("Document data: critical", docSnap.data())
-                    ;
+                return true
+                    
 
                 } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
+            }
+            
+        }).then(() => {
+
+            const docRef = doc(db, "items", finalItemList[0] );
+                
+                getDoc(docRef).then(docSnap => {
+
+                if (docSnap.exists()) {
+
+                    getDocs(query(collection(db, `items/${finalItemList[0]}/pictures`),
+                        where('url', '!=', '')))
+                        .then((querySnapshot) => {
+                            // console.log("picIDSnapshot", querySnapshot)
+                            querySnapshot.forEach((result) => {
+
+                                setItemUrl(result.data().url)
+                    
+                            }
+                            )
+
+                        })
+
+                    console.log("Document data: critical", docSnap.data())
+                        ;
+
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
                 }
+            })
         })
     }, [routeId])
-    
-    useEffect(() => {
-        
-        if(itemId !== ''){
-        const docRef = doc(db, "items", itemId as string);
-    
-        getDoc(docRef).then(docSnap => {
 
-            if (docSnap.exists()) {
-               console.log(docSnap.data())
-                
-               getDocs(query(collection(db, `items/${itemId}/pictures`),
-               where('url', '!=', '')))
-               .then((querySnapshot) => {
-                   // console.log("picIDSnapshot", querySnapshot)
-                   querySnapshot.forEach((result) => {
 
-                      setItemUrl(result.data().url)
-                   
-                   }
-                   )
-
-               }
-           )
-
-                console.log("Document data: critical", docSnap.data())
-                    ;
-
-                } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-                }
-        })
-    }
-    }, [itemId])
-    
-
-    
 
     // const docRef = doc(db, "bids", bid_id as string);
     let url = [`https://countryflagsapi.com/png/${deptFlag}`,`https://countryflagsapi.com/png/${arrivFlag}`]
@@ -138,7 +140,7 @@ const PendingBidCardSm: FC<bidProp> = (props:bidProp) => {
 
             </figure>
             <div className='pt-1'>
-                <ParcelPicture url={itemUrl} itemId={[itemId]} />
+                <ParcelPicture url={itemUrl} itemId={itemId[0] } />
             </div>
         </div>
     )

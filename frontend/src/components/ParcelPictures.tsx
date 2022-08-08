@@ -10,7 +10,7 @@ import { initializeApp } from "firebase/app";
 ///Read all items the sender could potentially
 ///select for bidding.
 //place data in a state variable and map it out below
-
+import GetItemPic from '../hooks/GetItemPics'
 interface userProp{
     userId:string,
 }
@@ -20,64 +20,69 @@ const ParcelPictures: FC<userProp> = (props: userProp) => {
     const { userId } = props
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const [itemList, setItemList] = useState([])
-    const [itemPicIdList, setItemPicIdList] = useState([])
+    // const [itemList, setItemList] = useState([])
+    // const [itemPicIdList, setItemPicIdList] = useState([])
     const [itemUrlList, setItemUrlList] = useState<any>([])
     console.log("itemUrlList", itemUrlList)
 
-    let tempItemList = [] as any
-    let itemPicId = [] as any
-    let tempItemURL = [] as any
+    // let tempItemList = [] as any
+    // let itemPicId = [] as any
+    // let tempItemURL = [] as any
 
+    let items = GetItemPic(userId)
+    useEffect(() => {
+        setItemUrlList([...items])
+    },[items])
+    
     // tempItemUrl[0] = result.data()[0] || "https://www.barrell.jm"
 
         //this gets the initial list of user items
-    useEffect(() => {
+    // useEffect(() => {
         
-        const q = query(collection(db, "items"), where("userId", "==", userId));
-        getDocs(q).then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
+    //     const q = query(collection(db, "items"), where("userId", "==", userId));
+    //     getDocs(q).then((querySnapshot) => {
+    //         querySnapshot.forEach((doc) => {
+    //             // doc.data() is never undefined for query doc snapshots
                 
-                tempItemList.push(doc.id)
-                let picInfoObject = {
-                    itemId: doc.id,
-                    picId:'',
-                    url:''
-                }
+    //             tempItemList.push(doc.id)
+    //             let picInfoObject = {
+    //                 itemId: doc.id,
+    //                 picId:'',
+    //                 url:''
+    //             }
 
 
-                getDocs(query(collection(db, `items/${doc.id}/pictures`),
-                    where('url', '!=', '')))
-                    .then((querySnapshot) => {
-                        // console.log("picIDSnapshot", querySnapshot)
-                        querySnapshot.forEach((result) => {
+    //             getDocs(query(collection(db, `items/${doc.id}/pictures`),
+    //                 where('url', '!=', '')))
+    //                 .then((querySnapshot) => {
+    //                     // console.log("picIDSnapshot", querySnapshot)
+    //                     querySnapshot.forEach((result) => {
 
 
-                            picInfoObject['picId']=result.id
-                            picInfoObject['url']=result.data().url
+    //                         picInfoObject['picId']=result.id
+    //                         picInfoObject['url']=result.data().url
 
-                            // console.log("pic Data URL", result.data().url)
-                            // itemPicId.push(result.id)
+    //                         // console.log("pic Data URL", result.data().url)
+    //                         // itemPicId.push(result.id)
                             
-                            // console.log("post Push Data", tempItemURL)
+    //                         // console.log("post Push Data", tempItemURL)
                             
                             
 
 
-                            console.log("itemUrlList", itemUrlList)
-                        }
-                        )
-                        tempItemURL.push(picInfoObject)
-                        setItemUrlList([...tempItemURL])
+    //                         console.log("itemUrlList", itemUrlList)
+    //                     }
+    //                     )
+    //                     tempItemURL.push(picInfoObject)
+    //                     setItemUrlList([...tempItemURL])
 
-                    }
-                )
+    //                 }
+    //             )
             
                 
-            });
-        })
-    }, [])
+    //         });
+    //     })
+    // }, [])
     
 
     // console.log("MAIN LIST", itemUrlList, itemPicIdList)

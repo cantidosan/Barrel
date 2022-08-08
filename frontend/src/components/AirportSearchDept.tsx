@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Combobox } from '@headlessui/react'
 import Airports from '../assets/AirportList/Airports.json'
 import { useStateValue } from '../state/index'
+import useAirportSelectionDept from '../hooks/useAirportSelectionDept'
 
 function AirportSearchDept() {
     const ApCodes: any = []
@@ -9,14 +10,9 @@ function AirportSearchDept() {
     const [query, setQuery] = useState('')
     const [{ deptPort }, dispatch] = useStateValue();
 
-    useEffect(() => {
 
 
-        dispatch({ type: 'deptPort', payload: selectedAirport });
-
-
-    }, [selectedAirport])
-
+    
     Airports.forEach(codePush)
 
     function codePush(item: any, index: any, arr: any) {
@@ -31,8 +27,11 @@ function AirportSearchDept() {
             : Airports.filter((airport: any) => {
                 return airport.code.toLowerCase().includes(query.toLowerCase())
             })
+    
+    
+    
     return (
-        <Combobox value={selectedAirport} onChange={setSelectedAirport}>
+        <Combobox value={selectedAirport} onChange={useAirportSelectionDept}>
             <Combobox.Input onChange={(event) => setQuery(event.target.value)} />
             <Combobox.Options>
                 {filteredAirport.map((airport) => (

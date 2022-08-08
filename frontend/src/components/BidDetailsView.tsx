@@ -29,8 +29,10 @@ const BidDetailsView: FC<courierProp> = (props:courierProp) => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
+
         isCourier(user).then((res) => setUserAuth(res))
-        console.log('auth says what',userAuth)
+        console.log('auth says what', userAuth)
+        
     }, [user])
     
     return (

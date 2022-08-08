@@ -154,7 +154,7 @@ const ParcelDetailsPage: FC = () => {
 
                     </div>
                     <div className='w-74  flex'>
-                        <ParcelPictures userId={user.uid}/>
+                        {!!user ? <ParcelPictures userId={user.uid} />:''}
                     </div>
                     <div className='flex gap-6  m-12 w-22 '>
                         <div className=' basis-1/2 pt-16 border-r-2 pr-2 '>
