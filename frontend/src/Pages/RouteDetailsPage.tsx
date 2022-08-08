@@ -62,55 +62,7 @@ const RouteDetailsPage: FC = () => {
     console.log('RouteINfo', routeInfo)
     
 
-    // useEffect(() => {
-    //     //this fetches all the luggage details associated with a particular
-    //     //route
-
-    //     getDocs(query(collection(db, `routes/${route_id}/luggage`),
-            
-    //         where('height_capacity', '>=', '0')
-        
-    //     )).then((querySnapshot) => {
-        
-    //         // console.log('snapshot', querySnapshot)
-            
-    //         querySnapshot.forEach((queryDocumentSnapshot) =>
-    //         {
-            
-    //             // console.log(queryDocumentSnapshot.data())
-    //             setLuggageId(queryDocumentSnapshot.id)
-            
-    //         })
-    //     })
-
-    // }, [deptDate])
-
-    // useEffect(() => {
-    //     //this fetches luggage details based on the luggage's ID
-    //     if (!!luggageId) {
-            
-    //     let locationRef = doc(db, "routes", route_id as string, "luggage", luggageId);
-
-    //     getDoc(locationRef).then(docSnap => {
-
-
-    //         if (docSnap.exists()) {
-    
-    //             // console.log("Document data:", docSnap.data());
-    
-    //             setLuggageWeight(docSnap.data().weight_capacity)
-    //             setLuggageHeight(docSnap.data().height_capacity)
-    //             setLuggageWidth(docSnap.data().width_capacity)
-    //             setLuggageLength(docSnap.data().length_capacity)
-    
-    //             } else {
-    //             // doc.data() will be undefined in this case
-    //             console.log("No such document!");
-    //             }
-            
-    //     })
-    // }
-    // },[luggageId])
+   
     useEffect(() => {
         isCourier(user).then((res) => setUserAuth(res))
         console.log('auth says what',userAuth)
