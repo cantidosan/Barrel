@@ -7,7 +7,7 @@ interface UrlProp  {
     deptAirport: string;
     arrivAirport: string;
     deptDate: any;
-    luggageWeight: string;
+    luggageWeight: number;
     luggageHeight: number;
     luggageLength: number;
     luggageWidth: number;

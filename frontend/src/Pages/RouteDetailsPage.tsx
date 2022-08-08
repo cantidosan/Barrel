@@ -15,7 +15,8 @@ import { useParams } from 'react-router-dom'
 import NewItemButton from '../buttons/NewItemButton'
 import {isCourier} from '../components/isCourier'
 import RenderBidItemList from '../components/RenderBidItemList'
-
+import GetRouteInfo from '../hooks/GetRouteInfo'
+import GetLuggageInfo from '../hooks/GetLuggageInfo'
 
 type UrlProp = {
 
@@ -52,86 +53,73 @@ const RouteDetailsPage: FC = () => {
     console.log(userAuth)
 
 
-    /// get_document.js
-    useEffect(() => {
-        
-        const docRef = doc(db, "routes", route_id as string);
-        
-        getDoc(docRef).then(docSnap => {
-
-            if (docSnap.exists()) {
-                setCourierId(docSnap.data().userId)
-                setArrivAirport(docSnap.data().arrival_airport)
-                setDeptAirport(docSnap.data().departure_airport)
-                setArrivCountry(docSnap.data().arrival_country)
-                setDeptCountry(docSnap.data().departure_country)
-                setDeptDate(docSnap.data().departure_date)
-
-                console.log("Document data: critical", docSnap.data())
-                    ;
-
-                } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-                }
-        })
-    },[route_id])
     
-    useEffect(() => {
+    /// GetRouteInfo returns a list of route details from a fetch
+    let routeInfo = GetRouteInfo()
+    /// GET Luggage INfo return a luggage Id object
+    let luggageInfo = GetLuggageInfo()
 
-        getDocs(query(collection(db, `routes/${route_id}/luggage`),
+    console.log('RouteINfo', routeInfo)
+    
+
+    // useEffect(() => {
+    //     //this fetches all the luggage details associated with a particular
+    //     //route
+
+    //     getDocs(query(collection(db, `routes/${route_id}/luggage`),
             
-            where('height_capacity', '>=', '0')
+    //         where('height_capacity', '>=', '0')
         
-        )).then((querySnapshot) => {
+    //     )).then((querySnapshot) => {
         
-            // console.log('snapshot', querySnapshot)
+    //         // console.log('snapshot', querySnapshot)
             
-            querySnapshot.forEach((queryDocumentSnapshot) =>
-            {
+    //         querySnapshot.forEach((queryDocumentSnapshot) =>
+    //         {
             
-                // console.log(queryDocumentSnapshot.data())
-                setLuggageId(queryDocumentSnapshot.id)
+    //             // console.log(queryDocumentSnapshot.data())
+    //             setLuggageId(queryDocumentSnapshot.id)
             
-            })
-        })
+    //         })
+    //     })
 
-    }, [deptDate])
+    // }, [deptDate])
 
-    useEffect(() => {
-
-        if (!!luggageId) {
+    // useEffect(() => {
+    //     //this fetches luggage details based on the luggage's ID
+    //     if (!!luggageId) {
             
-        let locationRef = doc(db, "routes", route_id as string, "luggage", luggageId);
+    //     let locationRef = doc(db, "routes", route_id as string, "luggage", luggageId);
 
-        getDoc(locationRef).then(docSnap => {
+    //     getDoc(locationRef).then(docSnap => {
 
 
-            if (docSnap.exists()) {
+    //         if (docSnap.exists()) {
     
-                // console.log("Document data:", docSnap.data());
+    //             // console.log("Document data:", docSnap.data());
     
-                setLuggageWeight(docSnap.data().weight_capacity)
-                setLuggageHeight(docSnap.data().height_capacity)
-                setLuggageWidth(docSnap.data().width_capacity)
-                setLuggageLength(docSnap.data().length_capacity)
+    //             setLuggageWeight(docSnap.data().weight_capacity)
+    //             setLuggageHeight(docSnap.data().height_capacity)
+    //             setLuggageWidth(docSnap.data().width_capacity)
+    //             setLuggageLength(docSnap.data().length_capacity)
     
-                } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-                }
+    //             } else {
+    //             // doc.data() will be undefined in this case
+    //             console.log("No such document!");
+    //             }
             
-        })
-    }
-    },[luggageId])
+    //     })
+    // }
+    // },[luggageId])
     useEffect(() => {
         isCourier(user).then((res) => setUserAuth(res))
         console.log('auth says what',userAuth)
     },[user])
     
+
     
-    let url = [`https://countryflagsapi.com/png/${deptCountry}`,
-        `https://countryflagsapi.com/png/${arrivCountry}`]
+    let url = [`https://countryflagsapi.com/png/${routeInfo['deptCountry']}`,
+        `https://countryflagsapi.com/png/${routeInfo['arrivCountry']}`]
     
     
     return (
@@ -140,13 +128,13 @@ const RouteDetailsPage: FC = () => {
                 <div className='flex  flex-col  bg-barrel-green items-center  '>
                     <div className='border-2 m-12'>
                         <RouteDetailsCardLg url={url}
-                            deptAirport={deptAirport}
-                            arrivAirport={arrivAirport}
-                            deptDate={deptDate}
-                            luggageWeight={luggageWeight}
-                            luggageHeight={luggageHeight}
-                            luggageLength={luggageLength}
-                            luggageWidth={luggageWidth}
+                            deptAirport={routeInfo['deptAirport']}
+                            arrivAirport={routeInfo['arrivAirport']}
+                            deptDate={routeInfo['deptDate']}
+                            luggageWeight={luggageInfo['luggageWeight']}
+                            luggageHeight={luggageInfo['luggageHeight']}
+                            luggageLength={luggageInfo['luggageLength']}
+                            luggageWidth={luggageInfo['luggageWidth']}
                         />
                     </div>
 
