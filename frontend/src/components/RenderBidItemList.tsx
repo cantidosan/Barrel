@@ -7,6 +7,7 @@ import {
     collection, where, getDoc
 } from "firebase/firestore"; 
 import AuthContext from '../auth/authContext'
+import  UrlConvert from '../components/UrlConvert'
 
 interface userProp{
   userId:string,
@@ -19,99 +20,79 @@ const RenderBidItemList: FC<userProp> = (props: userProp) => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const [bidItemList, setBidItemList] = useState<any>([])
-  const [itemUrl, setItemUrl] = useState<any>('')
+  const [itemUrl, setItemUrl] = useState<any>([{}])
+  console.log(itemUrl)
+  console.log(bidItemList)
 
   
   useEffect(() => {
+
     let bidArray = [] as any
+
         if (user) {
             const pendingBidsQuery = query(collection(db, "bids"), where("courierId", "==", user.uid));
-            getDocs(pendingBidsQuery).then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    // console.log(doc.id, " => ", doc.data());
+          getDocs(pendingBidsQuery).then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              // console.log(doc.id, " => ", doc.data());
                 
-                    let bidObject =
-                        {
+              let bidObject =
+                {
 
-                            bidId: doc.id,
-                            amount: doc.data().amount,
-                            courierId: doc.data().courierId,
-                            status: doc.data().status,
-                            senderId: doc.data().senderId,
-                            routeId: doc.data().routeId,
-                            bidItems: []
-                        } as any
+                  bidId: doc.id,
+                  amount: doc.data().amount,
+                  courierId: doc.data().courierId,
+                  status: doc.data().status,
+                  senderId: doc.data().senderId,
+                  routeId: doc.data().routeId,
+                  bidItems: []
+                } as any
 
-                    getDocs(query(collection(db, `bids/${doc.id}/bidItems`),
-                        where('itemList', '!=', '0')))
-                        .then((bidItemQuerySnapshot) => {
+              getDocs(query(collection(db, `bids/${doc.id}/bidItems`),
+                where('itemList', '!=', '0')))
+                .then((bidItemQuerySnapshot) => {
 
-                            bidItemQuerySnapshot.forEach((queryDocumentSnapshot) => {
+                  bidItemQuerySnapshot.forEach((queryDocumentSnapshot) => {
 
-                                bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
+                    bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
 
-
-                            })
-                            // console.log('biditems',bidObject['bidItems'])
-                            bidArray.push(bidObject)
-                            setBidItemList([...bidArray])
-                        })
-                
-                })
-            }).then(() => {
-              let activeBidArray = [] as any
-              bidItemList?.map((url: any, key: any) => { 
-                activeBidArray.push(url['bidItems'])
-              })
-              
-              let finalBidList = activeBidArray.join().replaceAll(',', '')
-              
-              return (finalBidList.trim().split(/\s+/))
-
-            }).then((stringArray) => {
-              let urlArray = [] as any
-              stringArray.forEach((itemId: string) => {
-               
-                console.log('itemID',itemId)
-                if(itemId !== ''){
-                  const docRef = doc(db, "items", itemId as string);
-              
-                  getDoc(docRef).then(docSnap => {
-              
-                      if (docSnap.exists()) {
-                         console.log('URL SETTING',docSnap.data())
-                          
-                         getDocs(query(collection(db, `items/${itemId}/pictures`),
-                         where('url', '!=', '')))
-                         .then((querySnapshot) => {
-                             // console.log("picIDSnapshot", querySnapshot)
-                             querySnapshot.forEach((result) => {
-                                urlArray.push(result.data().url)
-                                setItemUrl([...urlArray])
-                             
-                             }
-                             )
-              
-                         }
-                      )
-              
-                          console.log("Document data: critical", docSnap.data())
-                              ;
-              
-                          } else {
-                          // doc.data() will be undefined in this case
-                          console.log("No such document!");
-                          }
                   })
-              }
+                  // console.log('biditems',bidObject['bidItems'])
+                  bidArray.push(bidObject)
+                  setBidItemList([...bidArray])
+                })
+                
             })
-           
+          })
+            .then(() => {
 
-               
-              })  
+              let bidArray = [] as any
+              bidItemList.map((bidInfo: any, key: any) => {
+                let bidObj = {
+                  bidId: '',
+                  itemArray: [] as any,
+                  urlArray: [] as any
+                }
+                // let stringArray = bidInfo['bidItems'].split(/\s+/)
+                // console.log('string array', stringArray)
+                bidObj.itemArray.push(bidInfo['bidItems'])
+                bidObj.bidId = bidInfo['bidId']
+                bidArray.push(bidObj)
+              })
+              setItemUrl(bidArray)
+
+            })
+            // .then(() => {
+            //   itemUrl.map((bidInfo: any, key: any) => {
+              
+            //     let itemList = UrlConvert(bidInfo['itemArray'])
+            //     console.log('itList', itemList)
+            //   })
+            // })
+           
+              
         }
         
-            
+        //  console.log('bidItemslist',bidItemList)   
   }, [user])  
   
     

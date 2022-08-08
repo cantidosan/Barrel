@@ -1,11 +1,11 @@
-import React, { FC, useContext, useState } from 'react'
+import React, { FC, useContext, useState,useEffect } from 'react'
 import BidDetails from './BidDetails'
 import DecideBid from './DecideBid'
 import MakeBid from './MakeBid'
 import AuthContext from '../auth/authContext'
 import { isRouteOwner } from './isRouteOwner'
 import { useParams } from 'react-router-dom'
-
+import {isCourier} from '../components/isCourier'
 
 interface courierProp  {
 
@@ -28,11 +28,15 @@ const BidDetailsView: FC<courierProp> = (props:courierProp) => {
 
     const { user } = useContext(AuthContext);
 
-   
+    useEffect(() => {
+        isCourier(user).then((res) => setUserAuth(res))
+        console.log('auth says what',userAuth)
+    }, [user])
+    
     return (
         <div className='flex flex-row border  '>
             {
-                !userAuth ?
+                !!userAuth ?
                 <DecideBid /> :
                 <MakeBid courierId={courierId} />
             }
