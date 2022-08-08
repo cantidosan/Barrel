@@ -15,6 +15,7 @@ import {
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../FirebaseConfig";
 import NewItemButton from '../buttons/NewItemButton'
+import getPendingBids from '../hooks/GetPendingBids'
 
 const SenderDashboardPage: FC = () => {
 
@@ -31,46 +32,47 @@ const SenderDashboardPage: FC = () => {
 //get bidId then query item list and routeID and store in local state var
 //use routeId  to query routeInfo
     
-useEffect(() =>
-{
-    if (user) {
-        const pendingBidsQuery = query(collection(db, "bids"), where("senderId", "==", user.uid));
-        getDocs(pendingBidsQuery).then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(doc.id, " => ", doc.data());
+    let bidList = getPendingBids()
+// useEffect(() =>
+// {
+//     if (user) {
+//         const pendingBidsQuery = query(collection(db, "bids"), where("senderId", "==", user.uid));
+//         getDocs(pendingBidsQuery).then((querySnapshot) => {
+//             querySnapshot.forEach((doc) => {
+//                 console.log(doc.id, " => ", doc.data());
             
-                let bidObject =
-                    {
+//                 let bidObject =
+//                     {
 
-                        bidId: doc.id,
-                        amount: doc.data().amount,
-                        courierId: doc.data().courierId,
-                        status: doc.data().status,
-                        senderId: doc.data().senderId,
-                        routeId: doc.data().routeId,
-                        bidItems: []
-                    } as any
+//                         bidId: doc.id,
+//                         amount: doc.data().amount,
+//                         courierId: doc.data().courierId,
+//                         status: doc.data().status,
+//                         senderId: doc.data().senderId,
+//                         routeId: doc.data().routeId,
+//                         bidItems: []
+//                     } as any
 
-                getDocs(query(collection(db, `bids/${doc.id}/bidItems`),
-                    where('itemList', '!=', '')))
-                    .then((bidItemQuerySnapshot) => {
+//                 getDocs(query(collection(db, `bids/${doc.id}/bidItems`),
+//                     where('itemList', '!=', '')))
+//                     .then((bidItemQuerySnapshot) => {
 
-                        bidItemQuerySnapshot.forEach((queryDocumentSnapshot) => {
+//                         bidItemQuerySnapshot.forEach((queryDocumentSnapshot) => {
 
-                            bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
-                            console.log('insideloop')
+//                             bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
+//                             console.log('insideloop')
 
-                        })
-                        bidArray.push(bidObject)
-                        setBidItemList(bidArray)
+//                         })
+//                         bidArray.push(bidObject)
+//                         setBidItemList(bidArray)
                         
-                    })
+//                     })
             
-            })
-        })
-    }
+//             })
+//         })
+//     }
         
-}, [user]) 
+// }, [user]) 
     
     
 
@@ -112,7 +114,7 @@ useEffect(() =>
                             {/* We need to pass a prop to this containing
                             links to active bids */}
                             
-                            {bidItemList.map((bidDetail: any,
+                            {bidList.map((bidDetail: any,
                                 key: any
                             ) => {
                                     
