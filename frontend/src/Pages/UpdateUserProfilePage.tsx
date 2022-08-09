@@ -71,11 +71,7 @@ const UpdateUserProfilePage: FC = () => {
             </section>
 
 
-            < div className='flex justify-center pt-4 bg-barrel-green'>
-
-                <PrevPageNavButton />
-                <NextPageNavButton />
-            </div>
+            
 
 
         </PageLayout >

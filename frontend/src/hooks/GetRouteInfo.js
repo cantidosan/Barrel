@@ -15,7 +15,7 @@ import { initializeApp } from "firebase/app";
 import { useParams } from 'react-router-dom'
 import NewItemButton from '../buttons/NewItemButton'
 import { isCourier } from '../components/isCourier'
-import RenderBidItemList from '../components/RenderBidItemList'
+import BidItemListDisplay from '../components/BidItemListDisplay'
 
 
 

@@ -23,9 +23,7 @@ const GetParcelUrl = (parcelId) => {
 
         if (parcelId !== '') {
             const docRef = doc(db, "items", parcelId);
-
             getDoc(docRef).then(docSnap => {
-
                 if (docSnap.exists()) {
                     console.log(docSnap.data())
 
@@ -34,15 +32,11 @@ const GetParcelUrl = (parcelId) => {
                         .then((querySnapshot) => {
                             // console.log("picIDSnapshot", querySnapshot)
                             querySnapshot.forEach((result) => {
-
                                 setItemUrl(result.data().url)
-
                             }
                             )
-
                         }
                         )
-
                     console.log("Document data: critical", docSnap.data())
                         ;
 

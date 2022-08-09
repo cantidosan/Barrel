@@ -14,7 +14,7 @@ import { initializeApp } from "firebase/app";
 import { useParams } from 'react-router-dom'
 import NewItemButton from '../buttons/NewItemButton'
 import {isCourier} from '../components/isCourier'
-import RenderBidItemList from '../components/RenderBidItemList'
+import BidItemListDisplay from '../components/BidItemListDisplay'
 import GetRouteInfo from '../hooks/GetRouteInfo'
 import GetLuggageInfo from '../hooks/GetLuggageInfo'
 
@@ -99,7 +99,7 @@ const RouteDetailsPage: FC = () => {
                                 </> 
                                 : !!user && userAuth === 'true' ?
                                 <>
-                                <RenderBidItemList userId={user.uid} />
+                                <BidItemListDisplay userId={user.uid} />
                                 
                                 </> :''
                             
