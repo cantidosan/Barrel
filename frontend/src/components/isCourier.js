@@ -1,8 +1,7 @@
-import { doc, getDoc } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../FirebaseConfig";
-
+import { doc, getDoc } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../FirebaseConfig';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -11,15 +10,16 @@ const db = getFirestore(app);
 //a courier.
 // func will eventually take userid as a param
 
-
 export async function isCourier(user) {
-    const docRef = doc(db, "users", user.uid);
-    const docSnap = await getDoc(docRef);
+  if (!user) return 'false';
 
-    if ((docSnap.exists()) && docSnap.data().isCourier === "true") {
-        return 'true'
-    } else {
-        // doc.data() will be undefined in this case
-        return 'false'
-    }
+  const docRef = doc(db, 'users', user.uid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists() && docSnap.data().isCourier === 'true') {
+    return 'true';
+  } else {
+    // doc.data() will be undefined in this case
+    return 'false';
+  }
 }
