@@ -29,7 +29,7 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
   
   console.log(itemUrl)
   console.log(bidItemList)
-  console.log(bidItemUrlMap)
+  console.log('BIDITEMURLMAP',bidItemUrlMap)
   
   useEffect(() => {
 
@@ -153,7 +153,7 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
                     bidObject[0]['items'][0]['id']= item
                     
                   })
-                  console.log('ID',bidObject[0]['items'][0])
+                  // console.log('ID',bidObject[0]['items'][0])
 
 
                   // console.log('bid daddy object',bidObject)
@@ -169,7 +169,7 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
                             //  setItemUrl(result.data().url)
                             newUrlList.push(result.data().url)
                          })
-                       console.log('final OBject', bidObject[0]['items'][0]['urls'].push(newUrlList))
+                       bidObject[0]['items'][0]['urls'].push(newUrlList)
                       //  console.log('final OBject', bidObject[0]['items'][0]['urls'])
                        
                        // 1: Object { bidId: "y0vnj7soXD48oz5l9Cw0",
@@ -181,6 +181,7 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
                   })
                       
                 })
+                
                 return updateBidItemsList
               })//then
             
@@ -256,12 +257,13 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
             >    
                 {
 
-                    bidItemUrlMap.map((url: any, key: any) => {
-                        console.log('url',url)
-                        // return <ParcelPicture url={url['url']}
-                        //     picId={url['picId']}
-                        //     itemId={url['itemId']}
-                        //     key={url['picId']} />
+                    bidItemUrlMap['bidObject'].map((url: any, key: any) => {
+                      // console.log('url', url)
+                    
+                        return <ParcelPicture url={url['items'][0]['urls'][0]}
+                            picId={url['picId']}
+                            itemId={url['items']}
+                            key={url['picId']} />
                     })  
                 }
               
