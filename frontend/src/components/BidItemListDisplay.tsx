@@ -1,309 +1,224 @@
-import React, { FC,useState,useContext,useEffect } from 'react'
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../FirebaseConfig";
+import React, { FC, useState, useContext, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../FirebaseConfig';
 import {
-    getFirestore, addDoc, updateDoc,
-    doc, getDocs, query,
-    collection, where, getDoc
-} from "firebase/firestore"; 
-import AuthContext from '../auth/authContext'
-import UrlConvert from './UrlConvert'
-import ParcelPicture from './ParcelPicture'
-import getParcelUrl from '../hooks/GetParcelUrl'
-import GetBidItems from '../hooks/GetBidItems'
+  getFirestore,
+  addDoc,
+  updateDoc,
+  doc,
+  getDocs,
+  query,
+  collection,
+  where,
+  getDoc,
+} from 'firebase/firestore';
+import AuthContext from '../auth/authContext';
+import UrlConvert from './UrlConvert';
+import ParcelPicture from './ParcelPicture';
+import getParcelUrl from '../hooks/GetParcelUrl';
+import GetBidItems from '../hooks/GetBidItems';
 
-interface userProp{
-  userId:string,
+interface userProp {
+  userId: string;
 }
-  
 
 const BidItemListDisplay: FC<userProp> = (props: userProp) => {
-
-  const { userId } = props
+  // const { userId } = props;
   const { user } = useContext(AuthContext);
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  const [bidItemList, setBidItemList] = useState<any>([])
-  const [itemUrl, setItemUrl] = useState<any>([{}])
-  const [bidItemUrlMap, setBidItemUrlMap] = useState<any>([])
-  
-  console.log(itemUrl)
-  console.log(bidItemList)
-  console.log('BIDITEMURLMAP',bidItemUrlMap)
-  
+  const [bidItemUrlMap, setBidItemUrlMap] = useState<any>([]);
+
+  const [bidItems, setBidItems] = useState<any>([]);
+
+  // ===============================
+  // async/await version
+  //
+  // I split the async/await version up into separate functions
+  // for each getDocs() call pretty much so it is more clear
+  // as to what is going on in the function
+  // ===============================
+
   useEffect(() => {
+    if (user && !bidItems.length) {
+      const getItemDetails = async (items: any[]) => {
+        const itemsWithDetails = await Promise.all(
+          items.map(async itemId => {
+            const itemDetialsSnapshot = await getDocs(
+              query(collection(db, `items/${itemId}/pictures`), where('url', '!=', ''))
+            );
 
-    let bidArray = [] as any
+            const itemsWithDetails = itemDetialsSnapshot.docs.map(item => item.data());
 
-    if (user) {
-      const pendingBidsQuery = query(collection(db, "bids"), where("courierId", "==", user.uid));
-      getDocs(pendingBidsQuery)
-        .then((querySnapshot) => {
-            
-          querySnapshot.forEach((doc) => {
-            // console.log(doc.id, " => ", doc.data());
-                  
-            let bidObject =
-              {
+            return itemsWithDetails[0];
+          })
+        );
 
-                bidId: doc.id,
-                amount: doc.data().amount,
-                courierId: doc.data().courierId,
-                status: doc.data().status,
-                senderId: doc.data().senderId,
-                routeId: doc.data().routeId,
-                bidItems: []
-              } as any
-                 
+        return itemsWithDetails.filter(item => !!item);
+      };
 
-            getDocs(query(collection(db, `bids/${doc.id}/bidItems`),
-              where('itemList', '!=', '0')))
-              .then((bidItemQuerySnapshot) => {
+      const getBidItems = async (bids: any[]) => {
+        const tempBidItems: any[] = [];
 
-                bidItemQuerySnapshot.forEach((queryDocumentSnapshot) => {
+        return await Promise.all(
+          bids.map(async bid => {
+            try {
+              const bidItemsQuerySnapshot = await getDocs(
+                query(
+                  collection(db, `bids/${bid.id}/bidItems`),
+                  where('itemList', '!=', '0')
+                )
+              );
 
-                  bidObject['bidItems'].push(queryDocumentSnapshot.data().itemList)
+              bidItemsQuerySnapshot.docs.forEach(bidItemDoc => {
+                tempBidItems.push(bidItemDoc.data().itemList.replaceAll(/[,"\s]*/g, ''));
+              });
 
-                })
-                // console.log('awe', bidObject)
-                bidArray.push(bidObject)
-                // setBidItemList([...bidArray])
-                return bidArray
-              }).then((bidArray) => {
+              const completeBidItems = await getItemDetails(tempBidItems);
 
-                    
-                const bidItemLists = bidArray.map((bid: any, key: any) => {
+              console.log('completeBidItems', completeBidItems);
 
-                  let idElement = bid['bidItems'].toString().replaceAll('"', '').replaceAll(',', '')
-            
-                  let finalBidItemList = idElement.split(' ')
-                  finalBidItemList.shift()
-                  return {
-                    bidId: bid.bidId,
-                    bidItems: finalBidItemList
-                  }
-                })
-                return bidItemLists
-                // console.log("newArray", newArray)
-                //bid Object { bidId: "hrZCZSbuTNAaIrevMvAm", amount: "20.19"
-                //, courierId: "fvMlFKlXfbO1BSI5GMB746PRaDB2", status: "active",
-                //  senderId: "XMSsrVJH00hOOmzrz0hs0zmUB7s2", routeId: "JIPobebM4tl3fzcWHNah",
-                //  bidItems: Array [ ", UHrXwvDZENiEZXd2fh9O, kEZguqEWmd3X4wToHgv5" ]
-              
-                // {
-                //   itemId: {
-                //     itemUrls:[]
-                //   }
-                //   itemId: {
-                //     itemUrls:[]
-                //   }
-                // } 
+              return { ...bid, bidItems: completeBidItems };
+            } catch (err) {
+              console.error(err);
+              return bid;
+            }
+          })
+        );
+      };
 
-                // 0:{itemId:[urls]}
+      const getBids = async () => {
+        try {
+          const pendingBidsQuerySnapshot = await getDocs(
+            query(collection(db, 'bids'), where('courierId', '==', user.uid))
+          );
 
-              }).then((bidArray) => {
-                //0: Object { bidId: "hrZCZSbuTNAaIrevMvAm", bidItems: (2) […] }
-                // 1: Object { bidId: "y0vnj7soXD48oz5l9Cw0", bidItems: (1) […] }
-                // bidCollection (explicit keys)
+          const bids = pendingBidsQuerySnapshot.docs.map(bidItem => {
+            return { ...bidItem.data(), bidItems: [], id: bidItem.id };
+          });
 
-                  // [
-                  //   {
-                  //     id: 'sdlkfj___bidId___dfkljsdlfj',
-                  //     items: [
-                  //       {
-                  //         id: 'fsdlkfs___itemId___sldkjf',
-                  //         urls: [
-                  //           'http://imageurl...',
-                  //           'http://imageurl...',
-                  //           // ...
-                  //         ],
-                  //       },
-                  //       // ...
-                  //     ],
-                  //   },
-                  //   // ...
-                  // ]
-                
-                
-                const updateBidItemsList = bidArray.map((bid: any, key: any) => {
+          const bidsWithBidItems = await getBidItems(bids);
 
-                  let bidObject = [{
+          console.log('bidsWithBidItems', bidsWithBidItems);
 
-                    id: '',
-                    items: [
-                            {
-                              id: '',
-                              urls: [
-                                
-                                // ...
-                              ],
-                            },
-                            // ...
-                          ],
-                    
-                  }] as any
-
-                  //  console.log('bidID print', bid['bidId'])
-                  bidObject[0]['id'] = bid['bidId']
-                  // console.log('ID',bidObject[0]['items'][0])
-                  // console.log('bid daddy object',bidObject)
-                //  bidObject['items'].id = bid['bidItems']   // Array [ " UHrXwvDZENiEZXd2fh9O, kEZguqEWmd3X4wToHgv5" ]
-                  bid['bidItems'].map((item : any,key : any ) => {
-                    // bidObject[0]['items']['id'].push(item)
-                    bidObject[0]['items'][0]['id']= item
-                    
-                  })
-                  // console.log('ID',bidObject[0]['items'][0])
-
-
-                  // console.log('bid daddy object',bidObject)
-                  bid['bidItems'].map((itemId: any, key: any) => {
-                     ////
-                    // console.log('item inside map',itemId)
-                     getDocs(query(collection(db, `items/${itemId}/pictures`),
-                     where('url', '!=', '')))
-                     .then((querySnapshot) => {
-                         // console.log("picIDSnapshot", querySnapshot)
-                         let newUrlList =[] as any
-                         querySnapshot.forEach((result) => {
-                            //  setItemUrl(result.data().url)
-                            newUrlList.push(result.data().url)
-                         })
-                       bidObject[0]['items'][0]['urls'].push(newUrlList)
-                      // console.log('BIdOBject', bidObject)
-                       
-                       // 1: Object { bidId: "y0vnj7soXD48oz5l9Cw0",
-                      //bidItems: (1)[…]
-                      //bidUrls:(1)[...]
-                      // console.log('test combined ',{ ...bidItemUrlMap, bidObject })
-                       
-                       console.log('bidItemUrlMap', bidItemUrlMap)
-                       //Object { id: "hrZCZSbuTNAaIrevMvAm", items: (1) […] }
-                       //​
-                       //id: "hrZCZSbuTNAaIrevMvAm"
-                       //​
-                       //items: Array [ {…} ]
-
-
-                       console.log(' bidobject',  bidObject  )
-                       /// bidObject: Array [ {…} ]
-                       // 0: Object { id: "y0vnj7soXD48oz5l9Cw0", items: (1) […] }
-                       // length: 1
-                       const mergedArray = [...bidItemUrlMap, bidObject] 
-                       console.log(' mergedArray',  mergedArray  )
-                       setBidItemUrlMap(mergedArray)
-                    })
-                    /////
-                  })
-                      
-                })
-                
-                return updateBidItemsList
-              })//then
-            
-          })//forEach
-        })
-    
-            
-    
-    }
-  }, [user])  
-
-//then
-            //     let bidArray = [] as any
-            //     bidItemLists.map((bidInfo: any, key: any) => {
-            //       let bidObj = {
-            //         bidId: '',
-            //         itemArray: [] as any,
-            //         urlArray: [] as any
-            //       }
-            //       /// bidInfo['bidItems'] looks like this => [", lA0AF4Rr2y2ED9OnEAaU"]
-            //       // let bidInfo['bidItems'] = bidInfo['bidItems'].split(/\s+/)
-            //       // console.log('string array', stringArray)
-            //       let idElement = bidInfo['bidItems'].toString().replaceAll('"', '').replaceAll(',', '')
-            
-            //       let finalItemList = idElement.split(' ')
-            //       finalItemList.shift()
-          //       console.log('idElEMENT',idElement)
-            //       //  console.log(bidInfo['bidItems'].split(/\s+/))
-                  
-            //       console.log('final List',finalItemList)
-
-            //       // bidObj.itemArray.push(bidInfo['bidItems'])
-            //       bidObj.itemArray.push(finalItemList)
-            //       bidObj.bidId = bidInfo['bidId']
-            //       bidArray.push(bidObj)
-            //     })
-            //     setItemUrl([...bidArray])
-            //     return itemUrl
-            //   })
-            //   .then((itemUrl) => {
-            //     console.log(itemUrl)
-            //     //itemUrl has 0: {bidId: "hrZCZSbuTNAaIrevMvAm", itemArray: Array(1)…}
-            //     itemUrl.map((bidInfo: any, key: any) => {
-                  
-                
-            //       // let itemList = UrlConvert(bidInfo['itemArray'])
-            //       console.log('itList', bidInfo['itemArray'])
-
-            //       bidInfo['itemArray'].map((itemId:any,key:any) => {
-                    
-            //          let bidItemUrl = getParcelUrl(itemId)
-
-            //       })
-
-            //     })
-              // })
-           
-              
-          
-            // fetch('url').then((res) => {
-            //   const thing = res.something; return { thing };
-            // }).then((data) => {
-            //   // thing now is part of data because you returned it console.log(data);
-            // })
-    
-
-  // console.log('POST CONDITION BIDURLMAP', bidItemUrlMap)
-  if (!bidItemUrlMap.length) {
-    return null
-  }
-  else{
-    bidItemUrlMap.map((url: any, key: any) => { 
-      console.log('XOXOXOX',url[0])
-    })
-  }
-
-  // console.log('POST 2 CONDITION BIDURLMAP', bidItemUrlMap)
-  return (
-    <div className='box-content p-4 
-             bg-gray-600 rounded-lg  '
-         >
-            <div className='flex flex-column gap-4'
-            >    
-        { 
-         
-        
-        
-                    bidItemUrlMap.map((url: any, key: any) => {
-
-                        return <ParcelPicture url={url[0]['items'][0]['urls'][0]}
-                    //          picId={url['items'][0]['id']}
-                                itemId={url[0]['items'][0]['id']}
-                                key={key} />
-                      
-                    })  
-               
-
-               
+          setBidItems(bidsWithBidItems);
+        } catch (err) {
+          console.error(err);
         }
-              
-             </div>
+      };
 
-        </div>
-  )
+      getBids();
+    }
+  }, [user, db, bidItems]);
 
+  // ===============================
+  // promise .then() approach
+  // ===============================
 
-}
+  // useEffect(() => {
+  //   let bidArray = [] as any;
 
-export default BidItemListDisplay
+  //   if (user) {
+  //     getDocs(pendingBidsQuery).then(querySnapshot => {
+  //       querySnapshot.forEach(doc => {
+  //         let bidObject = {
+  //           bidId: doc.id,
+  //           amount: doc.data().amount,
+  //           courierId: doc.data().courierId,
+  //           status: doc.data().status,
+  //           senderId: doc.data().senderId,
+  //           routeId: doc.data().routeId,
+  //           bidItems: [],
+  //         } as any;
+
+  //         getDocs(
+  //           query(collection(db, `bids/${doc.id}/bidItems`), where('itemList', '!=', '0'))
+  //         )
+  //           .then(bidItemQuerySnapshot => {
+  // bidItemQuerySnapshot.forEach(queryDocumentSnapshot => {
+  //   bidObject.bidItems.push(
+  //     queryDocumentSnapshot
+  //       .data()
+  //       .itemList.replaceAll(' ', '')
+  //       .replaceAll('"', '')
+  //       .replaceAll(',', '')
+  //   );
+  // });
+
+  //             bidArray.push(bidObject);
+  //             // return bidObject;
+  //           })
+  //           .then(() => {
+  //             bidArray.forEach((bid: { bidItems: any[] }) => {
+  //               bid.bidItems.forEach(itemId => {
+  // getDocs(
+  //   query(
+  //     collection(db, `items/${itemId}/pictures`),
+  //     where('url', '!=', '')
+  //   )
+  // )
+  //                   .then(querySnapshot => {
+  //                     querySnapshot.forEach(result => {
+  //                       bidObject.bidItems.push({ ...result.data() });
+  //                     });
+
+  //                     bidObject.bidItems = bidObject.bidItems.filter(
+  //                       (item: any) => typeof item !== 'string'
+  //                     );
+
+  //                     console.log('bidObject', bidObject);
+
+  //                     // setBidItemUrlMap((prev: any) => [...prev, bidObject]);
+  //                     setBidItemUrlMap((prev: any) => {
+  //                       if (
+  //                         !prev.some(
+  //                           (prevItem: { bidId: any }): boolean =>
+  //                             prevItem.bidId === bidObject.bidId
+  //                         )
+  //                       ) {
+  //                         return [...prev, bidObject];
+  //                       }
+
+  //                       return prev;
+  //                     });
+  //                   })
+  //                   .catch(err => {
+  //                     console.error(err);
+  //                     return bid;
+  //                   });
+  //               });
+  //             });
+  //           }); //then
+  //       }); //forEach
+  //     });
+  //   }
+  //   // only on mount
+  //   // eslint-disable-next-line
+  // }, []);
+
+  if (!bidItemUrlMap) return null;
+
+  return (
+    <div
+      className='box-content p-4 
+             bg-gray-600 rounded-lg  '
+    >
+      <div className='flex flex-column gap-4'>
+        {bidItems.map((bid: any, key: any) => {
+          return bid.bidItems.map((bidItem: { url: string; itemId: string }) => {
+            return (
+              <ParcelPicture
+                key={bidItem.itemId}
+                url={bidItem.url}
+                picId={bidItem.url}
+                itemId={bidItem.itemId}
+              />
+            );
+          });
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default BidItemListDisplay;
