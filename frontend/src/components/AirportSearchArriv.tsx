@@ -32,7 +32,7 @@ function AirportSearchArriv() {
     
     
     return (
-
+        // to be styled with ==>  overflow: scroll; height: 50px; 
         //LISTS  ACRONYMS FOR EACH AIRPORT
         <Combobox value={selectedAirport} onChange={useAirportSelection}>
             <Combobox.Input onChange={(event) => setQuery(event.target.value)} />

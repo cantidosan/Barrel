@@ -25,7 +25,7 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
   const db = getFirestore(app);
   const [bidItemList, setBidItemList] = useState<any>([])
   const [itemUrl, setItemUrl] = useState<any>([{}])
-  const [bidItemUrlMap, setBidItemUrlMap] = useState<any>({})
+  const [bidItemUrlMap, setBidItemUrlMap] = useState<any>([])
   
   console.log(itemUrl)
   console.log(bidItemList)
@@ -170,12 +170,28 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
                             newUrlList.push(result.data().url)
                          })
                        bidObject[0]['items'][0]['urls'].push(newUrlList)
-                      //  console.log('final OBject', bidObject[0]['items'][0]['urls'])
+                      // console.log('BIdOBject', bidObject)
                        
                        // 1: Object { bidId: "y0vnj7soXD48oz5l9Cw0",
                       //bidItems: (1)[…]
                       //bidUrls:(1)[...]
-                       setBidItemUrlMap({ ...bidItemUrlMap, bidObject })
+                      // console.log('test combined ',{ ...bidItemUrlMap, bidObject })
+                       
+                       console.log('bidItemUrlMap', bidItemUrlMap)
+                       //Object { id: "hrZCZSbuTNAaIrevMvAm", items: (1) […] }
+                       //​
+                       //id: "hrZCZSbuTNAaIrevMvAm"
+                       //​
+                       //items: Array [ {…} ]
+
+
+                       console.log(' bidobject',  bidObject  )
+                       /// bidObject: Array [ {…} ]
+                       // 0: Object { id: "y0vnj7soXD48oz5l9Cw0", items: (1) […] }
+                       // length: 1
+                       const mergedArray = [...bidItemUrlMap, bidObject] 
+                       console.log(' mergedArray',  mergedArray  )
+                       setBidItemUrlMap(mergedArray)
                     })
                     /////
                   })
@@ -191,7 +207,7 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
             
     
     }
-  }, [userId])  
+  }, [user])  
 
 //then
             //     let bidArray = [] as any
@@ -248,24 +264,39 @@ const BidItemListDisplay: FC<userProp> = (props: userProp) => {
             // })
     
 
-  
+  // console.log('POST CONDITION BIDURLMAP', bidItemUrlMap)
+  if (!bidItemUrlMap.length) {
+    return null
+  }
+  else{
+    bidItemUrlMap.map((url: any, key: any) => { 
+      console.log('XOXOXOX',url[0])
+    })
+  }
+
+  // console.log('POST 2 CONDITION BIDURLMAP', bidItemUrlMap)
   return (
     <div className='box-content p-4 
              bg-gray-600 rounded-lg  '
          >
             <div className='flex flex-column gap-4'
             >    
-                {
+        { 
+         
+        
+        
+                    bidItemUrlMap.map((url: any, key: any) => {
 
-                    bidItemUrlMap['bidObject'].map((url: any, key: any) => {
-                      // console.log('url', url)
-                    
-                        return <ParcelPicture url={url['items'][0]['urls'][0]}
-                            picId={url['picId']}
-                            itemId={url['items']}
-                            key={url['picId']} />
+                        return <ParcelPicture url={url[0]['items'][0]['urls'][0]}
+                    //          picId={url['items'][0]['id']}
+                                itemId={url[0]['items'][0]['id']}
+                                key={key} />
+                      
                     })  
-                }
+               
+
+               
+        }
               
              </div>
 

@@ -19,7 +19,7 @@ const ParcelPicture: FC<UrlProp> = (props: any) => {
    
     const [{ parcelId,itemList }, dispatch] = useStateValue()
 
-    
+    console.log('URL made it',url)
     
     const handleSelect = () => {
 
@@ -30,7 +30,7 @@ const ParcelPicture: FC<UrlProp> = (props: any) => {
 
         dispatch({ type: 'parcelId', payload: itemId });
         dispatch({ type: 'itemList', payload: itemId });
-        console.log('inside handle')
+        
     }
     
 
